@@ -13,7 +13,7 @@ import { CoupensComponent } from './coupens/coupens.component';
 import { PagesComponent } from './pages/pages.component';
 import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
-import { BottomComponent } from './bottom/bottom.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +27,6 @@ import { BottomComponent } from './bottom/bottom.component';
     PagesComponent,
     MediaComponent,
     SettingsComponent,
-    BottomComponent
   ],
   imports: [
     BrowserModule,
