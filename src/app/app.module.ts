@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { BottomComponent } from './bottom/bottom.component';
+import { AchievementsComponent } from './achievements/achievements.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { RegistrationComponent } from './registration/registration.component';
     AppComponent,
     SlideshowComponent,
     RegistrationComponent,
-    NavbarComponent
+    NavbarComponent,
+    BottomComponent,
+    AchievementsComponent,
   ],
   imports: [
     BrowserModule,

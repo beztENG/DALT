@@ -1,0 +1,81 @@
+#achievements-page{
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    position: relative;    
+    width: 100%;
+    height: 684px;
+    float: left;
+    right: 394px;
+    background: #FFFFFF;
+}
+
+#achievements-title{
+/* HEADER */
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 32px;
+
+    position: absolute;
+    width: 1440px;
+    height: 120px;
+    left: -27px;
+    top: 0px;
+
+    margin: auto;
+    text-align: center;
+    background: #262261;
+
+}
+
+#achievements{
+   /* Khung Thành tích */
+    position: absolute;
+    width: 1301px;
+    height: 338px;
+    left: 78px;
+    top: 200px;
+
+    background: #FFFFFF;    
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;
+}
+
+.achievement-container{
+    /* Thành Tích */
+
+    width: 400px;
+    height: 248px;
+    left: 0px;
+    top: 44px;
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));   
+    background-color: #87DD9A;
+    border: left 20px ;
+    box-sizing: border-box;
+
+}
+
+.img-content{
+    width: 150px;
+    height: 248px;
+    float: left;
+}
+
+.content{
+    width: 250px;
+    height: 248px;
+    float:right;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight:lighter;
+    font-style: normal;
+}
+        
+
+.content p{
+    padding-left: 5px;
+    font-weight:lighter;
+    font-style: normal;
+}

@@ -1,22 +1,20 @@
 
 
-#block-bottom {
-/* Block-BOTTOM */
+#bottom-page{
+    position:relative;
+    width: 1440px;
+    height: 340px;
+    left: 394px;
+    float: inline-end;
 
-position: absolute;
-width: 1440px;
-height: 341px;
-left: 0px;
-top: 683px;
-
-background: #FFFFFF;
+    background: #87DD9A;
 
 }
 
 #div-title{
     position: absolute;
     width: 1440px;
-    height: 84px;
+    height: 70px;
     left: 0px;
     top: 1px;
 
@@ -24,23 +22,72 @@ background: #FFFFFF;
 }
 
 #title{    
-    position: absolute;
-    width: 1440px;
-    height: 85px;
-    left: 0px;
-    top: 0px;
-
-    font-family: 'Rounded Mplus 1c';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 24px;
-    /* or 75% */
-    display: flex;
-    align-items: center;
     text-align: center;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    width: auto;
+    height: 70px;
 
     color: #FFFFFF;
+}
+
+#container{
+    position: absolute;
+    align-items: center;
+    top: 75px;
+    left: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content{
+    width: 450px;
+    height: auto;
+    align-items: center;
+    text-align: center;
+}
+
+.textbox{
+    box-sizing: border-box;
+    width: auto;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+
+}
+
+.icon{
+    width: 30px;
+    height: 30px;
+}
+
+.textbox img{
+    float: left;
+}
+
+.textbox p{
+    text-align: center;
+    width: 245px;
+    height: auto;
+    text-align: left;    
+}
+
+.box-icon{
+    position: absolute;
+    width: 245px;
+    height: auto;
+    left: 15px;
+    
+}
+
+.box-icon img{
+    width: 48px;
+    height: 48px;
+    top: 20px;
+    margin-right: 15px;
+    
 }
 
 
