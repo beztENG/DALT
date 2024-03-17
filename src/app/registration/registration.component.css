@@ -1,0 +1,232 @@
+.flex-container {
+    display: flex;
+    font-family: 'Rounded Mplus 1c';
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container-left {
+    position: relative;
+    width: 720px;
+    height: 346px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.address-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 35px;
+}
+
+.form-container div,
+.address-container div {
+    flex: 1;
+    margin: 5px;
+}
+
+.form-container div input {
+    width: 190px;
+    height: 24px;
+    border-radius: 3px;
+
+}
+
+.address-container div select {
+    width: 197px;
+    height: 27px;
+    border-radius: 3px;
+}
+
+.button-send {
+    background-image: url('src/assets/button_send.png');
+    background-position: right;
+    height: 43px;
+    width: 162px;
+    font-weight: bolder;
+    border-radius: 12px;
+
+}
+
+.button-send :active {
+    border: 10px solid white;
+    transform: translateY(5px);
+}
+
+.image-container-left form {
+    position: absolute;
+    top: 120px;
+    /* Điều chỉnh vị trí theo y */
+    left: 50px;
+    /* Điều chỉnh vị trí theo x */
+    width: 620px;
+    text-align: center;
+}
+
+.text p span {
+    color: rgba(133, 221, 156, 1);
+    font-weight: bolder;
+}
+
+.title1 {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    margin-top: 5px;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.title2 {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    margin-top: 5px;
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+.image-container-right {
+    position: relative;
+    width: 720px;
+    height: 346px;
+    margin-left: -10px;
+
+}
+
+
+.image-container-left .text,
+.image-container-right .text {
+    position: absolute;
+    top: 5px;
+    left: 10%;
+    width: 80%;
+    text-align: center;
+    color: white;
+}
+
+.para {
+    font-size: 14px;
+    line-height: 5px;
+    margin: 0;
+}
+
+.image-container-left img,
+.image-container-right img {
+    width: 720px;
+    height: 346px;
+}
+
+.image-container-right {
+    position: relative;
+    width: 720px;
+    height: 346px;
+    margin: 0;
+
+}
+
+.image-container-right .countdown {
+    position: absolute;
+    top: 120px;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.countdown div {
+    width: 101px;
+    height: 115px;
+    margin: 0 5px;
+    border: 2px solid white;
+    padding: 5px;
+}
+
+.countdown-number {
+    font-size: 48px;
+    padding-top: 10px;
+    color: rgba(38, 34, 97, 1);
+    display: block;
+}
+
+.countdown-label {
+    font-size: 24px;
+    display: block;
+    color: white;
+}
+
+.start {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 32px;
+    margin: 0;
+    color: rgba(38, 34, 97, 1);
+}
+
+.form-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 25px;
+    padding-bottom: 0;
+}
+
+.form-ab,
+.form-cd {
+    display: flex;
+    flex-direction: column;
+    margin-top: -55px;
+    text-align: center;
+}
+
+.decription {
+    margin-top: -85px;
+    position: relative;
+    left: -20px;
+    bottom: 110px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Căn giữa các phần tử theo trục ngang */
+    justify-content: center;
+    /* Căn giữa các phần tử theo trục dọc */
+}
+
+.title-main {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 32px;
+}
+
+.human {
+    position: relative;
+    top: 25px;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    /* Căn giữa các phần tử theo trục ngang */
+    justify-content: center;
+    /* Căn giữa các phần tử theo trục dọc */
+}

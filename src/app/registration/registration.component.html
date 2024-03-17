@@ -1,0 +1,116 @@
+<div class="flex-container">
+    <div class="image-container-left">
+        <img src="assets/background.png" alt="background-left">
+        <div class="text">
+            <p class="title1"> ĐĂNG KÝ TƯ VẤN KHÓA HỌC <span>MIỄN PHÍ</span></p>
+            <div class="para">
+                <p>Điền vào thông tin phía dưới để gửi đơn đăng ký đến</p>
+                <p>nhân viên tư vấn. Đơn đăng ký sẽ được phản hồi trong vòng 24 tiếng.</p>
+            </div>
+        </div>
+        <form>
+            <div class="form-container">
+                <div>
+                    <input type="text" placeholder="Họ Tên" required />
+                </div>
+                <div>
+                    <input type="email" placeholder="Email" required />
+                </div>
+                <div>
+                    <input type="tel" placeholder="Số điện thoại" required />
+                </div>
+            </div>
+            <div class="address-container">
+                <div>
+                    <select id="city" name="city">
+                        <option value="">Select a city</option>
+                        <option value="HN">Hà Nội</option>
+                        <option value="HCM">Hồ Chí Minh</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div>
+                    <select id="district" name="district" required>
+                        <option value="">Select a city</option>
+                        <option value="HN">Hà Nội</option>
+                        <option value="HCM">Hồ Chí Minh</option>
+                    </select>
+                </div>
+                <div>
+                    <select id="ward" name="ward" required>
+                        <option value="">Select a city</option>
+                        <option value="HN">Hà Nội</option>
+                        <option value="HCM">Hồ Chí Minh</option>
+                    </select>
+                </div>
+            </div>
+            <button class="button-send" type="submit"></button>
+        </form>
+    </div>
+
+    <div class="image-container-right">
+        <img src="assets/right.png" alt="background-right">
+        <div class="text">
+            <p class="title2">THỜI GIAN NHẬP HỌC VÀO NĂM HỌC MỚI</p>
+            <p class="start">BẮT ĐẦU SAU</p>
+        </div>
+
+        <div class="countdown">
+            <div>
+                <span class="countdown-number">{{ countdown.days }}</span>
+                <span class="countdown-label">NGÀY</span>
+            </div>
+            <div>
+                <span class="countdown-number">{{ countdown.hours }}</span>
+                <span class="countdown-label">GIỜ</span>
+            </div>
+            <div>
+                <span class="countdown-number">{{ countdown.minutes }}</span>
+                <span class="countdown-label">PHÚT</span>
+            </div>
+            <div>
+                <span class="countdown-number">{{ countdown.seconds }}</span>
+                <span class="countdown-label">GIÂY</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-container">
+    <div class="title-main">
+        <p>HỆ THỐNG GIÁO DỤC TIẾNG ANH</p>
+    </div>
+    <div class="form-main">
+        <img class="human" src="assets/human.png" alt="human">
+        <div class="form-ab">
+            <div>
+                <img src="assets/form1.png" alt="1">
+                <div class="decription">
+                    <p>Mô tả</p>
+                </div>
+            </div>
+            <div>
+                <img src="assets/form2.png" alt="2">
+                <div class="decription">
+                    <p>Mô tả</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-cd">
+            <div>
+                <img src="assets/form3.png" alt="3">
+                <div class="decription">
+                    <p>Mô tả</p>
+                </div>
+            </div>
+            <div>
+                <img src="assets/form4.png" alt="4">
+                <div class="decription">
+                    <p>Mô tả</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-container">
+    <img src="assets/footer.png" alt="footer">
+</div>
