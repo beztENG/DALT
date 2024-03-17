@@ -1,0 +1,49 @@
+
+
+#block-bottom {
+/* Block-BOTTOM */
+
+position: absolute;
+width: 1440px;
+height: 341px;
+left: 0px;
+top: 683px;
+
+background: #FFFFFF;
+
+}
+
+#div-title{
+    position: absolute;
+    width: 1440px;
+    height: 84px;
+    left: 0px;
+    top: 1px;
+
+    background: #262261;
+}
+
+#title{    
+    position: absolute;
+    width: 1440px;
+    height: 85px;
+    left: 0px;
+    top: 0px;
+
+    font-family: 'Rounded Mplus 1c';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 24px;
+    /* or 75% */
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+
+
+
+
