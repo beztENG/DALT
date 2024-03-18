@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    /* background-image: linear-gradient(109.6deg, rgb(218, 226, 222)11.2%, rgb(135, 221, 154)); */
+
+    .container {
+        width: 600px;
+        height: 300px;
+    }
+}

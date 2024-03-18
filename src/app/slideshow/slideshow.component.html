@@ -1,0 +1,14 @@
+<div class="header">
+    <h1 class="title">Không gian học tập chuẩn quốc tế</h1>
+</div>
+<div class="slideshow">
+    <button class="prev" (click)="prevImage()">&#10094;</button>
+    <div class="slide-container">
+        <div class="slide" [style.backgroundImage]="'url(' + images[currentImageIndex] + ')'"></div>
+    </div>
+    <button class="next" (click)="nextImage()">&#10095;</button>
+    <div class="dots-container">
+        <span class="dot" *ngFor="let image of images; let i = index" (click)="goToImage(i)"
+            [class.active]="i === currentImageIndex"></span>
+    </div>
+</div>
