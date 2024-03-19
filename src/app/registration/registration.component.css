@@ -8,7 +8,10 @@
 
 .image-container-left {
     position: relative;
-    width: 720px;
+    background-image: url('src/assets/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
     height: 346px;
 }
 
@@ -57,11 +60,12 @@
 .image-container-left form {
     position: absolute;
     top: 120px;
-    /* Điều chỉnh vị trí theo y */
-    left: 50px;
-    /* Điều chỉnh vị trí theo x */
     width: 620px;
     text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: center;
+    align-items: center;
 }
 
 .text p span {
@@ -88,13 +92,7 @@
     color: #000;
 }
 
-.image-container-right {
-    position: relative;
-    width: 720px;
-    height: 346px;
-    margin-left: -10px;
 
-}
 
 
 .image-container-left .text,
@@ -113,17 +111,14 @@
     margin: 0;
 }
 
-.image-container-left img,
-.image-container-right img {
-    width: 720px;
-    height: 346px;
-}
-
 .image-container-right {
     position: relative;
-    width: 720px;
+    background-image: url('src/assets/right.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
     height: 346px;
-    margin: 0;
+    margin-left: -10;
 
 }
 
@@ -198,6 +193,7 @@
 }
 
 .main-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -228,16 +224,20 @@
 
 .icon-footer {
     display: flex;
-    position: relative;
+    position: absolute;
     height: 48px;
     width: 48px;
-    left: -1215px;
+    left: 55%;
+    transform: translateX(-55%);
+    justify-content: center;
+    align-items: center;
+
 }
 
 .icon-container {
     position: relative;
     padding-right: 100px;
-    top: -27px;
+    top: 5px;
 }
 
 .icon-title {
@@ -260,4 +260,9 @@
     font-family: "M PLUS Rounded 1c", sans-serif;
     font-weight: 800;
     font-style: normal;
+}
+
+.img-container {
+    width: 100%;
+    height: 172px;
 }
