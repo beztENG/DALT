@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BottomComponent } from './bottom/bottom.component';
 import { AchievementsComponent } from './achievements/achievements.component';
+import { NavidasComponent } from './navidas/navidas.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { AchievementsComponent } from './achievements/achievements.component';
     NavbarComponent,
     BottomComponent,
     AchievementsComponent,
+    NavidasComponent,
   ],
   imports: [
     BrowserModule,
