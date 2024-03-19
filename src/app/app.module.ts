@@ -5,19 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AchievementsComponent } from './achievements/achievements.component';
-import { BottomComponent } from './bottom/bottom.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { BottomComponent } from './bottom/bottom.component';
+import { AchievementsComponent } from './achievements/achievements.component';
+import { NavidasComponent } from './navidas/navidas.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SlideshowComponent,
-    NavbarComponent,
-    AchievementsComponent,
-    BottomComponent,
     RegistrationComponent,
+    NavbarComponent,
+    BottomComponent,
+    AchievementsComponent,
+    NavidasComponent,
   ],
   imports: [
     BrowserModule,
