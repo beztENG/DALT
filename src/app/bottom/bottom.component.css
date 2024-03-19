@@ -34,6 +34,9 @@
 }
 
 #container{
+    width: 80%;
+    float: left;
+    right: 10%;
     position: absolute;
     align-items: center;
     top: 75px;
@@ -47,11 +50,22 @@
 }
 
 .content{
-    width: 450px;
+    width: 33%;    
     height: auto;
     align-items: center;
-    text-align: center;
+    text-align: left;
+    
 }
+
+.content h3{
+    position: absolute;
+    border-bottom: 10px;
+    font-size: 20px;
+    top: 2%;    
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
 
 .textbox{
     box-sizing: border-box;
