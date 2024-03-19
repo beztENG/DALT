@@ -18,7 +18,7 @@
     font-size: 32px;
 
     position: absolute;
-    width: 1440px;
+    width: 100%;
     height: 120px;
     left: -27px;
     top: 0px;
@@ -32,7 +32,7 @@
 #achievements{
    /* Khung Thành tích */
     position: absolute;
-    width: 1301px;
+    width: 100%;
     height: 338px;
     left: 78px;
     top: 200px;
