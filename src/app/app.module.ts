@@ -9,6 +9,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { BottomComponent } from './bottom/bottom.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { NavidasComponent } from './navidas/navidas.component';
+import { CourseComponent } from './course/course.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NavidasComponent } from './navidas/navidas.component';
     BottomComponent,
     AchievementsComponent,
     NavidasComponent,
+    CourseComponent,
   ],
   imports: [
     BrowserModule,
