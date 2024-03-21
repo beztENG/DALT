@@ -1,9 +1,8 @@
 .slider-container {
     position: relative;
-    width: 75%;
-    height: 100%;
+    width: 50%;
+    height: 65%;
     margin: auto;
-    margin-bottom: 5rem;
 
     .header {
         text-align: center;

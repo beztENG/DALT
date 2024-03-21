@@ -17,11 +17,11 @@ import { CourseComponent } from './course/course.component';
     AppComponent,
     SlideshowComponent,
     RegistrationComponent,
-    NavbarComponent,
     BottomComponent,
     AchievementsComponent,
     NavidasComponent,
     CourseComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
