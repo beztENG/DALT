@@ -10,6 +10,8 @@ import { BottomComponent } from './bottom/bottom.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { NavidasComponent } from './navidas/navidas.component';
 import { CourseComponent } from './course/course.component';
+import { ChildrenStudyComponent } from './children-study/children-study.component';
+
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { CourseComponent } from './course/course.component';
     NavidasComponent,
     CourseComponent,
     NavbarComponent,
+    ChildrenStudyComponent
   ],
   imports: [
     BrowserModule,

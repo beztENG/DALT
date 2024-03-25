@@ -1,0 +1,138 @@
+.background-container {
+    display: flex;
+    background-image: url('src/assets/background-kids.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+}
+
+.background-container img {
+    position: relative;
+    width: 304px;
+    height: 339px;
+    transform: translateX(400px);
+}
+
+.text-container {
+    position: relative;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    color: white;
+    transform: translate(300px, 100px);
+}
+
+.main-container {
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+    font-size: 32px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: rgba(38, 34, 97, 1);
+}
+
+#header1 {
+    position: absolute;
+    width: 250px;
+    top: -700px;
+    left: 285px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: rgba(70, 64, 138, 1);
+}
+
+#paragraph-box1 {
+    position: absolute;
+    width: 300px;
+    top: -630px;
+    left: 285px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+}
+
+#header2 {
+    position: absolute;
+    width: 290px;
+    top: -350px;
+    left: 225px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: rgba(239, 124, 50, 1);
+}
+
+#paragraph-box2 {
+    position: absolute;
+    width: 300px;
+    top: -280px;
+    left: 225px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+}
+
+#header3 {
+    position: absolute;
+    width: 300px;
+    top: -700px;
+    left: 1020px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: rgba(255, 0, 51, 1);
+}
+
+#paragraph-box3 {
+    position: absolute;
+    width: 400px;
+    top: -630px;
+    left: 1020px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+}
+
+#header4 {
+    position: absolute;
+    width: 290px;
+    top: -370px;
+    left: 940px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: rgba(153, 153, 0, 1);
+}
+
+#paragraph-box4 {
+    position: absolute;
+    width: 300px;
+    top: -300px;
+    left: 935px;
+    text-align: center;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+}
+
+.content {
+    position: absolute;
+}
