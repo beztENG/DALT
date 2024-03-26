@@ -171,3 +171,92 @@
     width: 400px;
     text-align: center;
 }
+
+.end-container {
+    position: relative;
+    display: flex;
+    text-align: center;
+}
+
+.box1,
+.box2,
+.box3 {
+    margin-left: 165px;
+}
+
+#header-box1 {
+    position: relative;
+    top: -250px;
+    left: 30px;
+    width: 194px;
+    text-align: center;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(38, 34, 97, 1);
+}
+
+#header-box2 {
+    position: relative;
+    top: -250px;
+    left: 30px;
+    width: 200px;
+    text-align: center;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(38, 34, 97, 1);
+}
+
+#header-box3 {
+    position: relative;
+    top: -250px;
+    left: 30px;
+    width: 194px;
+    text-align: center;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(38, 34, 97, 1);
+}
+
+#content-box1 {
+    position: relative;
+    top: -255px;
+    left: 30px;
+    width: 200px;
+    text-align: center;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+#content-box2 {
+    position: relative;
+    top: -255px;
+    width: 200px;
+    left: 30px;
+    width: 200px;
+    text-align: center;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+#content-box3 {
+    position: relative;
+    top: -255px;
+    width: 200px;
+    left: 25px;
+    width: 200px;
+    text-align: center;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+}
