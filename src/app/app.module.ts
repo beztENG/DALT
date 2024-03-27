@@ -11,6 +11,9 @@ import { AchievementsComponent } from './achievements/achievements.component';
 import { NavidasComponent } from './navidas/navidas.component';
 import { CourseComponent } from './course/course.component';
 import { BannerComponent } from './banner/banner.component';
+import { ChildrenStudyComponent } from './children-study/children-study.component';
+import { CourselistComponent } from './courselist/courselist.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 
 @NgModule({
@@ -24,6 +27,9 @@ import { BannerComponent } from './banner/banner.component';
     CourseComponent,
     NavbarComponent,
     BannerComponent,
+    ChildrenStudyComponent,
+    CourselistComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
