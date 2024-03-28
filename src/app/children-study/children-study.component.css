@@ -1,17 +1,25 @@
 .background-container {
     display: flex;
+    justify-content: center;
+    /* Canh giữa theo chiều ngang */
+    align-items: center;
+    /* Canh giữa theo chiều dọc */
     background-image: url('src/assets/background-kids.png');
     background-repeat: no-repeat;
     background-size: cover;
     padding: 0;
     box-shadow: 0px 0.5px 6px #000000;
+    width: 100%;
+    /* Đảm bảo đầy đủ chiều rộng của container */
+    height: 100%;
+    /* Đảm bảo đầy đủ chiều cao của container */
 }
 
 .background-container img {
+    display: flex;
     position: relative;
     width: 304px;
     height: 339px;
-    transform: translateX(400px);
 }
 
 .text-container {
@@ -21,7 +29,6 @@
     font-weight: 700;
     font-size: 32px;
     color: white;
-    transform: translate(300px, 100px);
 }
 
 
@@ -176,12 +183,13 @@
     position: relative;
     display: flex;
     text-align: center;
+    justify-content: center;
 }
 
 .box1,
 .box2,
 .box3 {
-    margin-left: 165px;
+    margin: 80px;
 }
 
 #header-box1 {
