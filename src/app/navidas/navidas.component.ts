@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./navidas.component.css']
 })
 export class NavidasComponent {
-
 }

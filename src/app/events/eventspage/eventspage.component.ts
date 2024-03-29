@@ -9,11 +9,11 @@ import { Events } from 'src/app/shared/models/events';
   styleUrls: ['./eventspage.component.css']
 })
 export class EventspageComponent {
-  event!: Events;
+  events!: Events;
   constructor(activatedRoute:ActivatedRoute, eventsService:EventsService){
     activatedRoute.params.subscribe((params) =>{
       if(params.id)
-      this.event = eventsService.getAllTitleById(params.id);
+      this.events = eventsService.getAllTitleById(params.id);
     })
   }
 

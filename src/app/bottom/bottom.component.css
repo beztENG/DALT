@@ -1,7 +1,5 @@
-
-
-#bottom-page{
-    position:relative;
+#bottom-page {
+    position: relative;
     width: 100%;
     height: 400px;
     /* width: 100%;
@@ -12,7 +10,7 @@
 
 }
 
-#div-title{
+#div-title {
     position: absolute;
     width: 100%;
     height: 60px;
@@ -22,7 +20,7 @@
     background: #262261;
 }
 
-#title{    
+#title {
     text-align: center;
     font-family: "M PLUS Rounded 1c", sans-serif;
     font-weight: 800;
@@ -33,93 +31,90 @@
     color: #FFFFFF;
 }
 
-#container{
+#container {
     width: 80%;
     height: fit-content;
     float: left;
     right: 10%;
     position: absolute;
-    align-items:flex-start;    
+    align-items: flex-start;
     top: 75px;
     display: flex;
     justify-content: space-between;
 }
-#lingualab{
+
+#lingualab {
     width: 90%;
     height: auto;
     overflow: hidden;
 }
 
-.content{
-    width: 33%;    
+.content {
+    width: 33%;
     height: fit-content;
     align-items: center;
     text-align: left;
-    
+
 }
 
-.content h3{
+.content h3 {
     font-size: 20px;
-    top: 2%;    
+    top: 2%;
     color: #FFFFFF;
     font-weight: 600;
 }
 
-.content a, p{
+.content a,
+p {
     color: black;
     text-decoration: none;
 }
 
-.content a:hover{
+.content a:hover {
     color: #262261;
     font-weight: 500;
     font-size: 18px;
 }
 
 
-.textbox{
+.textbox {
     box-sizing: border-box;
     width: auto;
     height: 50px;
     display: flex;
     justify-content: space-around;
-    align-items: center;  
+    align-items: center;
 
 }
 
-.icon{
+.icon {
     width: 30px;
     height: 30px;
 }
 
-.textbox img{
+.textbox img {
     float: left;
 }
 
-.textbox p{
+.textbox p {
     text-align: center;
     width: 245px;
     height: auto;
-    text-align: left;    
+    text-align: left;
 }
 
-.box-icon{
+.box-icon {
     position: absolute;
     width: 245px;
     height: auto;
     left: 15px;
-    
+
 }
 
-.box-icon img{
+.box-icon img {
     width: 48px;
     height: 48px;
     top: 20px;
     margin-right: 15px;
-    
+
 }
-
-
-
-
-

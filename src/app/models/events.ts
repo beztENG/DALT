@@ -3,5 +3,4 @@ export class Events{
     title !: string;
     description !: string;
     imageUrl!: string;
-    content!:string;
 }

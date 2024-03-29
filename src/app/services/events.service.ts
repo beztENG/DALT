@@ -11,15 +11,10 @@ export class EventsService {
 
   
   getAll():Events[]{
-    return sample_events
-  }
-
-  getAllTitleBySearchTerm(searchTerm:string){
-    return this.getAll().filter(events => events.title.toLowerCase()
-    .includes(searchTerm.toLowerCase()))
+    return sample_events;
   }
 
   getAllTitleById(eventId:string):Events{
-    return this.getAll().find(event => event.id == eventId) ?? new Events();
+    return this.getAll().find(events => events.id == eventId) ?? new Events();
   }
 }
