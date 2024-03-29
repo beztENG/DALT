@@ -1,0 +1,16 @@
+<h1>Sự kiện nổi bật</h1>
+<ul>
+    <li *ngFor="let event of events">
+        <a routerLink="/event/{event.id}">
+            <img [src]="event.imageUrl" [alt]="event.title">
+            <div class="content">
+                <div class="title">
+                    {{event.title}}
+                </div>
+                 <div class="description">
+                    {{event.description}}
+                 </div>
+            </div>
+        </a>
+    </li>
+</ul> 
