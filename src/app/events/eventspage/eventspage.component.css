@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    flex-wrap: wrap;
+    max-width: 1000px; 
+    margin: 0 auto;
+    padding: 0 20px; 
+}
+
+.information {
+    text-align: center; 
+}
+
+.container img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+}
+
+.detail {
+    margin-top: 20px;
+}
+
+.header {
+    font-size: 50px;
+    text-align: left; 
+}
+
+.name {
+    font-weight: bold; 
+    color: #333; 
+}
+
+.content{
+    font-size: 25px;
+    color: #666;
+}
