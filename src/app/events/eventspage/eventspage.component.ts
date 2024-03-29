@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EventsService } from 'src/app/services/events.service';
 import { Events } from 'src/app/shared/models/events';
 
+
 @Component({
   selector: 'app-eventspage',
   templateUrl: './eventspage.component.html',

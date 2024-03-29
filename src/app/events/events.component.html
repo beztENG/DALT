@@ -1,8 +1,8 @@
-<app-navidas></app-navidas>
+
 <h1>Sự kiện nổi bật</h1>
 <ul>
     <li *ngFor="let event of events">
-        <a routerLink="/eventspage/{{event.id}}">
+        <a routerLink="/eventspage/:1">
             <img [src]="event.imageUrl" [alt]="event.title">
             <div class="content">
                 <div class="title">
@@ -15,4 +15,4 @@
         </a>
     </li>
 </ul>
-<app-bottom></app-bottom>
+
