@@ -1,6 +1,8 @@
 .flex-container {
     display: flex;
-    font-family: 'Rounded Mplus 1c';
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 500;
+    font-style: normal;
     width: 100vw;
     align-items: center;
     justify-content: center;
