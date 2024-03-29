@@ -59,6 +59,14 @@ li{
     color: #262261;
     font-weight: 400;
  }
+ .flex li a:hover{
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 17px;
+    margin-left: 30px;
+    color: #50DD6F;
+    font-weight: 400;
+ }
  b{
     text-decoration: none;
     text-transform: capitalize;

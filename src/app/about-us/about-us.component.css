@@ -1,0 +1,20 @@
+.text p span {
+    color: #50DD6F;
+    font-weight: bolder;
+}
+
+.title1 {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    margin-top: 5px;
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align:justify;
+}
+
+.para {
+    font-size: 14px;
+    margin: 0;
+    text-align:justify;
+}
