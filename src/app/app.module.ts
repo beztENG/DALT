@@ -14,6 +14,8 @@ import { BannerComponent } from './banner/banner.component';
 import { ChildrenStudyComponent } from './children-study/children-study.component';
 import { CourselistComponent } from './courselist/courselist.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { EventsComponent } from './events/events.component';
+import { EventspageComponent } from './events/eventspage/eventspage.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     BannerComponent,
     ChildrenStudyComponent,
     CourselistComponent,
-    HomepageComponent
+    HomepageComponent,
+    EventsComponent,
+    EventspageComponent,
   ],
   imports: [
     BrowserModule,

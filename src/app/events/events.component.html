@@ -1,8 +1,7 @@
-
 <h1>Sự kiện nổi bật</h1>
 <ul>
     <li *ngFor="let event of events">
-        <a routerLink="/eventspage/:1">
+        <a routerLink="/eventspage/{{event.id}}">
             <img [src]="event.imageUrl" [alt]="event.title">
             <div class="content">
                 <div class="title">
@@ -15,4 +14,3 @@
         </a>
     </li>
 </ul>
-
