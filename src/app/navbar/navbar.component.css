@@ -1,7 +1,7 @@
 .slider-container {
     position: relative;
     width: 50%;
-    height: 65%;
+    height: 500px;
     margin: auto;
 
     .header {
@@ -76,4 +76,8 @@
 
     }
 
+}
+
+img{
+    width: 70%;
 }
