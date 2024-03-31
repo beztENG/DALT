@@ -5,6 +5,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { EventsComponent } from './events/events.component';
 import { EventspageComponent } from './events/eventspage/eventspage.component';
+import { CourselistComponent } from './courselist/courselist.component';
 
 const routes: Routes = [
   { path:'', component: HomepageComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'aboutus', component: AboutUsComponent},
   { path:'events', component:EventsComponent},
   { path: 'eventspage/:id', component:EventspageComponent },
+  { path: 'courseslist', component:CourselistComponent},
   // { path: '', redirectTo: '/courses', pathMatch: 'full' },
 ];
 
