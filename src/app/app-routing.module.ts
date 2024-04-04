@@ -14,6 +14,8 @@ import { MediaComponent } from './administratorsystem/media/media.component';
 import { SettingsComponent } from './administratorsystem/settings/settings.component';
 import { LoginComponent } from './administratorsystem/login/login.component';
 import { AdminComponent } from './administratorsystem/admin/admin.component';
+import { CourselistComponent } from './courselist/courselist.component';
+
 const routes: Routes = [
   { path:'', component: HomepageComponent},
   { path: 'childrenstudy', component: ChildrenStudyComponent},
@@ -35,6 +37,8 @@ const routes: Routes = [
   
   
   
+  { path: 'courseslist', component:CourselistComponent},
+  // { path: '', redirectTo: '/courses', pathMatch: 'full' },
 ];
 
 @NgModule({
