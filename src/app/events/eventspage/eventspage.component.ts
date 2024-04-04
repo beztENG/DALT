@@ -13,7 +13,9 @@ export class EventspageComponent {
   constructor(activatedRoute:ActivatedRoute, eventsService:EventsService){
     activatedRoute.params.subscribe((params) =>{
       if(params.id)
-      this.events = eventsService.getAllTitleById(params.id);
+      eventsService.getAllTitleById(params.id).subscribe(serverEvents =>{
+        this.events = serverEvents
+      });
     })
   }
 

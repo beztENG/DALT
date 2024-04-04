@@ -12,7 +12,9 @@ export class EventsComponent {
   events:Events[] = [];
   
   constructor(private eventsService:EventsService){
-    this.events = eventsService.getAll();
+    eventsService.getAll().subscribe((serverEvents) => {
+      this.events = serverEvents;
+    });
   }
 
 }

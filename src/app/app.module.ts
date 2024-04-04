@@ -17,6 +17,20 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { EventsComponent } from './events/events.component';
 import { EventspageComponent } from './events/eventspage/eventspage.component';
 
+import { BodyComponent } from './administratorsystem/body/body.component';
+import { SidenavComponent } from './administratorsystem/sidenav/sidenav.component';
+import { DashboardComponent } from './administratorsystem/dashboard/dashboard.component';
+import { ProductsComponent } from './administratorsystem/products/products.component';
+import { StatisticsComponent } from './administratorsystem/statistics/statistics.component';
+import { CoupensComponent } from './administratorsystem/coupens/coupens.component';
+import { PagesComponent } from './administratorsystem/pages/pages.component';
+import { MediaComponent } from './administratorsystem/media/media.component';
+import { SettingsComponent } from './administratorsystem/settings/settings.component';
+import { LoginComponent } from './administratorsystem/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminComponent } from './administratorsystem/admin/admin.component';
+
 
 @NgModule({
   declarations: [
@@ -34,11 +48,25 @@ import { EventspageComponent } from './events/eventspage/eventspage.component';
     HomepageComponent,
     EventsComponent,
     EventspageComponent,
+    BodyComponent,
+    SidenavComponent,
+    DashboardComponent,
+    ProductsComponent,
+    StatisticsComponent,
+    CoupensComponent,
+    PagesComponent,
+    MediaComponent,
+    SettingsComponent,
+    LoginComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HammerModule
+    HammerModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
