@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const port = 4200;
 
 //Kết nối MongoDB
-    const { MongoClient, ServerApiVersion } = require('mongodb');
+    const { MongoClient} = require('mongodb');
     const URL = "mongodb+srv://thandh23044:Than23032003@englishwebproject.h2gd5cq.mongodb.net/?retryWrites=true&w=majority&appName=EnglishWebProject";
    
     var MongoDB = new MongoClient(URL);
@@ -27,13 +27,13 @@ const port = 4200;
     })
 
     app.get('/api/account/:id', (req, res) => {
-        const accID = req.params.id; // Lấy accID từ URL
+        const accId = req.params.id; // Lấy accID từ URL
     
         const db = MongoDB.db("EnglishWeb");
         const collection = db.collection("Account");
 
         // Tìm và lấy tài liệu từ collection dựa trên accID cụ thể
-        collection.findOne({ accID: accID }, (err, result) => {
+        collection.findOne({ accID: accId }, (err, result) => {
           if (err) {
             console.error('Error occurred while finding document:', err);
             res.status(500).json({ error: 'Error occurred while finding document' });
