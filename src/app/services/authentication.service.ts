@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
-import { User } from '../interface/user/user';
-import { USER_LOGIN_URL } from '../administratorsystem/constants/url';
+import { Observable } from 'rxjs';
+import { User } from '../shared/models/user';
+import { USER_LOGIN_URL } from '../administratorsystem/shared/constants/url';
+import { IUser } from '../interface/user/user';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+  [x: string]: any;
   loggedIn = false;
+
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<User> {
-    return this.http.post<User>(USER_LOGIN_URL, 
-    { email, password }).pipe(
-      tap(() => {
-        this.loggedIn = true;
-      })
-    );
+  login(userLogin: IUser): Observable<User> {
+    return this.http.post<User>(USER_LOGIN_URL, userLogin);
   }
 }

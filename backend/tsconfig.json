@@ -2,11 +2,13 @@
     "compilerOptions": {
         "module": "CommonJS",
         "moduleResolution": "node",
-        "strict": true,
+        "strict": false,
         "outDir": "./built", //build javascript
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+
     },
     "include": ["src/**/*"],//tell all the file inside src
 }

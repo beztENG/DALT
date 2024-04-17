@@ -4,14 +4,21 @@ export const sample_users: any[] = [
         email: "john@gmail.com",
         password: "12345",
         address: "Toronto On",
-        isAdmin: true,
+        role: "admin",
     },
     {
-        name: "Jane Doe",
-        email: "jane@gmail.com",
+        name: "Nguyen Van An",
+        email: "AnNV@gmail.com",
         password: "12345",
         address: "Shanghai",
-        isAdmin: false,
+        role: "student",
+    },
+    {
+        name: "Tran Thi Bui",
+        email: "BuiTT@gmail.com",
+        password: "12345",
+        address: "Shanghai",
+        role: "student",
     },
 ]
 
@@ -69,3 +76,26 @@ export const sample_events: any[] = [
 
     },
 ]
+
+export const sample_student: any[] = [
+    {
+        studentId: 'SV001',
+        studentName: 'Nguyen Van An',
+        email: 'AnNV@gmail.com',
+        password: '12345',
+        phoneNumber: '123456789',
+        registrationDate: '2023-04-10T08:00:00Z',
+        midtermGrade: "8",
+        finalGrade: "9",
+    },
+    {
+        studentId: 'SV002',
+        studentName: 'Tran Thi Bui',
+        email: 'BuiTT@gmail.com',
+        password: '12345',
+        phoneNumber: '987654321',
+        registrationDate: '2023-04-12T10:00:00Z',
+        midtermGrade: "8",
+        finalGrade: "8",
+    },
+];

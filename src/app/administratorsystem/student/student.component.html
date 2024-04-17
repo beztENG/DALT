@@ -1,0 +1,7 @@
+<div *ngIf="studentInfo">
+  <h2>{{ studentInfo.studentName }}</h2>
+  <p>Số điện thoại: {{ studentInfo.phoneNumber }}</p>
+  <p>Ngày đăng ký: {{ studentInfo.registrationDate | date }}</p>
+  <p>Điểm giữa kỳ: {{ studentInfo.midtermGrade }}</p>
+  <p>Điểm cuối kỳ: {{ studentInfo.finalGrade }}</p>
+</div>

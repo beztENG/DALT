@@ -11,12 +11,14 @@ ul{
     flex-wrap: wrap;
     list-style-type: none;
     padding: 20;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 li a{
     height: 25rem;
     width: 25rem;
-    border: 1px solid wheat;
+    border: 1px solid #ccc;
     border-radius: 1rem;
     margin: 2.5rem;
     display: flex;
@@ -24,12 +26,19 @@ li a{
     overflow: hidden;
     color: #e72929;
     text-decoration: none;
-
+    transition: transform 0.2s ease-in-out; 
 }
+
+li a:hover {
+    transform: translateY(-5px); 
+  }
 
 li a img{
     object-fit: cover;
     height: 14.5rem;
+    width: 100%;
+    height: 150px;
+    max-width: 100%;
 }
 
 .content{

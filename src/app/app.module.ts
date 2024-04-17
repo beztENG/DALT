@@ -17,19 +17,18 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { EventsComponent } from './events/events.component';
 import { EventspageComponent } from './events/eventspage/eventspage.component';
 
-import { BodyComponent } from './administratorsystem/body/body.component';
-import { SidenavComponent } from './administratorsystem/sidenav/sidenav.component';
-import { DashboardComponent } from './administratorsystem/dashboard/dashboard.component';
-import { ProductsComponent } from './administratorsystem/products/products.component';
-import { StatisticsComponent } from './administratorsystem/statistics/statistics.component';
-import { CoupensComponent } from './administratorsystem/coupens/coupens.component';
-import { PagesComponent } from './administratorsystem/pages/pages.component';
-import { MediaComponent } from './administratorsystem/media/media.component';
-import { SettingsComponent } from './administratorsystem/settings/settings.component';
-import { LoginComponent } from './administratorsystem/login/login.component';
+import { BodyComponent } from './administratorsystem/admin/body/body.component';
+import { SidenavComponent } from './administratorsystem/admin/sidenav/sidenav.component';
+import { DashboardComponent } from './administratorsystem/admin/dashboard/dashboard.component';
+import { SettingsComponent } from './administratorsystem/admin/settings/settings.component';
+import { LoginComponent } from './administratorsystem/admin/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './administratorsystem/admin/admin.component';
+import { RegistrationListComponent } from './administratorsystem/admin/registration-list/registration-list.component';
+import { StudentComponent } from './administratorsystem/student/student.component';
+import { StudentDashboardComponent } from './administratorsystem/student/student-dashboard/student-dashboard.component';
+import { LoginStudentComponent } from './administratorsystem/student/login-student/login-student.component';
 
 
 @NgModule({
@@ -51,14 +50,13 @@ import { AdminComponent } from './administratorsystem/admin/admin.component';
     BodyComponent,
     SidenavComponent,
     DashboardComponent,
-    ProductsComponent,
-    StatisticsComponent,
-    CoupensComponent,
-    PagesComponent,
-    MediaComponent,
     SettingsComponent,
     LoginComponent,
     AdminComponent,
+    RegistrationListComponent,
+    StudentComponent,
+    StudentDashboardComponent,
+    LoginStudentComponent,
   ],
   imports: [
     BrowserModule,
