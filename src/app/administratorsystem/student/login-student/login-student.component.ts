@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
-import { IUser } from 'src/app/interface/user/user';
+import { IUser } from 'src/app/administratorsystem/shared/interface/user/user';
 
 @Component({
   selector: 'app-login-student',

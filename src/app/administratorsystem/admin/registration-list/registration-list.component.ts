@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AcademicManagementService } from 'src/app/services/academic-management.service';
-import { Student } from 'src/app/interface/academicManagement/student';
+import { Student } from 'src/app/administratorsystem/shared/interface/academicManagement/student';
 
 @Component({
   selector: 'app-registration-list',

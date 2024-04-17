@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Student } from '../interface/academicManagement/student';
+import { Student } from '../administratorsystem/shared/interface/academicManagement/student';
 import { STUDENT_URL } from '../administratorsystem/shared/constants/url';
 
 @Injectable({
