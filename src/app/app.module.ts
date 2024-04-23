@@ -31,6 +31,7 @@ import { StudentDashboardComponent } from './administratorsystem/student/student
 import { LoginStudentComponent } from './administratorsystem/student/login-student/login-student.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,7 @@ import { LoginStudentComponent } from './administratorsystem/student/login-stude
     RegistrationListComponent,
     StudentComponent,
     StudentDashboardComponent,
-    LoginStudentComponent,
+    LoginStudentComponent
   ],
   imports: [
     BrowserModule,

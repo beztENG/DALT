@@ -1,5 +1,5 @@
 export const navbarData = [
-        {
+    {
         routeLink: 'dashboard',
         icon: 'fal fa-home',
         label: 'Trang chủ'
@@ -14,6 +14,11 @@ export const navbarData = [
         icon: 'fal fa-cog',
         label: 'Cài đặt'
     },
+    {
+        routeLink: 'studentManagement',
+        icon: '	far fa-address-book',
+        label: 'Quản lý sinh viên'
+    }
 ];
 
 //MODEL

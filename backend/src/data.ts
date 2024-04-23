@@ -76,7 +76,32 @@ export const sample_events: any[] = [
 
     },
 ]
-
+export const sample_studentpage: any[] = [
+    {
+        id: '1',
+        title: 'Thêm Sinh viên',
+        description: 'Thêm sinh vào hệ thống',
+        imageUrl: 'assets/image/img-content.jpg',
+    },
+    {
+        id: '2',
+        title: 'Xóa Sinh viên',
+        description: 'Xóa sinh viên ra khỏi hệ thống',
+        imageUrl: 'assets/image/img-content.jpg',
+    },
+    {
+        id: '3',
+        title: 'Sửa Sinh viên',
+        description: 'Sửa thông tin của sinh viên',
+        imageUrl: 'assets/image/img-content.jpg',
+    },
+    {
+        id: '4',
+        title: 'Tìm kiếm sinh viên',
+        description: 'Tìm kiếm thông tin của sinh viên',
+        imageUrl: 'assets/image/img-content.jpg',
+    },
+]
 export const sample_student: any[] = [
     {
         studentId: 'SV001',

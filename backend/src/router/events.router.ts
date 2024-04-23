@@ -1,14 +1,14 @@
 import { Router } from "express";
-import { sample_events} from "../data";
+import { sample_events } from "../data";
 import asynceHandler from 'express-async-handler'
 import { EventsModel } from "../models/events.model";
 
 const router = Router();
 
-router.get("/seed", asynceHandler (
-    async (req,res) => {
+router.get("/seed", asynceHandler(
+    async (req, res) => {
         const eventsCount = await EventsModel.countDocuments();
-        if(eventsCount > 0){
+        if (eventsCount > 0) {
             res.send("Seed is already done!");
             return;
         }
@@ -17,15 +17,15 @@ router.get("/seed", asynceHandler (
     }
 ))
 
-router.get("/", asynceHandler (
-    async (req,res) => {
+router.get("/", asynceHandler(
+    async (req, res) => {
         const events = await EventsModel.find();
         res.send(events);
     }
 ))
 
 router.get("/:eventId", asynceHandler(
-    async (req,res) => {
+    async (req, res) => {
         const events = await EventsModel.findById(req.params.eventId);
         res.send(events);
     }
