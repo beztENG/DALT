@@ -76,7 +76,32 @@ export const sample_events: any[] = [
 
     },
 ]
-
+export const sample_studentpage: any[] = [
+    {
+        id: '1',
+        title: 'Thêm Sinh viên',
+        description: 'Thêm sinh vào hệ thống',
+        imageUrl: 'assets/image/img-content.jpg',
+    },
+    {
+        id: '2',
+        title: 'Xóa Sinh viên',
+        description: 'Xóa sinh viên ra khỏi hệ thống',
+        imageUrl: 'assets/image/img-content.jpg',
+    },
+    {
+        id: '3',
+        title: 'Sửa Sinh viên',
+        description: 'Sửa thông tin của sinh viên',
+        imageUrl: 'assets/image/img-content.jpg',
+    },
+    {
+        id: '4',
+        title: 'Tìm kiếm sinh viên',
+        description: 'Tìm kiếm thông tin của sinh viên',
+        imageUrl: 'assets/image/img-content.jpg',
+    },
+]
 export const sample_student: any[] = [
     {
         studentId: 'SV001',
@@ -85,8 +110,7 @@ export const sample_student: any[] = [
         password: '12345',
         phoneNumber: '123456789',
         registrationDate: '2023-04-10T08:00:00Z',
-        midtermGrade: "8",
-        finalGrade: "9",
+
     },
     {
         studentId: 'SV002',
@@ -95,7 +119,6 @@ export const sample_student: any[] = [
         password: '12345',
         phoneNumber: '987654321',
         registrationDate: '2023-04-12T10:00:00Z',
-        midtermGrade: "8",
-        finalGrade: "8",
+
     },
 ];

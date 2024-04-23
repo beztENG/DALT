@@ -15,31 +15,40 @@ import { RegistrationComponent } from './registration/registration.component';
 import { StudentComponent } from './administratorsystem/student/student.component';
 import { StudentDashboardComponent } from './administratorsystem/student/student-dashboard/student-dashboard.component';
 import { LoginStudentComponent } from './administratorsystem/student/login-student/login-student.component';
+import { StudentManagementComponent } from './administratorsystem/admin/student-management/student-management.component';
+
 
 const routes: Routes = [
-  { path:'', component: HomepageComponent},
-  { path: 'childrenstudy', component: ChildrenStudyComponent},
-  { path: 'aboutus', component: AboutUsComponent},
-  { path:'events', component:EventsComponent},
-  { path: 'eventspage/:id', component:EventspageComponent },
-  {path: 'login', component:LoginComponent},
-  {path: 'loginStudent', component: LoginStudentComponent},
+  { path: '', component: HomepageComponent },
+  { path: 'childrenstudy', component: ChildrenStudyComponent },
+  { path: 'aboutus', component: AboutUsComponent },
+  { path: 'events', component: EventsComponent },
+  { path: 'eventspage/:id', component: EventspageComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'loginStudent', component: LoginStudentComponent },
 
 
-    { path: 'admin', component: AdminComponent, children: [
+
+  {
+    path: 'admin', component: AdminComponent, children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'setting', component: SettingsComponent },
+      { path: 'studentManagement', component: StudentManagementComponent },
       { path: 'registrationList', component: RegistrationListComponent },
-    ]},
+
+    ]
+  },
 
 
-    {path: 'student', component:StudentComponent, children: [
-      
-    ]},
+  {
+    path: 'student', component: StudentComponent, children: [
 
-    { path: 'student/:studentId', component: StudentComponent },
-  
-  { path: 'courseslist', component:CourselistComponent},
+    ]
+  },
+
+  { path: 'student/:studentId', component: StudentComponent },
+
+  { path: 'courseslist', component: CourselistComponent },
   // { path: '', redirectTo: '/courses', pathMatch: 'full' },
 ];
 

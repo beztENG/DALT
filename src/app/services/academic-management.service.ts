@@ -23,4 +23,15 @@ export class AcademicManagementService {
     const searchUrl = `${STUDENT_URL}/students/search?keyword=${keyword}`;
     return this.http.get<Student[]>(searchUrl);
   }
+  addStudent(student: Student): Observable<Student> {
+    return this.http.post<Student>(`${STUDENT_URL}/students/add`, student);
+  }
+
+  deleteStudent(studentId: string): Observable<{ message: string }> {
+    return this.http.delete<any>(`${STUDENT_URL}/students/${studentId}/delete`);
+  }
+
+  updateStudent(studentId: string, updatedStudent: Student): Observable<Student> {
+    return this.http.put<Student>(`${STUDENT_URL}/students/${studentId}/update`, updatedStudent);
+  }
 }

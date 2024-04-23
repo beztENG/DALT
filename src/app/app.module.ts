@@ -29,6 +29,9 @@ import { RegistrationListComponent } from './administratorsystem/admin/registrat
 import { StudentComponent } from './administratorsystem/student/student.component';
 import { StudentDashboardComponent } from './administratorsystem/student/student-dashboard/student-dashboard.component';
 import { LoginStudentComponent } from './administratorsystem/student/login-student/login-student.component';
+import { StudentManagementComponent } from './administratorsystem/admin/student-management/student-management.component';
+
+
 
 
 @NgModule({
@@ -57,6 +60,7 @@ import { LoginStudentComponent } from './administratorsystem/student/login-stude
     StudentComponent,
     StudentDashboardComponent,
     LoginStudentComponent,
+    StudentManagementComponent
   ],
   imports: [
     BrowserModule,

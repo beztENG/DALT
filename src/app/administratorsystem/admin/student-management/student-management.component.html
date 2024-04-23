@@ -1,0 +1,62 @@
+<h2>Danh sách Sinh viên</h2>
+
+<input type="text" [(ngModel)]="searchKeyword" (input)="search()" placeholder="Tìm kiếm...">
+
+<button (click)="loadStudents()">Sắp xếp theo thời gian đăng ký</button>
+<button (click)="search()">Tìm kiếm</button>
+
+
+<button *ngIf="!showAddStudentForm" (click)="openAddStudentForm()">Thêm Sinh Viên</button>
+
+<div *ngIf="showAddStudentForm || showEditStudentForm">
+    <h3>{{ showAddStudentForm ? 'Thêm Sinh Viên Mới' : 'Cập Nhật Thông Tin Sinh Viên' }}</h3>
+    <form #studentForm="ngForm"
+        (ngSubmit)="showAddStudentForm ? addStudent(studentForm.value) : updateStudent(studentForm.value)">
+        <label>Mã SV:</label>
+        <input type="text" name="studentId" [ngModel]="selectedStudent?.studentId" required>
+
+        <label>Tên sinh viên:</label>
+        <input type="text" name="studentName" [ngModel]="selectedStudent?.studentName" required>
+        <label>Email:</label>
+        <input type="text" name="Email" [ngModel]="selectedStudent?.email" required>
+        <label>Password:</label>
+        <input type="text" name="Password" [ngModel]="selectedStudent?.password" required>
+
+        <label>Số điện thoại:</label>
+        <input type="text" name="phoneNumber" [ngModel]="selectedStudent?.phoneNumber" required>
+
+
+
+
+        <button type="submit">{{ showAddStudentForm ? 'Thêm' : 'Lưu' }}</button>
+        <button type="button" (click)="showAddStudentForm ? closeAddStudentForm() : closeEditStudentForm()">Huỷ</button>
+    </form>
+</div>
+
+<table class="student-table">
+    <thead>
+        <tr>
+            <th>Mã SV</th>
+            <th>Tên sinh viên</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Số điện thoại</th>
+            <th>Thời gian đăng ký</th>
+            <th>Chức năng</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students">
+            <td>{{ student.studentId }}</td>
+            <td>{{ student.studentName }}</td>
+            <td>{{ student.email}}</td>
+            <td>{{ student.password}}</td>
+            <td>{{ student.phoneNumber }}</td>
+            <td>{{ student.registrationDate | date: 'dd/MM/yyyy' }}</td>
+            <td>
+                <button (click)="deleteStudent(student.studentId)" class="btn-delete">Xóa</button>
+                <button (click)="openEditStudentForm(student)" class="btn-edit">Sửa</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
