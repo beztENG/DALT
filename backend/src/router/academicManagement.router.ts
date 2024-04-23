@@ -50,8 +50,8 @@ router.get('/students/search',
 
 router.post('/students/add', async (req: Request, res: Response) => {
     try {
-        const { studentId, studentName, email, password, phoneNumber, registrationDate, midtermGrade, finalGrade } = req.body;
-        if (!studentId || !studentName || !email || !password || !phoneNumber || !registrationDate || !midtermGrade || !finalGrade) {
+        const { studentId, studentName, email, password, phoneNumber, registrationDate } = req.body;
+        if (!studentId || !studentName || !email || !password || !phoneNumber || !registrationDate) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
         const existingStudent = await StudentModel.findOne({ $or: [{ studentId }, { phoneNumber }] });
@@ -64,9 +64,7 @@ router.post('/students/add', async (req: Request, res: Response) => {
             phoneNumber,
             email,
             password,
-            registrationDate,
-            midtermGrade,
-            finalGrade
+            registrationDate
         });
         res.status(201).json(newStudent);
     } catch (error) {
@@ -76,11 +74,11 @@ router.post('/students/add', async (req: Request, res: Response) => {
 router.put('/students/:studentId/update', async (req: Request, res: Response) => {
     try {
         const { studentId } = req.params;
-        const { studentName, email, password, phoneNumber, registrationDate, midtermGrade, finalGrade } = req.body;
+        const { studentName, email, password, phoneNumber, registrationDate } = req.body;
 
         const student = await StudentModel.findOneAndUpdate(
             { studentId: studentId },
-            { $set: { studentName, email, password, phoneNumber, registrationDate, midtermGrade, finalGrade } },
+            { $set: { studentName, email, password, phoneNumber, registrationDate } },
             { new: true }
         );
         if (!student) {

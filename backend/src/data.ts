@@ -110,8 +110,7 @@ export const sample_student: any[] = [
         password: '12345',
         phoneNumber: '123456789',
         registrationDate: '2023-04-10T08:00:00Z',
-        midtermGrade: "8",
-        finalGrade: "9",
+
     },
     {
         studentId: 'SV002',
@@ -120,7 +119,6 @@ export const sample_student: any[] = [
         password: '12345',
         phoneNumber: '987654321',
         registrationDate: '2023-04-12T10:00:00Z',
-        midtermGrade: "8",
-        finalGrade: "8",
+
     },
 ];

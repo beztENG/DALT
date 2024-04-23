@@ -15,6 +15,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { StudentComponent } from './administratorsystem/student/student.component';
 import { StudentDashboardComponent } from './administratorsystem/student/student-dashboard/student-dashboard.component';
 import { LoginStudentComponent } from './administratorsystem/student/login-student/login-student.component';
+import { StudentManagementComponent } from './administratorsystem/admin/student-management/student-management.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
     path: 'admin', component: AdminComponent, children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'setting', component: SettingsComponent },
+      { path: 'studentManagement', component: StudentManagementComponent },
       { path: 'registrationList', component: RegistrationListComponent },
 
     ]
