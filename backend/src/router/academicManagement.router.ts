@@ -18,19 +18,34 @@ router.get("/seed", asynceHandler(
     }
 ))
 
+// router.get('/students/registration-date', asynceHandler(
+//     async (req: Request, res: Response) => {
+//         try {
+//             const sortedStudents = sample_student.slice().sort((a, b) => {
+//                 return new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime();
+//             });
+
+//             res.json(sortedStudents);
+//         } catch (error) {
+//             res.status(500).json({ message: 'Internal server error' });
+//         }
+//     }
+// ));
+
 router.get('/students/registration-date', asynceHandler(
     async (req: Request, res: Response) => {
-        try {
-            const sortedStudents = sample_student.slice().sort((a, b) => {
-                return new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime();
-            });
-
-            res.json(sortedStudents);
-        } catch (error) {
-            res.status(500).json({ message: 'Internal server error' });
-        }
+      try {
+        const students = await StudentModel.find().exec();
+        const sortedStudents = students.slice().sort((a, b) => {
+          return new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime();
+        });
+  
+        res.json(sortedStudents);
+      } catch (error) {
+        res.status(500).json({ message: 'Internal server error' });
+      }
     }
-));
+  ));
 
 router.get('/students/search',
     async (req: Request, res: Response) => {
