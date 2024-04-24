@@ -20,8 +20,8 @@ export const StudentSchema = new Schema<Student>(
         password: {type: String, required: true},
         phoneNumber: {type: String, required: true, unique: true},
         registrationDate: {type: Date, required: true},
-        midtermGrade: {type: String, required: true},
-        finalGrade: {type: String, required: true},
+        midtermGrade: {type: String, required: false},
+        finalGrade: {type: String, required: false},
     },{
         timestamps: true,
         toJSON:{

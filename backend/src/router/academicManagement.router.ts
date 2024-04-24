@@ -34,38 +34,60 @@ router.get("/seed", asynceHandler(
 
 router.get('/students/registration-date', asynceHandler(
     async (req: Request, res: Response) => {
-      try {
-        const students = await StudentModel.find().exec();
-        const sortedStudents = students.slice().sort((a, b) => {
-          return new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime();
-        });
-  
-        res.json(sortedStudents);
-      } catch (error) {
-        res.status(500).json({ message: 'Internal server error' });
-      }
-    }
-  ));
+        try {
+            const students = await StudentModel.find().exec();
+            const sortedStudents = students.slice().sort((a, b) => {
+                return new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime();
+            });
 
-router.get('/students/search',
-    async (req: Request, res: Response) => {
-        const { keyword } = req.query;
-        if (typeof keyword !== 'string' || !keyword.trim()) {
-            return res.status(400).json({ message: 'Invalid or missing search keyword' });
+            res.json(sortedStudents);
+        } catch (error) {
+            res.status(500).json({ message: 'Internal server error' });
         }
+    }
+));
 
-        const filteredStudents = sample_student.filter((s) =>
-            s.studentId.includes(keyword) ||
-            s.studentName.toLowerCase().includes(keyword.toLowerCase()) ||
-            s.phoneNumber.includes(keyword)
-        );
+// router.get('/students/search',
+//     async (req: Request, res: Response) => {
+//         const { keyword } = req.query;
+//         if (typeof keyword !== 'string' || !keyword.trim()) {
+//             return res.status(400).json({ message: 'Invalid or missing search keyword' });
+//         }
+
+//         const filteredStudents = sample_student.filter((s) =>
+//             s.studentId.includes(keyword) ||
+//             s.studentName.toLowerCase().includes(keyword.toLowerCase()) ||
+//             s.phoneNumber.includes(keyword)
+//         );
+
+//         res.json(filteredStudents);
+//     });
+
+router.get('/students/search', async (req: Request, res: Response) => {
+    const { keyword } = req.query;
+    if (typeof keyword !== 'string' || !keyword.trim()) {
+        return res.status(400).json({ message: 'Invalid or missing search keyword' });
+    }
+
+    try {
+        const filteredStudents = await StudentModel.find({
+            $or: [
+                { studentId: { $regex: keyword, $options: 'i' } },
+                { studentName: { $regex: keyword, $options: 'i' } },
+                { phoneNumber: { $regex: keyword, $options: 'i' } }
+            ]
+        });
 
         res.json(filteredStudents);
-    });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 router.post('/students/add', async (req: Request, res: Response) => {
     try {
-        const { studentId, studentName, email, password, phoneNumber, registrationDate } = req.body;
+        const { studentId, studentName, email, password, phoneNumber, registrationDate, midtermGrade, finalGrade } = req.body;
         if (!studentId || !studentName || !email || !password || !phoneNumber || !registrationDate) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
@@ -79,13 +101,16 @@ router.post('/students/add', async (req: Request, res: Response) => {
             phoneNumber,
             email,
             password,
-            registrationDate
+            registrationDate,
+            midtermGrade,
+            finalGrade,
         });
         res.status(201).json(newStudent);
     } catch (error) {
         res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 });
+
 router.put('/students/:studentId/update', async (req: Request, res: Response) => {
     try {
         const { studentId } = req.params;

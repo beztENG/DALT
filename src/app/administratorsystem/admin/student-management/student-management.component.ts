@@ -63,7 +63,7 @@ export class StudentManagementComponent implements OnInit {
   openEditStudentForm(student: Student) {
     this.editMode = true;
     this.selectedStudent = student; // Set for editing
-    this.showAddStudentForm = true;
+    this.showEditStudentForm = true;
   }
 
   closeEditStudentForm() {
@@ -72,10 +72,13 @@ export class StudentManagementComponent implements OnInit {
 
   addStudent(newStudent: Student) {
     this.academicService.addStudent(newStudent).subscribe(
-      (addedStudent) => {
-        this.students.push(addedStudent);
+      (newStudent) => {
+        newStudent.registrationDate = new Date(); // Set registration date to current date
+        newStudent.midtermGrade="0";
+        newStudent.finalGrade ="0";
+        this.students.push(newStudent);
         this.closeAddStudentForm();
-        console.log('Student added:', addedStudent);
+        console.log('Student added:', newStudent);
       },
       (error) => {
         console.error('Error adding student:', error);
