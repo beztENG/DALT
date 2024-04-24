@@ -5,41 +5,39 @@
 <button (click)="loadStudents()">Sắp xếp theo thời gian đăng ký</button>
 <button (click)="search()">Tìm kiếm</button>
 
+<button routerLink="/add-student">Thêm Sinh Viên</button>
 
-<button *ngIf="!showAddStudentForm" (click)="openAddStudentForm()">Thêm Sinh Viên</button>
+<div *ngIf="selectedStudent">
+    <h3>Cập Nhật Thông Tin Sinh Viên</h3>
+    <form #editStudentForm="ngForm" (ngSubmit)="updateStudent(editStudentForm.value)">
+        <input type="hidden" name="studentId" [(ngModel)]="selectedStudent.studentId">
 
-<div *ngIf="showAddStudentForm || showEditStudentForm">
-    <h3>{{ showAddStudentForm ? 'Thêm Sinh Viên Mới' : 'Cập Nhật Thông Tin Sinh Viên' }}</h3>
-    <form #studentForm="ngForm"
-        (ngSubmit)="showAddStudentForm ? addStudent(studentForm.value) : updateStudent(studentForm.value)">
-        <label>Mã SV:</label>
-        <input type="text" name="studentId" [ngModel]="selectedStudent?.studentId" required>
+        <label for="studentName">Tên sinh viên:</label>
+        <input type="text" id="studentName" name="studentName" [(ngModel)]="selectedStudent.studentName" required>
 
-        <label>Tên sinh viên:</label>
-        <input type="text" name="studentName" [ngModel]="selectedStudent?.studentName" required>
-        <label>Email:</label>
-        <input type="text" name="Email" [ngModel]="selectedStudent?.email" required>
-        <label>Password:</label>
-        <input type="text" name="Password" [ngModel]="selectedStudent?.password" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="selectedStudent.email" required>
 
-        <label>Số điện thoại:</label>
-        <input type="text" name="phoneNumber" [ngModel]="selectedStudent?.phoneNumber" required>
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="selectedStudent.password" required>
 
+        <label for="phoneNumber">Số điện thoại:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="selectedStudent.phoneNumber" required>
 
+        <label for="registrationDate">Ngày đăng ký:</label>
+        <input type="date" id="registrationDate" name="registrationDate" [(ngModel)]="selectedStudent.registrationDate"
+            required>
 
-
-        <button type="submit">{{ showAddStudentForm ? 'Thêm' : 'Lưu' }}</button>
-        <button type="button" (click)="showAddStudentForm ? closeAddStudentForm() : closeEditStudentForm()">Huỷ</button>
+        <button type="submit">Lưu</button>
+        <button type="button" (click)="cancelEdit()">Huỷ</button>
     </form>
 </div>
-
 <table class="student-table">
     <thead>
         <tr>
             <th>Mã SV</th>
             <th>Tên sinh viên</th>
             <th>Email</th>
-            <th>Password</th>
             <th>Số điện thoại</th>
             <th>Thời gian đăng ký</th>
             <th>Chức năng</th>
@@ -49,8 +47,7 @@
         <tr *ngFor="let student of students">
             <td>{{ student.studentId }}</td>
             <td>{{ student.studentName }}</td>
-            <td>{{ student.email}}</td>
-            <td>{{ student.password}}</td>
+            <td>{{ student.email }}</td>
             <td>{{ student.phoneNumber }}</td>
             <td>{{ student.registrationDate | date: 'dd/MM/yyyy' }}</td>
             <td>

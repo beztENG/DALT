@@ -34,18 +34,18 @@ router.get("/seed", asynceHandler(
 
 router.get('/students/registration-date', asynceHandler(
     async (req: Request, res: Response) => {
-      try {
-        const students = await StudentModel.find().exec();
-        const sortedStudents = students.slice().sort((a, b) => {
-          return new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime();
-        });
-  
-        res.json(sortedStudents);
-      } catch (error) {
-        res.status(500).json({ message: 'Internal server error' });
-      }
+        try {
+            const students = await StudentModel.find().exec();
+            const sortedStudents = students.slice().sort((a, b) => {
+                return new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime();
+            });
+
+            res.json(sortedStudents);
+        } catch (error) {
+            res.status(500).json({ message: 'Internal server error' });
+        }
     }
-  ));
+));
 
 router.get('/students/search',
     async (req: Request, res: Response) => {
@@ -65,8 +65,8 @@ router.get('/students/search',
 
 router.post('/students/add', async (req: Request, res: Response) => {
     try {
-        const { studentId, studentName, email, password, phoneNumber, registrationDate } = req.body;
-        if (!studentId || !studentName || !email || !password || !phoneNumber || !registrationDate) {
+        const { studentId, studentName, email, password, phoneNumber, registrationDate, midtermGrade, finalGrade } = req.body;
+        if (!studentId || !studentName || !email || !password || !phoneNumber || !registrationDate || !midtermGrade || !finalGrade) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
         const existingStudent = await StudentModel.findOne({ $or: [{ studentId }, { phoneNumber }] });
@@ -79,7 +79,9 @@ router.post('/students/add', async (req: Request, res: Response) => {
             phoneNumber,
             email,
             password,
-            registrationDate
+            registrationDate,
+            midtermGrade,
+            finalGrade
         });
         res.status(201).json(newStudent);
     } catch (error) {

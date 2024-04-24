@@ -1,0 +1,29 @@
+<h3>Thêm Sinh Viên Mới</h3>
+<form #addStudentForm="ngForm" (ngSubmit)="addStudent()">
+    <label for="studentId">ID sinh viên:</label>
+    <input type="text" id="studentId" name="studentId" [(ngModel)]="newStudent.studentId" required>
+
+    <label for="studentName">Tên sinh viên:</label>
+    <input type="text" id="studentName" name="studentName" [(ngModel)]="newStudent.studentName" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" [(ngModel)]="newStudent.email" required>
+
+    <label for="password">Mật khẩu:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="newStudent.password" required>
+
+    <label for="phoneNumber">Số điện thoại:</label>
+    <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="newStudent.phoneNumber" required>
+
+    <label for="registrationDate">Ngày đăng ký:</label>
+    <input type="date" id="registrationDate" name="registrationDate" [(ngModel)]="newStudent.registrationDate" required>
+
+    <label for="midtermGrade">Điểm giữa kỳ:</label>
+    <input type="text" id="midtermGrade" name="midtermGrade" [(ngModel)]="newStudent.midtermGrade">
+
+    <label for="finalGrade">Điểm cuối kỳ:</label>
+    <input type="text" id="finalGrade" name="finalGrade" [(ngModel)]="newStudent.finalGrade">
+
+    <button type="submit">Thêm</button>
+    <button type="button" (click)="cancelAdd()">Huỷ</button>
+</form>
