@@ -88,13 +88,19 @@ router.get('/students/search', async (req: Request, res: Response) => {
 router.post('/students/add', async (req: Request, res: Response) => {
     try {
         const { studentId, studentName, email, password, phoneNumber, registrationDate, midtermGrade, finalGrade } = req.body;
+        
+        // Check if all required fields are provided
         if (!studentId || !studentName || !email || !password || !phoneNumber || !registrationDate) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
-        const existingStudent = await StudentModel.findOne({ $or: [{ studentId }, { phoneNumber }] });
+
+        // Check if studentId or phoneNumber already exists
+        const existingStudent = await StudentModel.findOne({ $or: [{ studentId }, { phoneNumber }, {email}] });
         if (existingStudent) {
             return res.status(409).json({ message: 'Student ID or phone number already exists' });
         }
+
+        // Create new student
         const newStudent = await StudentModel.create({
             studentId,
             studentName,
@@ -103,11 +109,14 @@ router.post('/students/add', async (req: Request, res: Response) => {
             password,
             registrationDate,
             midtermGrade,
-            finalGrade,
+            finalGrade
         });
-        res.status(201).json(newStudent);
+
+        // Return the newly created student
+        return res.status(201).json(newStudent);
     } catch (error) {
-        res.status(500).json({ message: 'Internal server error', error: error.message });
+        // Handle any other errors
+        return res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 });
 

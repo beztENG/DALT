@@ -14,6 +14,16 @@ export class StudentManagementComponent implements OnInit {
   showEditStudentForm = false;
   selectedStudent: Student | null = null;
   editMode: boolean = false;
+  newStudent: Student = {
+    studentId: '',
+    studentName: '',
+    email: '',
+    password: '',
+    phoneNumber: '',
+    registrationDate: new Date(),
+    midtermGrade: '',
+    finalGrade: ''
+  };
 
   @ViewChild('addStudentForm') addStudentForm: any; // Template reference variable for add form
   @ViewChild('editStudentForm') editStudentForm: any; // Template reference variable for edit form
@@ -22,6 +32,33 @@ export class StudentManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadStudents();
+  }
+
+  // Open and close add/edit student forms
+  openAddStudentForm() {
+    this.editMode = true;
+    this.newStudent = {
+      studentId: '',
+      studentName: '',
+      email: '',
+      password: '',
+      phoneNumber: '',
+      registrationDate: new Date(),
+      midtermGrade: '',
+      finalGrade: ''
+    }; // Clear for new student
+    this.showAddStudentForm = true;
+  }
+  closeAddStudentForm() {
+    this.showAddStudentForm = false;
+  }
+  openEditStudentForm(student: Student) {
+    this.editMode = true;
+    this.selectedStudent = student; // Set for editing
+    this.showEditStudentForm = true;
+  }
+  closeEditStudentForm() {
+    this.showEditStudentForm = false;
   }
 
   loadStudents(): void {
@@ -50,35 +87,12 @@ export class StudentManagementComponent implements OnInit {
     }
   }
 
-  openAddStudentForm() {
-    this.editMode = true;
-    this.selectedStudent = null; // Clear for new student
-    this.showAddStudentForm = true;
-  }
-
-  closeAddStudentForm() {
-    this.showAddStudentForm = false;
-  }
-
-  openEditStudentForm(student: Student) {
-    this.editMode = true;
-    this.selectedStudent = student; // Set for editing
-    this.showEditStudentForm = true;
-  }
-
-  closeEditStudentForm() {
-    this.showEditStudentForm = false;
-  }
-
-  addStudent(newStudent: Student) {
-    this.academicService.addStudent(newStudent).subscribe(
-      (newStudent) => {
-        newStudent.registrationDate = new Date(); // Set registration date to current date
-        newStudent.midtermGrade="0";
-        newStudent.finalGrade ="0";
-        this.students.push(newStudent);
-        this.closeAddStudentForm();
-        console.log('Student added:', newStudent);
+  //Them
+  addStudent(): void {
+    this.academicService.addStudent(this.newStudent).subscribe(
+      (addedStudent) => {
+        this.students.push(addedStudent);
+        console.log('Student added:', addedStudent);
       },
       (error) => {
         console.error('Error adding student:', error);
@@ -86,34 +100,44 @@ export class StudentManagementComponent implements OnInit {
     );
   }
 
+  cancelAdd(): void {
+    console.log('Adding student cancelled');
+  }
+
+  //Xoa
   deleteStudent(studentId: string) {
     this.academicService.deleteStudent(studentId).subscribe(
       (response) => {
         console.log('Student deleted:', response.message);
-        this.students = this.students.filter(student => student.studentId !== studentId); // Remove from displayed list
-        // Handle successful deletion (e.g., display success message)
+        this.students = this.students.filter(student => student.studentId !== studentId);
       },
       (error) => {
         console.error('Error deleting student:', error);
-        // Handle error (e.g., display error message to user)
       }
     );
   }
-
+  //Sua
   updateStudent(updatedStudent: Student) {
-    this.academicService.updateStudent(updatedStudent.studentId, updatedStudent).subscribe(
+    if (!this.selectedStudent) {
+      return; // No selected student to update
+    }
+    this.academicService.updateStudent(this.selectedStudent.studentId, updatedStudent).subscribe(
       (updatedStudent) => {
-        const studentIndex = this.students.findIndex(student => student.studentId === updatedStudent.studentId);
-        if (studentIndex !== -1) {
-          this.students[studentIndex] = updatedStudent; // Update student in displayed list
+        const index = this.students.findIndex(s => s.studentId === updatedStudent.studentId);
+        if (index !== -1) {
+          this.students[index] = updatedStudent;
         }
-        this.closeEditStudentForm();
+        this.selectedStudent = null; // Clear selected student after update
         console.log('Student updated:', updatedStudent);
       },
       (error) => {
         console.error('Error updating student:', error);
-        // Handle error (e.g., display error message to user)
       }
     );
   }
+
+  cancelEdit() {
+    this.selectedStudent = null;
+  }
+
 }

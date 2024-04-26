@@ -7,31 +7,50 @@
 
 
 <button *ngIf="!showAddStudentForm" (click)="openAddStudentForm()">Thêm Sinh Viên</button>
+<div *ngIf="showAddStudentForm">
+    <h3>Thêm Thông Tin Sinh Viên</h3>
+    <form #addStudentForm="ngForm" (ngSubmit)="addStudent(); closeAddStudentForm()">
+        <label for="studentId">ID sinh viên:</label>
+        <input type="text" id="studentId" name="studentId" [(ngModel)]="newStudent.studentId" required>
+        <label for="studentName">Tên sinh viên:</label>
+        <input type="text" id="studentName" name="studentName" [(ngModel)]="newStudent.studentName" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="Email" [(ngModel)]="newStudent.email" required>
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="Password" [(ngModel)]="newStudent.password" required>
+        <label for="phoneNumber">Số điện thoại:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="newStudent.phoneNumber" required>
+        <label for="registrationDate">Ngày đăng ký:</label>
+        <input type="date" id="registrationDate" name="registrationDate" [(ngModel)]="newStudent.registrationDate" required>
+        <label for="midtermGrade">Điểm giữa kỳ:</label>
+        <input type="text" id="midtermGrade" name="midtermGrade" [(ngModel)]="newStudent.midtermGrade">
+        <label for="finalGrade">Điểm cuối kỳ:</label>
+        <input type="text" id="finalGrade" name="finalGrade" [(ngModel)]="newStudent.finalGrade">
+        <button type="submit">Thêm</button>
+        <button type="button" (click)="closeAddStudentForm()">Huỷ</button>
+    </form>
+</div>
 
-<div *ngIf="showAddStudentForm || showEditStudentForm">
-    <h3>{{ showAddStudentForm ? 'Thêm Sinh Viên Mới' : 'Cập Nhật Thông Tin Sinh Viên' }}</h3>
-    <form #studentForm="ngForm"
-        (ngSubmit)="showAddStudentForm ? addStudent(studentForm.value) : updateStudent(studentForm.value)">
+<div *ngIf="showEditStudentForm">
+    <h3>Cập Nhật Thông Tin Sinh Viên</h3>
+    <form #editStudentForm="ngForm"
+        (ngSubmit)="updateStudent(editStudentForm.value); closeEditStudentForm()">
         <label>Mã SV:</label>
         <input type="text" name="studentId" [ngModel]="selectedStudent?.studentId" required>
-
         <label>Tên sinh viên:</label>
         <input type="text" name="studentName" [ngModel]="selectedStudent?.studentName" required>
         <label>Email:</label>
         <input type="text" name="Email" [ngModel]="selectedStudent?.email" required>
         <label>Password:</label>
         <input type="text" name="Password" [ngModel]="selectedStudent?.password" required>
-
         <label>Số điện thoại:</label>
         <input type="text" name="phoneNumber" [ngModel]="selectedStudent?.phoneNumber" required>
-
-
-
-
-        <button type="submit">{{ showAddStudentForm ? 'Thêm' : 'Lưu' }}</button>
-        <button type="button" (click)="showAddStudentForm ? closeAddStudentForm() : closeEditStudentForm()">Huỷ</button>
+        <button type="submit" >Lưu</button>
+        <button type="button" (click)="closeEditStudentForm()">Huỷ</button>
     </form>
 </div>
+
+
 
 <table class="student-table">
     <thead>

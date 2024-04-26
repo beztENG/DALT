@@ -4,7 +4,7 @@ export interface Student {
     email: string;
     password: string;
     phoneNumber: string;
-    registrationDate: Date; 
+    registrationDate: Date;
     midtermGrade: string;
     finalGrade: string;
 }
