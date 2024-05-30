@@ -1,17 +1,17 @@
 export const navbarData = [
     {
         routeLink: 'dashboard',
-        icon: 'fal fa-home',
+        icon: 'fa fa-home',
         label: 'Trang chủ'
     },
     {
         routeLink: 'registrationList',
-        icon: 'fal fa-chart-bar',
+        icon: 'far fa-chart-bar',
         label: 'Quản lý học vụ'
     },
     {
         routeLink: 'setting',
-        icon: 'fal fa-cog',
+        icon: 'fa fa-cogs',
         label: 'Cài đặt'
     },
     {

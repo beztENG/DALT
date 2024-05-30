@@ -30,7 +30,7 @@ import { StudentComponent } from './administratorsystem/student/student.componen
 import { StudentDashboardComponent } from './administratorsystem/student/student-dashboard/student-dashboard.component';
 import { LoginStudentComponent } from './administratorsystem/student/login-student/login-student.component';
 import { StudentManagementComponent } from './administratorsystem/admin/student-management/student-management.component';
-import { AddStudentComponent } from './administratorsystem/admin/student-management/add-student/add-student.component';
+
 
 
 
@@ -62,8 +62,7 @@ import { AddStudentComponent } from './administratorsystem/admin/student-managem
     StudentComponent,
     StudentDashboardComponent,
     LoginStudentComponent,
-    StudentManagementComponent,
-    AddStudentComponent
+    StudentManagementComponent
   ],
   imports: [
     BrowserModule,
