@@ -21,15 +21,15 @@ import { BodyComponent } from './administratorsystem/admin/body/body.component';
 import { SidenavComponent } from './administratorsystem/admin/sidenav/sidenav.component';
 import { DashboardComponent } from './administratorsystem/admin/dashboard/dashboard.component';
 import { SettingsComponent } from './administratorsystem/admin/settings/settings.component';
-import { LoginComponent } from './administratorsystem/admin/login/login.component';
+import { LoginComponent } from './administratorsystem/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './administratorsystem/admin/admin.component';
 import { RegistrationListComponent } from './administratorsystem/admin/registration-list/registration-list.component';
 import { StudentComponent } from './administratorsystem/student/student.component';
 import { StudentDashboardComponent } from './administratorsystem/student/student-dashboard/student-dashboard.component';
-import { LoginStudentComponent } from './administratorsystem/student/login-student/login-student.component';
 import { StudentManagementComponent } from './administratorsystem/admin/student-management/student-management.component';
+import { TeacherAdminComponent } from './administratorsystem/admin/teacher-admin/teacher-admin.component';
 
 
 
@@ -61,8 +61,8 @@ import { StudentManagementComponent } from './administratorsystem/admin/student-
     RegistrationListComponent,
     StudentComponent,
     StudentDashboardComponent,
-    LoginStudentComponent,
-    StudentManagementComponent
+    StudentManagementComponent,
+    TeacherAdminComponent
   ],
   imports: [
     BrowserModule,
