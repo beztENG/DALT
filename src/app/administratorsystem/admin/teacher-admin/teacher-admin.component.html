@@ -1,0 +1,69 @@
+<div>
+    <h2>Teacher Administration</h2>
+  
+    <div *ngIf="selectedDate">
+      <h3>Add Teacher for {{ selectedDate }}</h3>
+      <form (ngSubmit)="addTeacher()">
+        <label>Name:</label>
+        <input [(ngModel)]="newTeacher.name" name="name" required>
+        <label>Phone Number:</label>
+        <input [(ngModel)]="newTeacher.phoneNum" name="phoneNum" required>
+        <label>Teaching Class:</label>
+        <input [(ngModel)]="newTeacher.teachingClass" name="teachingClass" required>
+        <label>Duration:</label>
+        <input [(ngModel)]="newTeacher.duration" name="duration" required>
+        <label>Timeline:</label>
+        <input [(ngModel)]="newTeacher.timeline" name="timeline" placeholder="e.g., 3:00pm - 5:00pm" required>
+        <button type="submit">Add</button>
+      </form>
+    </div>
+    
+    <div *ngIf="selectedTeacher">
+      <h3>Edit Teacher</h3>
+      <form (ngSubmit)="updateTeacher()">
+        <label>Name:</label>
+        <input [(ngModel)]="selectedTeacher.name" name="name" required>
+        <label>Phone Number:</label>
+        <input [(ngModel)]="selectedTeacher.phoneNum" name="phoneNum" required>
+        <label>Teaching Class:</label>
+        <input [(ngModel)]="selectedTeacher.teachingClass" name="teachingClass" required>
+        <label>Duration:</label>
+        <input [(ngModel)]="selectedTeacher.duration" name="duration" required>
+        <label>Timeline:</label>
+        <input [(ngModel)]="selectedTeacher.timeline" name="timeline" placeholder="e.g., 3:00pm - 5:00pm" required>
+        <button type="submit">Update</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+      </form>
+    </div>
+  
+    <div>
+      <h3>{{ currentYear }} - {{ currentMonth + 1 }}</h3>
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']">{{ day }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let week of getCalendarWeeks()">
+            <td *ngFor="let day of week" (click)="day !== null && selectDay(day)">
+              <div>
+                <span *ngIf="day !== null">{{ day }}</span>
+                <div *ngIf="day !== null">
+                  <div *ngFor="let teacher of getTeachersForDay(day)">
+                    <div>{{ teacher.name }}</div>
+                    <div>{{teacher.timeline}}</div>
+                    <button (click)="editTeacher(teacher)">Edit</button>
+                    <button (click)="deleteTeacher(teacher._id!)">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button (click)="previousMonth()">Previous Month</button>
+      <button (click)="nextMonth()">Next Month</button>
+    </div>
+  </div>
+    
