@@ -7,6 +7,7 @@ import userRouter from './router/user.router'
 import eventsRouter from './router/events.router'
 import academicManagementRouter from './router/academicManagement.router';
 import contactBookRouter from './router/contactBook.router'
+import courseRouter from './router/courses.router';
 import { dbConnect } from './configs/database.config';
 
 
@@ -25,6 +26,7 @@ app.use("/api/events", eventsRouter)
 app.use("/api/user", userRouter);
 app.use("/api/academic", academicManagementRouter);
 app.use("/api/contactBook", contactBookRouter);
+app.use("/api/course", courseRouter);
 
 
 const port = 5001;

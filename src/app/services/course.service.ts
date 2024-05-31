@@ -8,14 +8,11 @@ import { COURSE_URL, COURSE_BY_ID } from '../administratorsystem/shared/constant
   providedIn: 'root'
 })
 export class CourseService {
-
   constructor(private http: HttpClient) { }
-
   //getallcourses
   getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(COURSE_URL + '/all');
   }
-
   //getOneCourse
   getOneCourse(courseId: string): Observable<Course> {
     return this.http.get<Course>(`${COURSE_BY_ID}/get/${courseId}`);

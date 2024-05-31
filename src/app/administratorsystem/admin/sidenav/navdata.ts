@@ -18,7 +18,13 @@ export const navbarData = [
         routeLink: 'studentManagement',
         icon: '	far fa-address-book',
         label: 'Quản lý sinh viên'
-    }
+    },
+    {
+        routeLink: 'courseManagement',
+        icon: '	far fa-address-book',
+        label: 'Quản lý khóa học'
+    },
+
 ];
 
 //MODEL

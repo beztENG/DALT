@@ -10,16 +10,17 @@ import { CourseService } from '../services/course.service';
 export class CourselistComponent {
   courses: Course[] = [];
   searchKeyword: string = '';
-
-  private courseService: CourseService;
+  private courseService: CourseService;  
   constructor(courseService: CourseService) {
     this.courseService = courseService;
   }
-
   //getAllCourses
   getAllCourses() {
     this.courseService.getAllCourses().subscribe((courses) => {
       this.courses = courses;
     });
+  }
+  ngOnInit(): void {
+    this.getAllCourses();
   }
 }

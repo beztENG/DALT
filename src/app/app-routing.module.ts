@@ -16,7 +16,7 @@ import { StudentComponent } from './administratorsystem/student/student.componen
 import { StudentDashboardComponent } from './administratorsystem/student/student-dashboard/student-dashboard.component';
 import { LoginStudentComponent } from './administratorsystem/student/login-student/login-student.component';
 import { StudentManagementComponent } from './administratorsystem/admin/student-management/student-management.component';
-
+import { CourseManaComponent } from './administratorsystem/admin/course-mana/course-mana.component';
 
 
 
@@ -38,6 +38,7 @@ const routes: Routes = [
       { path: 'setting', component: SettingsComponent },
       { path: 'studentManagement', component: StudentManagementComponent },
       { path: 'registrationList', component: RegistrationListComponent },
+      { path: 'courseManagement', component: CourseManaComponent },
 
     ]
   },
