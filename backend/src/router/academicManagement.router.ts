@@ -18,20 +18,6 @@ router.get("/seed", asynceHandler(
     }
 ))
 
-// router.get('/students/registration-date', asynceHandler(
-//     async (req: Request, res: Response) => {
-//         try {
-//             const sortedStudents = sample_student.slice().sort((a, b) => {
-//                 return new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime();
-//             });
-
-//             res.json(sortedStudents);
-//         } catch (error) {
-//             res.status(500).json({ message: 'Internal server error' });
-//         }
-//     }
-// ));
-
 router.get('/students/registration-date', asynceHandler(
     async (req: Request, res: Response) => {
         try {
@@ -46,22 +32,6 @@ router.get('/students/registration-date', asynceHandler(
         }
     }
 ));
-
-// router.get('/students/search',
-//     async (req: Request, res: Response) => {
-//         const { keyword } = req.query;
-//         if (typeof keyword !== 'string' || !keyword.trim()) {
-//             return res.status(400).json({ message: 'Invalid or missing search keyword' });
-//         }
-
-//         const filteredStudents = sample_student.filter((s) =>
-//             s.studentId.includes(keyword) ||
-//             s.studentName.toLowerCase().includes(keyword.toLowerCase()) ||
-//             s.phoneNumber.includes(keyword)
-//         );
-
-//         res.json(filteredStudents);
-//     });
 
 router.get('/students/search', async (req: Request, res: Response) => {
     const { keyword } = req.query;
