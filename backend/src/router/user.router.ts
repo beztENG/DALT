@@ -29,6 +29,69 @@ router.post("/login", async (req: Request, res: Response) => {
     }
 });
 
+router.post('/users/add', async (req: Request, res: Response) => {
+    try {
+        const { id, name, email, password, address, role } = req.body;
+        
+        // Check if all required fields are provided
+        if (!id || !name || !email || !password || !address || !role) {
+            return res.status(400).json({ message: 'Missing required fields' });
+        }
+
+        // Check if id and email already exists
+        const existingUser= await UserModel.findOne({ $or: [{ id }, {email}] });
+        if (existingUser) {
+            return res.status(409).json({ message: 'User ID or email already exists' });
+        }
+
+        // Create new user
+        const newUser = await UserModel.create({
+            id,
+            name,
+            email,
+            password,
+            address,
+            role
+        });
+
+        // Return the newly created user
+        return res.status(201).json(newUser);
+    } catch (error) {
+        // Handle any other errors
+        return res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
+
+router.put('/users/:id/update', async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const { name, email, password, address, role } = req.body;
+
+        const user = await UserModel.findOneAndUpdate(
+            { id: id },
+            { $set: { name, email, password, address, role } },
+            { new: true }
+        );
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
+router.delete('/users/:id/delete', async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const user = await UserModel.findOneAndDelete({ id: id });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json({ message: 'User deleted successfully' })
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
 
 
 export default router;
