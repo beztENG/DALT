@@ -5,10 +5,10 @@ export interface User{
     id: string;
     name: string;
     email: string;
-    password: string;
+    password: string; 
     address: string;
     role: string;
-}
+} 
 
 export const UserSchema = new Schema<User>(
     {

@@ -4,5 +4,5 @@ export interface IUser {
   password: string;
   address?: string;
   role?: string;
-  studentId?: string; // Thêm trường studentId vào IUser
+  // studentId?: string; // Thêm trường studentId vào IUser
   }
