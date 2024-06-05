@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 export interface Course{
-    idCourse : string;
+    courseId : string;
     name: string;
     imgUrl: string;
     description: string;
@@ -11,7 +11,7 @@ export interface Course{
 
 export const CoursesSchema = new Schema<Course>(
     {
-        idCourse: {type: String, required: true},
+        courseId: {type: String, required: true},
         name: {type: String, required: true},
         imgUrl: {type: String, required: true},
         description: {type: String, required: false},

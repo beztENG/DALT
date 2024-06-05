@@ -37,16 +37,7 @@ export class StudentManagementComponent implements OnInit {
   // Open and close add/edit student forms
   openAddStudentForm() {
     this.editMode = true;
-    this.newStudent = {
-      studentId: '',
-      studentName: '',
-      email: '',
-      password: '',
-      phoneNumber: '',
-      registrationDate: new Date(),
-      midtermGrade: '',
-      finalGrade: ''
-    }; // Clear for new student
+    this.selectedStudent = null; // Clear for new student
     this.showAddStudentForm = true;
   }
   closeAddStudentForm() {
@@ -88,22 +79,17 @@ export class StudentManagementComponent implements OnInit {
   }
 
   //Them
-  addStudent(): void {
+  addStudent() {
     this.academicService.addStudent(this.newStudent).subscribe(
-      (addedStudent) => {
-        this.students.push(addedStudent);
-        console.log('Student added:', addedStudent);
+      (addStudent) => {
+        this.students.push(addStudent);
+        console.log('Student added:', addStudent);
       },
       (error) => {
         console.error('Error adding student:', error);
       }
     );
   }
-
-  cancelAdd(): void {
-    console.log('Adding student cancelled');
-  }
-
   //Xoa
   deleteStudent(studentId: string) {
     this.academicService.deleteStudent(studentId).subscribe(

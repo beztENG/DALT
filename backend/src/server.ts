@@ -9,10 +9,8 @@ import academicManagementRouter from './router/academicManagement.router';
 import contactBookRouter from './router/contactBook.router'
 import teacherRouter from './router/teacher.router';
 import courseRouter from './router/courses.router';
+import classRouter from './router/classes.router';
 import { dbConnect } from './configs/database.config';
-
-
-
 dbConnect();
 
 const app = express();
@@ -29,6 +27,8 @@ app.use("/api/academic", academicManagementRouter);
 app.use("/api/contactBook", contactBookRouter);
 app.use("/api/teachers", teacherRouter); 
 app.use("/api/course", courseRouter);
+app.use("/api/class", classRouter);
+
 
 
 const port = 5001;

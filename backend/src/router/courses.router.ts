@@ -11,18 +11,17 @@ router.get("/all", asynceHandler(
     }
 ))
 // get data by id
-router.get("/get/:id", asynceHandler(
-    async (req: Request, res: Response) => {
-        const { id } = req.params;
-        const course = await CoursesModel.findById(id).exec();
+router.get("/get/:courseId", asynceHandler(
+    async (req: Request, res: Response) => {        
+        const course = await CoursesModel.find({courseId :req.params.courseId}).exec();
         res.json(course);
     }
 ))
 // create data
 router.post("/add", asynceHandler(
     async (req: Request, res: Response) => {
-        const { idCourse, name, imgUrl, description, time, numofLessons } = req.body;
-        const course = await CoursesModel.create({ idCourse, name, imgUrl, description, time, numofLessons });
+        const { courseId, name, imgUrl, description, time, numofLessons } = req.body;
+        const course = await CoursesModel.create({ courseId, name, imgUrl, description, time, numofLessons });
         res.json(course);
     }
 ))

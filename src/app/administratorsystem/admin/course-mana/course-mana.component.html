@@ -4,7 +4,7 @@
     <h3>Thêm Thông Tin Sinh Viên</h3>
     <form #addCourseForm="ngForm" (ngSubmit)="addCourse(addCourseForm.value); closeAddCourseForm()">
         <label>Mã khóa học:</label>
-        <input type="text" name="courseId" [(ngModel)]="newCourse.idCourse" required>
+        <input type="text" name="courseId" [(ngModel)]="newCourse.courseId" required>
         <label>Tên khóa học:</label>
         <input type="text" name="courseName" [(ngModel)]="newCourse.name" required>
         <label>Mô tả:</label>
@@ -24,7 +24,7 @@
     <h3>Cập Nhật Thông Tin Khóa Học</h3>
     <form #addCourseForm="ngForm" (ngSubmit)="updateCourse(addCourseForm.value); closeEditCourseForm()">
         <label>Mã khóa học:</label>
-        <input type="text" name="courseId" [ngModel]="selectedCourse?.idCourse" required>
+        <input type="text" name="courseId" [ngModel]="selectedCourse?.courseId" required>
         <label>Tên khóa học:</label>
         <input type="text" name="courseName" [ngModel]="selectedCourse?.name" required>
         <label>Mô tả:</label>
@@ -39,9 +39,15 @@
         <button type="button" (click)="closeEditCourseForm()">Huỷ</button>
     </form>
 </div>
-
-
-
+<div *ngIf="showAddClassForm">
+    <h3>Thêm lớp học </h3>
+    <form #addClassForm="ngForm" (ngSubmit)="addClass(addCourseForm.value); closeAddClassForm()">
+        <label>Mã Lớp Học:</label>
+        <input type="text" name="classId" [ngModel]="newClass?.classId" required>        
+        <button type="submit">Lưu</button>
+        <button type="button" (click)="closeAddClassForm()">Huỷ</button>
+    </form>
+</div>
 <table class="student-table">
     <thead>
         <tr>
@@ -51,21 +57,30 @@
             <th>Link hình ảnh</th>
             <th>Thời gian</th>
             <th>Số lượng bài giảng</th>
+            <th> Lớp học</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let course of courses">
-            <td>{{course.idCourse}}</td>
+        <tr *ngFor="let course of courses ">            
+            <td>{{course.courseId}}</td>
             <td>{{course.name}}</td>
             <td>{{course.description}}</td>
             <td>
                 <img [src]="course.imgUrl">
             </td>
             <td>{{course.time}}</td>
-            <td>{{course.numofLessons}}</td>            
+            <td>{{course.numofLessons}}</td>       
+            {{loadClasses(course.courseId)}} 
+            <div *ngIf="selectClass">
+                <td *ngFor = "let class of selectClass ">
+                    <p>{{class.classId}}</p>
+                </td> 
+            {{clearClasses()}} 
+            </div>      
             <td>
                 <button (click)="deleteCourse(course)" class="btn-delete">Xóa</button>
                 <button (click)="openEditCouseForm(course)" class="btn-edit">Sửa</button>
+                <button (click)="openAddClassForm(course)" class="btn">Tạo Lớp Học</button>
             </td>
         </tr>
     </tbody>

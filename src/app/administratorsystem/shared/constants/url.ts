@@ -17,4 +17,9 @@ export const TEACHERTIMETABLEURL = BASE_URL + '/api/teachers'
 export const CONTACTBOOK_BY_ID = CONTACTBOOK_URL + '/students/'
 
 export const COURSE_URL = BASE_URL + '/api/course'
-export const COURSE_BY_ID = EVENTS_URL + '/'
+
+
+export const CLASS_URL = BASE_URL + '/api/class'
+
+
+
