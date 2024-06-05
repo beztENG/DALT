@@ -11,7 +11,7 @@ export const USER_LOGIN_URL = BASE_URL + '/api/user/login'
 export const STUDENT_URL = BASE_URL + '/api/academic'
 
 export const CONTACTBOOK_URL = BASE_URL + '/api/contactBook'
-export const CONTACTBOOK_BY_ID = CONTACTBOOK_URL + '/students/';
+
 
 export const TEACHERTIMETABLEURL = BASE_URL + '/api/teachers'
 export const CONTACTBOOK_BY_ID = CONTACTBOOK_URL + '/students/'

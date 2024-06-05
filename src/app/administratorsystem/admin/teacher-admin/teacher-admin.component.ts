@@ -40,10 +40,13 @@ export class TeacherAdminComponent implements OnInit {
           this.newTeacher = { name: '', phoneNum: '', teachingClass: '', duration: '', periods: [], timeline: '' };
         },
         error => {
-          alert(error.error); 
+          alert(error.error);
         }
       );
     }
+  }
+  cancelAdd(): void {
+    this.selectedDate = null;
   }
 
   editTeacher(teacher: Teacher): void {
@@ -59,7 +62,7 @@ export class TeacherAdminComponent implements OnInit {
           this.selectedTeacher = null;
         },
         error => {
-          alert(error.error); 
+          alert(error.error);
         }
       );
     }

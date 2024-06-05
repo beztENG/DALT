@@ -16,7 +16,7 @@ import { CourselistComponent } from './courselist/courselist.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { EventsComponent } from './events/events.component';
 import { EventspageComponent } from './events/eventspage/eventspage.component';
-
+import { AboutUsComponent } from './about-us/about-us.component';
 import { BodyComponent } from './administratorsystem/admin/body/body.component';
 import { SidenavComponent } from './administratorsystem/admin/sidenav/sidenav.component';
 import { DashboardComponent } from './administratorsystem/admin/dashboard/dashboard.component';
@@ -40,6 +40,7 @@ import { CourseManaComponent } from './administratorsystem/admin/course-mana/cou
 @NgModule({
   declarations: [
     AppComponent,
+    AboutUsComponent,
     SlideshowComponent,
     RegistrationComponent,
     BottomComponent,
@@ -63,8 +64,7 @@ import { CourseManaComponent } from './administratorsystem/admin/course-mana/cou
     StudentComponent,
     StudentDashboardComponent,
     StudentManagementComponent,
-    TeacherAdminComponent
-    LoginStudentComponent,
+    TeacherAdminComponent,
     StudentManagementComponent,
     CourseManaComponent
   ],

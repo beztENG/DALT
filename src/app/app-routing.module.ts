@@ -35,7 +35,7 @@ const routes: Routes = [
       { path: 'setting', component: SettingsComponent },
       { path: 'studentManagement', component: StudentManagementComponent },
       { path: 'registrationList', component: RegistrationListComponent },
-      { path: 'TeacherAdmin', component: TeacherAdminComponent }
+      { path: 'TeacherAdmin', component: TeacherAdminComponent },
       { path: 'courseManagement', component: CourseManaComponent },
 
     ]

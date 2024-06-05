@@ -1,26 +1,173 @@
+body {
+
+  background-color: #f0f4f7;
+  margin: 0;
+  padding: 20px;
+}
+
+h2,
+h3 {
+  color: #333;
+  margin: 10px 0;
+}
+
+.form-container {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button[type="submit"],
+button[type="button"],
+.nav-buttons .nav-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover,
+.nav-buttons .nav-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button[type="button"] {
+  background-color: #6c757d;
+}
+
+button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
 table {
-    width: 90%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-    vertical-align: top;
-    width: 14.28%;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  td {
-    height: 100px;
-    cursor: pointer;
-  }
-  
-  td div {
-    margin: 5px 0;
-  }
-  
+  width: 95%;
+  border-collapse: collapse;
+  background-color: #fafafa;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  vertical-align: top;
+  width: 14.28%;
+  transition: background-color 0.3s;
+}
+
+th {
+  background-color: #050038;
+  color: #fff;
+  font-weight: bold;
+}
+
+td {
+  cursor: pointer;
+}
+
+td:hover {
+  background-color: #e9f5ff;
+}
+
+td div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.teacher-info {
+  background: #eef;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 5px 0;
+  width: 100%;
+  text-align: left;
+}
+
+.teacher-timeline {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.teacher-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.teacher-buttons button {
+  background-color: #28a745;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.teacher-buttons button:hover {
+  background-color: #218838;
+}
+
+.teacher-buttons button+button {
+  background-color: #dc3545;
+}
+
+.teacher-buttons button+button:hover {
+  background-color: #c82333;
+}
+
+.selected {
+  background-color: #3fde5c;
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-buttons .nav-button {
+  width: 150px;
+}
