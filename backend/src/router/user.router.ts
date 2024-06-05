@@ -32,14 +32,14 @@ router.post("/login", async (req: Request, res: Response) => {
 router.post('/users/add', async (req: Request, res: Response) => {
     try {
         const { id, name, email, password, address, role } = req.body;
-        
+
         // Check if all required fields are provided
         if (!id || !name || !email || !password || !address || !role) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
 
         // Check if id and email already exists
-        const existingUser= await UserModel.findOne({ $or: [{ id }, {email}] });
+        const existingUser = await UserModel.findOne({ $or: [{ id }, { email }] });
         if (existingUser) {
             return res.status(409).json({ message: 'User ID or email already exists' });
         }
@@ -51,7 +51,7 @@ router.post('/users/add', async (req: Request, res: Response) => {
             email,
             password,
             address,
-            role
+            role: 'student'
         });
 
         // Return the newly created user
@@ -65,11 +65,11 @@ router.post('/users/add', async (req: Request, res: Response) => {
 router.put('/users/:id/update', async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-        const { name, email, password, address, role } = req.body;
+        const { name, email, password, address } = req.body;
 
         const user = await UserModel.findOneAndUpdate(
             { id: id },
-            { $set: { name, email, password, address, role } },
+            { $set: { name, email, password, address } },
             { new: true }
         );
         if (!user) {

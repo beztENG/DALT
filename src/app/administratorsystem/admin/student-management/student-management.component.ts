@@ -51,6 +51,7 @@ export class StudentManagementComponent implements OnInit {
   }
   closeAddStudentForm() {
     this.showAddStudentForm = false;
+    this.editMode = false;
   }
   openEditStudentForm(student: Student) {
     this.editMode = true;
@@ -59,6 +60,8 @@ export class StudentManagementComponent implements OnInit {
   }
   closeEditStudentForm() {
     this.showEditStudentForm = false;
+    this.editMode = false;
+    this.selectedStudent = null;
   }
 
   loadStudents(): void {
@@ -87,12 +90,14 @@ export class StudentManagementComponent implements OnInit {
     }
   }
 
-  //Them
+  // Add a new student
   addStudent(): void {
     this.academicService.addStudent(this.newStudent).subscribe(
       (addedStudent) => {
         this.students.push(addedStudent);
         console.log('Student added:', addedStudent);
+        this.closeAddStudentForm(); // Close the form after adding
+        this.loadStudents(); // Refresh the list
       },
       (error) => {
         console.error('Error adding student:', error);
@@ -100,23 +105,27 @@ export class StudentManagementComponent implements OnInit {
     );
   }
 
+  // Cancel adding a student
   cancelAdd(): void {
     console.log('Adding student cancelled');
+    this.closeAddStudentForm();
   }
 
-  //Xoa
+  // Delete a student
   deleteStudent(studentId: string) {
     this.academicService.deleteStudent(studentId).subscribe(
       (response) => {
         console.log('Student deleted:', response.message);
         this.students = this.students.filter(student => student.studentId !== studentId);
+        this.loadStudents(); // Refresh the list
       },
       (error) => {
         console.error('Error deleting student:', error);
       }
     );
   }
-  //Sua
+
+  // Update a student
   updateStudent(updatedStudent: Student) {
     if (!this.selectedStudent) {
       return; // No selected student to update
@@ -129,6 +138,8 @@ export class StudentManagementComponent implements OnInit {
         }
         this.selectedStudent = null; // Clear selected student after update
         console.log('Student updated:', updatedStudent);
+        this.closeEditStudentForm(); // Close the form after updating
+        this.loadStudents(); // Refresh the list
       },
       (error) => {
         console.error('Error updating student:', error);
@@ -136,8 +147,9 @@ export class StudentManagementComponent implements OnInit {
     );
   }
 
+  // Cancel editing a student
   cancelEdit() {
     this.selectedStudent = null;
+    this.closeEditStudentForm();
   }
-
 }
