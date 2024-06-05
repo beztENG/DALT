@@ -23,6 +23,7 @@ export class AcademicManagementService {
     const searchUrl = `${STUDENT_URL}/students/search?keyword=${keyword}`;
     return this.http.get<Student[]>(searchUrl);
   }
+
   addStudent(student: Student): Observable<Student> {
     return this.http.post<Student>(`${STUDENT_URL}/students/add`, student);
   }
