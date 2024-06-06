@@ -1,17 +1,16 @@
 import { Schema, model } from "mongoose";
-import { Student, StudentModel, StudentSchema } from "./students.model";
 
 export interface Class{
     courseId : string;
     classId: string;
-    listStudent: Student;
+    listStudent: [];
 }
 
 export const ClassSchema = new Schema<Class>(
     {
         courseId: {type: String, required: true},
         classId: {type: String, required: true},
-        listStudent: [StudentSchema]
+        listStudent: {type: [], required: false, default: []}
         
     },{
         toJSON:{

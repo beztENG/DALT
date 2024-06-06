@@ -3,8 +3,6 @@ import { Course } from 'backend/src/models/courses.model';
 import { CourseService } from 'src/app/services/course.service';
 import { Class } from '../../shared/interface/class/class';
 import { ClassService } from 'src/app/services/class.service'
-
-
 @Component({
   selector: 'app-course-mana',
   templateUrl: './course-mana.component.html',
@@ -13,7 +11,6 @@ import { ClassService } from 'src/app/services/class.service'
 export class CourseManaComponent {  
   courses: Course[] = [];
   Classes: Class[] = [];  
-  selectClass: Class[]=[];
   courseEnable = false;
   showAddCourseForm = false;
   showEditCourseForm = false;
@@ -28,16 +25,21 @@ export class CourseManaComponent {
     time: '',
     numofLessons: 0
   };
-  newClass: Class | null = null;
+
+  newClass: Class = {
+    courseId: '',
+    classId: '',
+    listStudent: []
+  };
 
   @ViewChild('addCourseForm') addCourseForm: any; // Template reference variable for add form
   @ViewChild('editCourseForm') editCourseForm: any; // Template reference variable for edit form
-  @ViewChild('addClassForm') addClassForm: any; // Template reference variable for add form
 
   constructor(private courseService: CourseService, private classService: ClassService) { }  
   
   ngOnInit(): void {
     this.loadCourses();
+    this.loadClasses();
   }
 
   // Open and close add/edit student forms
@@ -98,33 +100,42 @@ export class CourseManaComponent {
   }
 //////////////////Classes/////////////////////
   //load class
-  async loadClasses(courseId: string) {    
-    this.classService.getClassByCourse(courseId).subscribe((selectClass) => {
-      this.selectClass = selectClass;
+  async loadClasses() {    
+    this.classService.getAllClasses().subscribe((Classes) => {
+      this.Classes = Classes;      
     });
-  }
-  clearClasses() {
-    this.selectClass = [];
   }
 
   openAddClassForm(course: Course) {
-    this.selectedCourse = course;
+    let classId = 1;
     this.showAddClassForm = true;
+    this.newClass.courseId = course.courseId;
+    for (let i = 0; i < this.Classes.length; i++) {
+      if (this.Classes[i].courseId === course.courseId) {
+         classId++;
+      }
+    }
+    this.addClass(classId);    
   }
 
-  closeAddClassForm() {
-    this.showAddClassForm = false;
-   }
-  addClass(newClass: Class) {
-    newClass.courseId = this.selectedCourse?.courseId ?? '';
-    this.classService.addClass(newClass).subscribe((newClass) => {
-      this.newClass = newClass;
-      this.Classes.push(this.newClass);
-      this.showAddClassForm = false;      
+  addClass(classId: number) { 
+    this.newClass.classId = "L0" + classId.toString();
+    this.classService.addClass(this.newClass).subscribe(() => {
+    this.Classes.push(this.newClass);   
+    });
+    this.newClass = {
+      courseId: '',
+      classId: '',
+      listStudent: []
+    };    
+  }
+
+  //delete class
+  deleteClass(classroom: Class) {
+    this.classService.deleteClass(classroom.courseId, classroom.classId).subscribe(() => {
+      this.Classes = this.Classes.filter((c) => c.classId !== classroom.classId && c.courseId !== classroom.courseId);
     });
   }
-  //get class
-
 
 }
 

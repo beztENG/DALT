@@ -33,18 +33,10 @@ router.post("/addStudent/:classId", asynceHandler(
         res.json(newclassroom);
     }
 ))
-// // update data
-// router.put("/update/:id", asynceHandler(
-//     async (req: Request, res: Response) => {
-//         const classroom = req.body as Class;
-//         const updatedclassroom = await ClassModel.findByIdAndUpdate(req.params.id, classroom, { new: true });
-//         res.json(updatedclassroom);
-//     }
-// ))
 // delete data
-router.delete("/delete/:id", asynceHandler(
+router.delete("/delete/:courseId/:classId", asynceHandler(
     async (req: Request, res: Response) => {
-        const deletedclassroom = await ClassModel.findByIdAndDelete(req.params.id);
+        const deletedclassroom = await ClassModel.findOneAndDelete({courseId: req.params.courseId, classId: req.params.classId});
         res.json(deletedclassroom);
     }
 ))

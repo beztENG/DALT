@@ -18,19 +18,16 @@ export class ClassService {
     return this.http.get<Class[]>(`${CLASS_URL}/get/${courseId}`);
   }
   //addClass
-  addClass(classs: Class): Observable<Class> {
-    return this.http.post<Class>(`${CLASS_URL}/add`, classs);
+  addClass(classroom: Class): Observable<Class> {
+    return this.http.post<Class>(`${CLASS_URL}/add`, classroom);
   }
   //addStudentToClass
   addStudentToClass(classId: string, studentId: string): Observable<Class> {
     return this.http.put<Class>(`${CLASS_URL}/addStudent/${classId}/${studentId}`, {});
   }
   //deleteClass
-  deleteClass(classId: string): Observable<{ message: string }> {
-    return this.http.delete<any>(`${CLASS_URL}/delete/${classId}`);
+  deleteClass(courseId: string, classId: string): Observable<Class> {
+    return this.http.delete<Class>(`${CLASS_URL}/delete/${courseId}/${classId}`);
   }
-  //updateClass
-  updateClass(classId: string, updatedClass: Class): Observable<Class> {
-    return this.http.put<Class>(`${CLASS_URL}/update/${classId}`, updatedClass);
-  }
+
 }
