@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TeacherService } from 'src/app/services/teacher.service';
+import { ClassService } from 'src/app/services/class.service';
 import { Teacher } from '../../shared/interface/academicManagement/teacher';
+import { Class } from '../../shared/interface/class/class';
 
 @Component({
   selector: 'app-teacher-admin',
@@ -10,6 +12,7 @@ import { Teacher } from '../../shared/interface/academicManagement/teacher';
 export class TeacherAdminComponent implements OnInit {
 
   teachers: Teacher[] = [];
+  classes: Class[] = [];
   newTeacher: Teacher = { name: '', phoneNum: '', teachingClass: '', duration: '', periods: [], timeline: '' };
   selectedTeacher: Teacher | null = null;
   selectedDate: string | null = null;
@@ -18,16 +21,23 @@ export class TeacherAdminComponent implements OnInit {
   currentMonth: number = new Date().getMonth();
   daysInMonth: (number | null)[] = [];
 
-  constructor(private teacherService: TeacherService) { }
+  constructor(private teacherService: TeacherService, private classService: ClassService) { }
 
   ngOnInit(): void {
     this.loadTeachers();
+    this.loadClasses();
     this.generateCalendarDays(this.currentYear, this.currentMonth);
   }
 
   loadTeachers(): void {
     this.teacherService.getTeachers().subscribe(data => {
       this.teachers = data;
+    });
+  }
+
+  loadClasses(): void {
+    this.classService.getAllClasses().subscribe(data => {
+      this.classes = data;
     });
   }
 
@@ -45,6 +55,7 @@ export class TeacherAdminComponent implements OnInit {
       );
     }
   }
+
   cancelAdd(): void {
     this.selectedDate = null;
   }
@@ -81,7 +92,6 @@ export class TeacherAdminComponent implements OnInit {
   generateCalendarDays(year: number, month: number): void {
     const date = new Date(year, month, 1);
     const days: (number | null)[] = [];
-
     const firstDay = date.getDay();
 
     for (let i = 0; i < firstDay; i++) {
@@ -98,6 +108,17 @@ export class TeacherAdminComponent implements OnInit {
 
   selectDay(day: number): void {
     this.selectedDate = `${this.currentYear}-${this.currentMonth + 1}-${day}`;
+  }
+
+  getClassById(courseId: string): Class | undefined {
+    return this.classes.find(cls => cls.courseId === courseId);
+  }
+  getClassInfo(courseId: string): string {
+    const classInfo = this.getClassById(courseId);
+    if (classInfo) {
+      return classInfo.courseId + classInfo.classId;
+    }
+    return ''; // Or any default value you prefer
   }
 
   getTeachersForDay(day: number): Teacher[] {

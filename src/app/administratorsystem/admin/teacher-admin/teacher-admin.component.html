@@ -9,7 +9,9 @@
       <label>Phone Number:</label>
       <input [(ngModel)]="newTeacher.phoneNum" name="phoneNum" required>
       <label>Teaching Class:</label>
-      <input [(ngModel)]="newTeacher.teachingClass" name="teachingClass" required>
+      <select [(ngModel)]="newTeacher.teachingClass" name="teachingClass" required>
+        <option *ngFor="let class of classes" [value]="class.courseId">{{ class.courseId + class.classId }}</option>
+      </select>
       <label>Duration:</label>
       <input [(ngModel)]="newTeacher.duration" name="duration" required>
       <label>Timeline:</label>
@@ -29,7 +31,9 @@
       <label>Phone Number:</label>
       <input [(ngModel)]="selectedTeacher.phoneNum" name="phoneNum" required>
       <label>Teaching Class:</label>
-      <input [(ngModel)]="selectedTeacher.teachingClass" name="teachingClass" required>
+      <select [(ngModel)]="selectedTeacher.teachingClass" name="teachingClass" required>
+        <option *ngFor="let class of classes" [value]="class.courseId">{{ class.courseId + class.classId }}</option>
+      </select>
       <label>Duration:</label>
       <input [(ngModel)]="selectedTeacher.duration" name="duration" required>
       <label>Timeline:</label>
@@ -57,7 +61,8 @@
               <div *ngIf="day !== null">
                 <div *ngFor="let teacher of getTeachersForDay(day)" class="teacher-info">
                   <div>{{ teacher.name }}</div>
-                  <div class="teacher-timeline">{{teacher.timeline}}</div>
+                  <div>{{ getClassInfo(teacher.teachingClass) + getClassById(teacher.teachingClass)?.classId }}</div>
+                  <div class="teacher-timeline">{{ teacher.timeline }}</div>
                   <div class="teacher-buttons">
                     <button (click)="editTeacher(teacher)">Edit</button>
                     <button (click)="deleteTeacher(teacher._id!)">Delete</button>

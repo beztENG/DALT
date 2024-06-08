@@ -1,0 +1,256 @@
+body {
+
+    background-color: #f0f4f7;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1290px;
+
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+
+
+.course-section {
+    margin-bottom: 40px;
+}
+
+.course-section h3 {
+    color: #333;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.add-course-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.add-course-button:hover {
+    background-color: #0056b3;
+}
+
+.add-course-form {
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-course-form h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.add-course-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.add-course-form input[type="text"],
+.add-course-form input[type="number"],
+.add-course-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.add-course-form button[type="submit"],
+.add-course-form button[type="button"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.add-course-form button[type="submit"]:hover,
+.add-course-form button[type="button"]:hover {
+    background-color: #45a049;
+}
+
+
+.save-button,
+.cancel-button,
+.action-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cancel-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.add-button,
+.edit-button,
+.add-class-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #008CBA;
+    color: white;
+}
+
+.delete-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f44336;
+    color: white;
+}
+
+.add-button:hover,
+.edit-button:hover,
+.add-class-button:hover,
+.delete-button:hover,
+.save-button:hover,
+.cancel-button:hover,
+.action-button:hover {
+    opacity: 0.8;
+}
+
+.course-form {
+    display: none;
+    margin-top: 20px;
+}
+
+.course-form h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.course-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.course-form input,
+.course-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.course-form button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.course-form button:hover {
+    background-color: #218838;
+}
+
+/* Course list table */
+
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.course-table th,
+.course-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.course-table th {
+    background-color: #f0f0f0;
+    text-align: left;
+}
+
+.course-table td {
+    text-align: center;
+}
+
+.course-table img {
+    max-width: 100px;
+}
+
+.course-table .btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.course-table .btn-delete {
+    background-color: #dc3545;
+}
+
+.course-table .btn-edit {
+    background-color: #ffc107;
+}
+
+/* Class list table */
+
+.class-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.class-table th,
+.class-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.class-table th {
+    background-color: #f0f0f0;
+    text-align: left;
+}
+
+.class-table td {
+    text-align: center;
+}
+
+.class-table .btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -1,91 +1,78 @@
-<h2>Danh sách Các Khóa Học</h2>
-<button *ngIf="!showAddCourseForm" (click)="openAddCourseForm()">Thêm Khóa Học</button>
-<div *ngIf="showAddCourseForm">
-    <h3>Thêm Khóa Học</h3>
-    <form #addCourseForm="ngForm" (ngSubmit)="addCourse(addCourseForm.value); closeAddCourseForm()">
-        <label>Mã khóa học:</label>
-        <input type="text" name="courseId" [(ngModel)]="newCourse.courseId" required>
-        <label>Tên khóa học:</label>
-        <input type="text" name="courseName" [(ngModel)]="newCourse.name" required>
-        <label>Mô tả:</label>
-        <textarea name="description" [(ngModel)]="newCourse.description" required></textarea>
-        <label>Link hình ảnh khóa học:</label>
-        <input type="text" name="imgUrl" [(ngModel)]="newCourse.imgUrl" required>
-        <label>Thời gian khóa học:</label>
-        <input type="text" name="courseTime" [(ngModel)]="newCourse.time" required>
-        <label>Số buổi học:</label>
-        <input type="number" name="numOfLessons" [(ngModel)]="newCourse.numofLessons" required>
-        <button type="submit" (click)="addCourse(newCourse)" >Lưu</button>
-        <button type="button" (click)="closeAddCourseForm()">Huỷ</button>
-    </form>
-</div>
+<body>
+    <div class="container">
+        <h2>Danh sách Các Khóa Học</h2>
+        <button *ngIf="!showAddCourseForm" class="add-course-button" (click)="openAddCourseForm()">Thêm Khóa
+            Học</button>
+        <div *ngIf="showAddCourseForm" class="add-course-form">
+            <h3>Thêm Khóa Học</h3>
+            <form #addCourseForm="ngForm" (ngSubmit)="addCourse(addCourseForm.value); closeAddCourseForm()">
+                <label>Mã khóa học:</label>
+                <input type="text" name="courseId" [(ngModel)]="newCourse.courseId" required>
+                <label>Tên khóa học:</label>
+                <input type="text" name="courseName" [(ngModel)]="newCourse.name" required>
+                <label>Mô tả:</label>
+                <textarea name="description" [(ngModel)]="newCourse.description" required></textarea>
+                <label>Link hình ảnh khóa học:</label>
+                <input type="text" name="imgUrl" [(ngModel)]="newCourse.imgUrl" required>
+                <label>Thời gian khóa học:</label>
+                <input type="text" name="courseTime" [(ngModel)]="newCourse.time" required>
+                <label>Số buổi học:</label>
+                <input type="number" name="numOfLessons" [(ngModel)]="newCourse.numofLessons" required>
+                <button type="submit">Lưu</button>
+                <button type="button" (click)="closeAddCourseForm()">Huỷ</button>
+            </form>
+        </div>
 
-<div *ngIf="showEditCourseForm">
-    <h3>Cập Nhật Thông Tin Khóa Học</h3>
-    <form #addCourseForm="ngForm" (ngSubmit)="updateCourse(addCourseForm.value); closeEditCourseForm()">
-        <label>Mã khóa học:</label>
-        <input type="text" name="courseId" [ngModel]="selectedCourse?.courseId" required>
-        <label>Tên khóa học:</label>
-        <input type="text" name="courseName" [ngModel]="selectedCourse?.name" required>
-        <label>Mô tả:</label>
-        <textarea name="description" [ngModel]="selectedCourse?.description" required></textarea>
-        <label>Link hình ảnh khóa học:</label>
-        <input type="text" name="imgUrl" [ngModel]="selectedCourse?.imgUrl" required>
-        <label>Thời gian khóa học:</label>
-        <input type="text" name="courseTime" [ngModel]="selectedCourse?.time" required>
-        <label>Số buổi học:</label>
-        <input type="number" name="numOfLessons" [ngModel]="selectedCourse?.numofLessons" required>
-        <button type="submit" 
-        *ngIf="selectedCourse != null"
-        (click)="updateCourse(selectedCourse)"
-        >Lưu</button>
-        <button type="button" (click)="closeEditCourseForm()">Huỷ</button>
-    </form>
-</div>
-<table class="student-table">
-    <thead>
-        <tr>
-            <th>Mã khóa học</th>
-            <th>Tên khóa</th>
-            <th>Mô tả</th>
-            <th>Link hình ảnh</th>
-            <th>Thời gian</th>
-            <th>Số lượng bài giảng</th>
-            <th> Lớp học</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let course of courses ">            
-            <td>{{course.courseId}}</td>
-            <td>{{course.name}}</td>
-            <td>{{course.description}}</td>
-            <td>
-                <img [src]="course.imgUrl">
-            </td>
-            <td>{{course.time}}</td>
-            <td>{{course.numofLessons}}</td>       
-            <td>
-                <button (click)="deleteCourse(course)" class="btn-delete">Xóa</button>
-                <button (click)="openEditCouseForm(course)" class="btn-edit">Sửa</button>
-                <button (click)="openAddClassForm(course)" class="btn">Tạo Lớp Học</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+        <table class="course-table">
+            <thead>
+                <tr>
 
+                    <th>Mã khóa học</th>
+                    <th>Tên khóa</th>
+                    <th>Mô tả</th>
+                    <th>Thời gian</th>
+                    <th>Số lượng bài giảng</th>
+                    <th> Lớp học</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of courses">
+                    <td>{{course.courseId}}</td>
+                    <td>{{course.name}}</td>
+                    <td>{{course.description}}</td>
+                    <td>{{course.time}}</td>
+                    <td>{{course.numofLessons}}</td>
+                    <td>
+                        <div class="button-container">
+                            <button (click)="deleteCourse(course)" class="action-button delete-button">Xóa</button>
+                            <button (click)="openEditCouseForm(course)" class="action-button edit-button">Sửa</button>
+                            <button (click)="openAddClassForm(course)" class="action-button add-class-button">Tạo Lớp
+                                Học</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-<table class="student-table">
-    <thead>
-        <tr>
-            <th>Mã khóa học</th>
-            <th>Mã Lớp học</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let classroom of Classes ">            
-            <td>{{classroom.courseId}}</td>
-            <td>{{classroom.classId}}</td>
-            <td>
-                <button (click)="deleteClass(classroom)" class="btn-delete">Xóa</button>
-            </td>    
-    </tbody>
-</table>
+        <h2>Danh sách Lớp Học</h2>
+        <table class="class-table">
+            <thead>
+                <tr>
+                    <th>Mã khóa học</th>
+                    <th>Mã Lớp học</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let classroom of Classes">
+                    <td>{{classroom.courseId}}</td>
+                    <td>{{classroom.classId}}</td>
+                    <td>
+                        <div class="button-container">
+                            <button (click)="deleteClass(classroom)" class="action-button delete-button">Xóa</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
