@@ -10,15 +10,15 @@
       <input [(ngModel)]="newTeacher.phoneNum" name="phoneNum" required>
       <label>Teaching Class:</label>
       <select [(ngModel)]="newTeacher.teachingClass" name="teachingClass" required>
-        <option *ngFor="let class of classes" [value]="class.courseId">{{ class.courseId + class.classId }}</option>
+        <option *ngFor="let class of classes" [value]="class.classId ">{{ class.courseId + class.classId }}</option>
       </select>
       <label>Duration:</label>
       <input [(ngModel)]="newTeacher.duration" name="duration" required>
       <label>Timeline:</label>
       <input [(ngModel)]="newTeacher.timeline" name="timeline" placeholder="e.g., 3:00pm - 5:00pm" required>
       <div class="form-buttons">
-        <button type="submit">Add</button>
-        <button type="button" (click)="cancelAdd()">Cancel</button>
+        <button type="submit">Thêm</button>
+        <button type="button" (click)="cancelAdd()">Hủy</button>
       </div>
     </form>
   </div>

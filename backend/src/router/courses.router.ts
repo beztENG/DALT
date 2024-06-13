@@ -1,19 +1,19 @@
 import { Request, Response, Router } from "express";
 import asynceHandler from 'express-async-handler'
-import { CoursesModel } from "../models/courses.model";
+import { CourseModel } from "../models/courses.model";
 
 const router = Router();
 // get data
 router.get("/all", asynceHandler(
     async (req: Request, res: Response) => {
-        const courses = await CoursesModel.find().exec();
+        const courses = await CourseModel.find().exec();
         res.json(courses);
     }
 ))
 // get data by id
 router.get("/get/:courseId", asynceHandler(
     async (req: Request, res: Response) => {        
-        const course = await CoursesModel.find({courseId :req.params.courseId}).exec();
+        const course = await CourseModel.find({courseId :req.params.courseId}).exec();
         res.json(course);
     }
 ))
@@ -21,7 +21,7 @@ router.get("/get/:courseId", asynceHandler(
 router.post("/add", asynceHandler(
     async (req: Request, res: Response) => {
         const { courseId, name, imgUrl, description, time, numofLessons } = req.body;
-        const course = await CoursesModel.create({ courseId, name, imgUrl, description, time, numofLessons });
+        const course = await CourseModel.create({ courseId, name, imgUrl, description, time, numofLessons });
         res.json(course);
     }
 ))
@@ -30,7 +30,7 @@ router.put("/update/:id", asynceHandler(
     async (req: Request, res: Response) => {
         const { id } = req.params;
         const { name, imgUrl, description, time, numofLessons } = req.body;
-        const course = await CoursesModel.findByIdAndUpdate(id, { name, imgUrl, description, time, numofLessons }, { new: true }).exec();
+        const course = await CourseModel.findByIdAndUpdate(id, { name, imgUrl, description, time, numofLessons }, { new: true }).exec();
         res.json(course);
     }
 ))
@@ -38,7 +38,7 @@ router.put("/update/:id", asynceHandler(
 router.delete("/delete/:id", asynceHandler(
     async (req: Request, res: Response) => {
         const { id } = req.params;
-        await CoursesModel.findByIdAndDelete(id).exec();
+        await CourseModel.findByIdAndDelete(id).exec();
         res.json({ success: true });
     }
 ))

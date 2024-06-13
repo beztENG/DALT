@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Student } from '../administratorsystem/shared/interface/academicManagement/student';
 import { STUDENT_URL } from '../administratorsystem/shared/constants/url';
+import { Class } from 'src/app/administratorsystem/shared/interface/class/class';
 
 @Injectable({
   providedIn: 'root'
@@ -35,4 +36,12 @@ export class AcademicManagementService {
   updateStudent(studentId: string, updatedStudent: Student): Observable<Student> {
     return this.http.put<Student>(`${STUDENT_URL}/students/${studentId}/update`, updatedStudent);
   }
+
+  enrollStudentInClass(studentId: string, classId: string): Observable<any> {
+    return this.http.post<any>(`${STUDENT_URL}/students/${studentId}/enroll`, { classId });
+  }
+
+  getStudentClasses(studentId: string): Observable<Class[]> {
+    return this.http.get<Class[]>(`${STUDENT_URL}/students/${studentId}/classes`);
+  }  
 }

@@ -1,8 +1,10 @@
 import { Router, Request, Response } from 'express';
-import { sample_student } from '../data';
 import asyncHandler from 'express-async-handler';
 import { StudentModel } from '../models/students.model';
+import { ClassModel } from '../models/classes.model';
+import { CourseModel } from '../models/courses.model';
 import { UserModel } from '../models/user.model';
+import { sample_student } from '../data';
 
 const router = Router();
 
@@ -19,15 +21,11 @@ router.get("/seed", asyncHandler(async (req, res) => {
 
 // Route to get students sorted by registration date
 router.get('/students/registration-date', asyncHandler(async (req: Request, res: Response) => {
-    try {
-        const students = await StudentModel.find().exec();
-        const sortedStudents = students.slice().sort((a, b) => {
-            return new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime();
-        });
-        res.json(sortedStudents);
-    } catch (error) {
-        res.status(500).json({ message: 'Internal server error' });
-    }
+    const students = await StudentModel.find().exec();
+    const sortedStudents = students.slice().sort((a, b) => {
+        return new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime();
+    });
+    res.json(sortedStudents);
 }));
 
 // Route to search for students based on keyword
@@ -47,7 +45,6 @@ router.get('/students/search', async (req: Request, res: Response) => {
         });
         res.json(filteredStudents);
     } catch (err) {
-        console.log(err);
         res.status(500).json({ message: 'Internal server error' });
     }
 });
@@ -93,7 +90,6 @@ router.post('/students/add', async (req: Request, res: Response) => {
         // Return the newly created student
         return res.status(201).json(newStudent);
     } catch (error) {
-        // Handle any other errors
         return res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 });
@@ -154,5 +150,53 @@ router.delete('/students/:studentId/delete', async (req: Request, res: Response)
         res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 });
+router.post("/students/:studentId/enroll/:classId", async (req: Request, res: Response) => {
+    try {
+        const { studentId, classId } = req.params;
+
+        const student = await StudentModel.findOne({ studentId });
+        if (!student) {
+            return res.status(404).json({ message: 'Student not found' });
+        }
+
+        const classObj = await ClassModel.findOne({ classId });
+        if (!classObj) {
+            return res.status(404).json({ message: 'Class not found' });
+        }
+
+        student.classes.push(classObj._id);
+        await student.save();
+
+        classObj.listStudent.push(student._id);
+        await classObj.save();
+
+        res.status(200).json({ message: 'Student enrolled in class successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
+// router.get('/students/:studentId/classes', asyncHandler(async (req: Request, res: Response) => {
+//     const { studentId } = req.params;
+//     try {
+//         const student = await StudentModel.findOne({ studentId }).populate('classes');
+//         if (!student) {
+//             return res.status(404).json({ message: 'Student not found' });
+//         }
+
+//         // Lấy thông tin chi tiết về khóa học
+//         const classesWithCourseDetails = await Promise.all(
+//           student.classes.map(async (class) => {
+//             const course = await CourseModel.findOne({ courseId: class.courseId });
+//             return { ...class.toObject(), course };
+//           })
+//         );
+
+//         res.status(200).json(classesWithCourseDetails);
+//     } catch (error) {
+//         res.status(500).json({ message: 'Internal server error', error: error.message });
+//     }
+// }));
+
+
 
 export default router;

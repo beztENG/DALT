@@ -3,10 +3,7 @@
 <input type="text" [(ngModel)]="searchKeyword" (input)="search()" placeholder="Tìm kiếm...">
 
 <button (click)="loadStudents()">Sắp xếp theo thời gian đăng ký</button>
-<button (click)="search()">Tìm kiếm</button>
-
-
-<button *ngIf="!showAddStudentForm" (click)="openAddStudentForm()">Thêm Sinh Viên</button>
+<button (click)="search()">Tìm kiếm</button><button *ngIf="!showAddStudentForm" (click)="openAddStudentForm()">Thêm Sinh Viên</button>
 <div *ngIf="showAddStudentForm">
     <h3>Thêm Thông Tin Sinh Viên</h3>
     <form #addStudentForm="ngForm" (ngSubmit)="addStudent(); closeAddStudentForm()">
@@ -33,10 +30,9 @@
 
 <div *ngIf="showEditStudentForm">
     <h3>Cập Nhật Thông Tin Sinh Viên</h3>
-    <form #editStudentForm="ngForm"
-        (ngSubmit)="updateStudent(editStudentForm.value); closeEditStudentForm()">
-        <label>Mã SV:</label>
-        <input type="text" name="studentId" [ngModel]="selectedStudent?.studentId" required>
+    <form #editStudentForm="ngForm" (ngSubmit)="updateStudent(editStudentForm.value); closeEditStudentForm(); editStudentForm.resetForm()">
+        <label>ID sinh viên:</label>
+        <input type="text" name="studentId" [ngModel]="selectedStudent?.studentId" readonly>
         <label>Tên sinh viên:</label>
         <input type="text" name="studentName" [ngModel]="selectedStudent?.studentName" required>
         <label>Email:</label>
@@ -45,12 +41,39 @@
         <input type="text" name="Password" [ngModel]="selectedStudent?.password" required>
         <label>Số điện thoại:</label>
         <input type="text" name="phoneNumber" [ngModel]="selectedStudent?.phoneNumber" required>
-        <button type="submit" >Lưu</button>
+        <button type="submit">Lưu</button>
         <button type="button" (click)="closeEditStudentForm()">Huỷ</button>
     </form>
 </div>
 
+<div *ngIf="showEnrollForm">
+    <h3>Đăng Ký Lớp</h3>
+    <p>Chọn lớp cho sinh viên {{ selectedStudent?.studentName }}</p>
+    <select [(ngModel)]="enrollClassId">
+        <option *ngFor="let class of classes" [value]="class.courseId">{{ class.classId }}</option>
+    </select><br/>
+    <button (click)="enrollStudentInClass(selectedStudent?.studentId!, enrollClassId)">Đăng ký</button>
+    <button (click)="closeEnrollForm()">Hủy</button>
+  </div>
+  
 
+  <div *ngIf="loadStudentClasses">
+    <h3>Các Lớp Đã Đăng Ký</h3>
+    <table class="student-table">
+      <thead>
+        <tr>
+          <th>Mã lớp</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let class of studentClasses">
+          <td>{{ class.classId }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
 
 <table class="student-table">
     <thead>
@@ -68,13 +91,15 @@
         <tr *ngFor="let student of students">
             <td>{{ student.studentId }}</td>
             <td>{{ student.studentName }}</td>
-            <td>{{ student.email}}</td>
-            <td>{{ student.password}}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.password }}</td>
             <td>{{ student.phoneNumber }}</td>
             <td>{{ student.registrationDate | date: 'dd/MM/yyyy' }}</td>
             <td>
                 <button (click)="deleteStudent(student.studentId)" class="btn-delete">Xóa</button>
                 <button (click)="openEditStudentForm(student)" class="btn-edit">Sửa</button>
+                <button (click)="openEnrollForm(student)" class="btn-enroll">Đăng ký lớp</button>
+                <button (click)="loadStudentClasses(student.studentId)" class="btn-view-classes">Xem lớp</button>
             </td>
         </tr>
     </tbody>

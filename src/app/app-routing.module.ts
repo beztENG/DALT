@@ -17,7 +17,8 @@ import { StudentDashboardComponent } from './administratorsystem/student/student
 import { StudentManagementComponent } from './administratorsystem/admin/student-management/student-management.component';
 import { TeacherAdminComponent } from './administratorsystem/admin/teacher-admin/teacher-admin.component';
 import { CourseManaComponent } from './administratorsystem/admin/course-mana/course-mana.component';
-
+import { AdultStudyComponent } from './adult-study/adult-study.component';
+import { RegisterformComponent } from './registerform/registerform.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,8 @@ const routes: Routes = [
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'events', component: EventsComponent },
   { path: 'eventspage/:id', component: EventspageComponent },
+  { path: 'adultstudy', component: AdultStudyComponent },
+  { path: 'register', component: RegisterformComponent },
   { path: 'login', component: LoginComponent },
   { path: 'loginStudent', redirectTo: 'login', pathMatch: 'full' }, // Redirect to single login component
 

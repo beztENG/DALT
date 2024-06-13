@@ -39,7 +39,7 @@
 
 /* Button styles */
 .btn-delete,
-.btn-edit {
+.btn-edit, .btn-enroll,.btn-show {
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
@@ -53,6 +53,15 @@
 }
 
 .btn-edit {
+    background-color: #3498db;
+    color: white;
+}
+.btn-enroll {
+    background-color: green;
+    color: white;
+}
+
+.btn-show {
     background-color: #3498db;
     color: white;
 }

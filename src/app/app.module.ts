@@ -31,6 +31,8 @@ import { StudentDashboardComponent } from './administratorsystem/student/student
 import { StudentManagementComponent } from './administratorsystem/admin/student-management/student-management.component';
 import { TeacherAdminComponent } from './administratorsystem/admin/teacher-admin/teacher-admin.component';
 import { CourseManaComponent } from './administratorsystem/admin/course-mana/course-mana.component';
+import { AdultStudyComponent } from './adult-study/adult-study.component';
+import { RegisterformComponent } from './registerform/registerform.component';
 
 
 
@@ -66,7 +68,9 @@ import { CourseManaComponent } from './administratorsystem/admin/course-mana/cou
     StudentManagementComponent,
     TeacherAdminComponent,
     StudentManagementComponent,
-    CourseManaComponent
+    CourseManaComponent,
+    AdultStudyComponent,
+    RegisterformComponent
   ],
   imports: [
     BrowserModule,

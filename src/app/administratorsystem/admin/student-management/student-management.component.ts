@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Student } from 'src/app/administratorsystem/shared/interface/academicManagement/student';
 import { AcademicManagementService } from 'src/app/services/academic-management.service';
+import { Class } from '../../shared/interface/class/class';
+import { ClassService } from 'src/app/services/class.service';
 
 @Component({
   selector: 'app-student-management',
@@ -9,11 +11,17 @@ import { AcademicManagementService } from 'src/app/services/academic-management.
 })
 export class StudentManagementComponent implements OnInit {
   students: Student[] = [];
+  classes: Class[] = [];
+  studentClasses: Class[] = [];
   searchKeyword: string = '';
   showAddStudentForm = false;
   showEditStudentForm = false;
+  showEnrollForm = false;
+  showStudentClasses = false;
   selectedStudent: Student | null = null;
   editMode: boolean = false;
+  enrollClassId: string = '';
+
   newStudent: Student = {
     studentId: '',
     studentName: '',
@@ -25,30 +33,36 @@ export class StudentManagementComponent implements OnInit {
     finalGrade: ''
   };
 
-  @ViewChild('addStudentForm') addStudentForm: any; // Template reference variable for add form
-  @ViewChild('editStudentForm') editStudentForm: any; // Template reference variable for edit form
+  @ViewChild('addStudentForm') addStudentForm: any; // Biến tham chiếu mẫu cho form thêm
+  @ViewChild('editStudentForm') editStudentForm: any; // Biến tham chiếu mẫu cho form chỉnh sửa
+  @ViewChild('enrollForm') enrollForm: any; // Biến tham chiếu mẫu cho form đăng ký
+courses: any;
 
-  constructor(private academicService: AcademicManagementService) { }
+  constructor(private academicService: AcademicManagementService, private classService: ClassService) { }
 
   ngOnInit(): void {
     this.loadStudents();
+    this.loadClasses();
   }
 
-  // Open and close add/edit student forms
+  // Mở và đóng form thêm/chỉnh sửa sinh viên
   openAddStudentForm() {
     this.editMode = true;
-    this.selectedStudent = null; // Clear for new student
+    this.selectedStudent = null; // Xóa để thêm sinh viên mới
     this.showAddStudentForm = true;
   }
+
   closeAddStudentForm() {
     this.showAddStudentForm = false;
     this.editMode = false;
   }
+
   openEditStudentForm(student: Student) {
     this.editMode = true;
-    this.selectedStudent = student; // Set for editing
+    this.selectedStudent = student; // Đặt để chỉnh sửa
     this.showEditStudentForm = true;
   }
+
   closeEditStudentForm() {
     this.showEditStudentForm = false;
     this.editMode = false;
@@ -66,6 +80,12 @@ export class StudentManagementComponent implements OnInit {
     );
   }
 
+  loadClasses(): void {
+    this.classService.getAllClasses().subscribe(data => {
+      this.classes = data;
+    });
+  }
+
   search(): void {
     if (this.searchKeyword.trim() !== '') {
       this.academicService.searchStudents(this.searchKeyword).subscribe(
@@ -81,14 +101,14 @@ export class StudentManagementComponent implements OnInit {
     }
   }
 
-  // Add a new student
+  // Thêm sinh viên mới
   addStudent(): void {
     this.academicService.addStudent(this.newStudent).subscribe(
       (addedStudent) => {
         this.students.push(addedStudent);
         console.log('Student added:', addedStudent);
-        this.closeAddStudentForm(); // Close the form after adding
-        this.loadStudents(); // Refresh the list
+        this.closeAddStudentForm(); // Đóng form sau khi thêm
+        this.loadStudents(); // Làm mới danh sách
       },
       (error) => {
         console.error('Error adding student:', error);
@@ -96,19 +116,19 @@ export class StudentManagementComponent implements OnInit {
     );
   }
 
-  // Cancel adding a student
+  // Hủy thêm sinh viên
   cancelAdd(): void {
     console.log('Adding student cancelled');
     this.closeAddStudentForm();
   }
 
-  // Delete a student
+  // Xóa sinh viên
   deleteStudent(studentId: string) {
     this.academicService.deleteStudent(studentId).subscribe(
       (response) => {
         console.log('Student deleted:', response.message);
         this.students = this.students.filter(student => student.studentId !== studentId);
-        this.loadStudents(); // Refresh the list
+        this.loadStudents(); // Làm mới danh sách
       },
       (error) => {
         console.error('Error deleting student:', error);
@@ -116,10 +136,10 @@ export class StudentManagementComponent implements OnInit {
     );
   }
 
-  // Update a student
+  // Cập nhật sinh viên
   updateStudent(updatedStudent: Student) {
     if (!this.selectedStudent) {
-      return; // No selected student to update
+      return; // Không có sinh viên được chọn để cập nhật
     }
     this.academicService.updateStudent(this.selectedStudent.studentId, updatedStudent).subscribe(
       (updatedStudent) => {
@@ -127,10 +147,10 @@ export class StudentManagementComponent implements OnInit {
         if (index !== -1) {
           this.students[index] = updatedStudent;
         }
-        this.selectedStudent = null; // Clear selected student after update
+        this.selectedStudent = null; // Xóa sinh viên được chọn sau khi cập nhật
         console.log('Student updated:', updatedStudent);
-        this.closeEditStudentForm(); // Close the form after updating
-        this.loadStudents(); // Refresh the list
+        this.closeEditStudentForm(); // Đóng form sau khi cập nhật
+        this.loadStudents(); // Làm mới danh sách
       },
       (error) => {
         console.error('Error updating student:', error);
@@ -138,9 +158,46 @@ export class StudentManagementComponent implements OnInit {
     );
   }
 
-  // Cancel editing a student
+  // Hủy chỉnh sửa sinh viên
   cancelEdit() {
     this.selectedStudent = null;
     this.closeEditStudentForm();
   }
+  openEnrollForm(student: Student) {
+    this.selectedStudent = student;
+    this.showEnrollForm = true;
+  }
+  
+  closeEnrollForm() {
+    this.showEnrollForm = false;
+    this.selectedStudent = null;
+    this.enrollClassId = '';
+  }
+  enrollStudentInClass(studentId: string, classId: string) {
+    this.academicService.enrollStudentInClass(studentId, classId).subscribe(
+      (response) => {
+        console.log('Sinh viên đã đăng ký vào lớp:', response);
+        this.closeEnrollForm();
+        this.loadStudentClasses(studentId);
+      },
+      (error) => {
+        console.error('Lỗi khi đăng ký sinh viên vào lớp:', error);
+      }
+    );
+  }
+  
+  loadStudentClasses(studentId: string) {
+    this.academicService.getStudentClasses(studentId).subscribe(
+      (data) => {
+        this.studentClasses = data;
+        this.showStudentClasses = true;
+      },
+      (error) => {
+        console.error('Lỗi khi tải các lớp của sinh viên:', error);
+      }
+    );
+  }
 }
+
+
+

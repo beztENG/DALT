@@ -1,26 +1,25 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Types } from "mongoose";
 
-export interface Class{
-    courseId : string;
+export interface Class {
+    courseId: string;
     classId: string;
-    listStudent: [];
+    listStudent: Types.ObjectId[];
 }
 
 export const ClassSchema = new Schema<Class>(
     {
-        courseId: {type: String, required: true},
-        classId: {type: String, required: true},
-        listStudent: {type: [], required: false, default: []}
-        
-    },{
-        toJSON:{
+        courseId: { type: String, required: true },
+        classId: { type: String, required: true },
+        listStudent: { type: [Types.ObjectId], ref: 'student', default: [] }
+    }, {
+        timestamps: true,
+        toJSON: {
             virtuals: true
         },
-        toObject:{
+        toObject: {
             virtuals: true
-        },
-        timestamps: true
+        }
     }
-)
+);
 
-export const ClassModel = model<Class>('class',ClassSchema);
+export const ClassModel = model<Class>('class', ClassSchema);
