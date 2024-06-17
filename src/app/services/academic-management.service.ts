@@ -38,10 +38,10 @@ export class AcademicManagementService {
   }
 
   enrollStudentInClass(studentId: string, classId: string): Observable<any> {
-    return this.http.post<any>(`${STUDENT_URL}/students/${studentId}/enroll`, { classId });
+    return this.http.post<any>(`${STUDENT_URL}/students/${studentId}/enroll/${classId}`, {});
   }
 
   getStudentClasses(studentId: string): Observable<Class[]> {
     return this.http.get<Class[]>(`${STUDENT_URL}/students/${studentId}/classes`);
-  }  
+  }
 }

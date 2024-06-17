@@ -173,6 +173,7 @@ courses: any;
     this.selectedStudent = null;
     this.enrollClassId = '';
   }
+  
   enrollStudentInClass(studentId: string, classId: string) {
     this.academicService.enrollStudentInClass(studentId, classId).subscribe(
       (response) => {
