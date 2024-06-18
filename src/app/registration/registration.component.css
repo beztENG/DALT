@@ -198,8 +198,15 @@
 .decription {
     margin-top: -85px;
     position: relative;
-    left: -20px;
+    left: 62px;
     bottom: 110px;
+    width: 185px;
+    color: #868585;
+    font-size: 15px;
+}
+
+.form {
+    height: 250px;
 }
 
 .main-container {

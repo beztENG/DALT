@@ -1,5 +1,5 @@
 <div>
-  <h2>Teacher Administration</h2>
+  <h2>Teacher Calendar</h2>
 
   <div *ngIf="selectedDate" class="form-container">
     <h3>Add Teacher for {{ selectedDate }}</h3>
@@ -32,7 +32,7 @@
       <input [(ngModel)]="selectedTeacher.phoneNum" name="phoneNum" required>
       <label>Teaching Class:</label>
       <select [(ngModel)]="selectedTeacher.teachingClass" name="teachingClass" required>
-        <option *ngFor="let class of classes" [value]="class.courseId">{{ class.courseId + class.classId }}</option>
+        <option *ngFor="let class of classes" [value]="class.classId">{{ class.courseId + class.classId }}</option>
       </select>
       <label>Duration:</label>
       <input [(ngModel)]="selectedTeacher.duration" name="duration" required>
@@ -61,7 +61,7 @@
               <div *ngIf="day !== null">
                 <div *ngFor="let teacher of getTeachersForDay(day)" class="teacher-info">
                   <div>{{ teacher.name }}</div>
-                  <div>{{ getClassInfo(teacher.teachingClass) + getClassById(teacher.teachingClass)?.classId }}</div>
+                  <div>{{ teacher.teachingClass }}</div>
                   <div class="teacher-timeline">{{ teacher.timeline }}</div>
                   <div class="teacher-buttons">
                     <button (click)="editTeacher(teacher)">Edit</button>
