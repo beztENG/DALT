@@ -29,6 +29,11 @@ export class ClassService {
   deleteClass(courseId: string, classId: string): Observable<Class> {
     return this.http.delete<Class>(`${CLASS_URL}/delete/${courseId}/${classId}`);
   }
+  //deleteClass by courseId
+  deleteClassByCourse(courseId: string): Observable<Class> {
+    return this.http.delete<Class>(`${CLASS_URL}/delete/${courseId}`);
+  }
+
   enrollStudentInClass(studentId: string, classId: string): Observable<any> {
     return this.http.post<any>(`${CLASS_URL}/students/${studentId}/enroll`, { classId });
   }

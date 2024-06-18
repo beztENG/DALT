@@ -35,10 +35,10 @@ router.put("/update/:id", asynceHandler(
     }
 ))
 //delete data
-router.delete("/delete/:id", asynceHandler(
+router.delete("/delete/:courseId", asynceHandler(
     async (req: Request, res: Response) => {
-        const { id } = req.params;
-        await CourseModel.findByIdAndDelete(id).exec();
+        const { courseId } = req.params;
+        await CourseModel.findOneAndDelete({courseId :req.params.courseId}).exec();
         res.json({ success: true });
     }
 ))

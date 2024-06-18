@@ -5,8 +5,7 @@
             Học</button>
         <div *ngIf="showAddCourseForm" class="add-course-form">
             <h3>Thêm Khóa Học</h3>
-            <form #addCourseForm="ngForm" (ngSubmit)="addCourse(addCourseForm.value); closeAddCourseForm()">
-                
+            <form #addCourseForm="ngForm" (ngSubmit)="addCourse(newCourse); closeAddCourseForm()">
                 <label>Mã khóa học:</label>
                 <input type="text" name="courseId" [(ngModel)]="newCourse.courseId" required>
                 <label>Tên khóa học:</label>
@@ -19,7 +18,7 @@
                 <input type="text" name="courseTime" [(ngModel)]="newCourse.time" required>
                 <label>Số buổi học:</label>
                 <input type="number" name="numOfLessons" [(ngModel)]="newCourse.numofLessons" required>
-                <button type="submit">Lưu</button>
+                <button type="button" (click)="addCourse(newCourse)">Lưu</button>
                 <button type="button" (click)="closeAddCourseForm()">Huỷ</button>
             </form>
         </div>
@@ -47,9 +46,7 @@
                     <td>
                         <div class="button-container">
                             <button (click)="deleteCourse(course)" class="action-button delete-button">Xóa</button>
-                            <button (click)="openEditCouseForm(course)" class="action-button edit-button">Sửa</button>
-                            <button (click)="openAddClassForm(course)" class="action-button add-class-button">Tạo Lớp
-                                Học</button>
+                            <button (click)="openAddClassForm(course)" class="action-button add-class-button">Tạo Lớp Học</button>
                         </div>
                     </td>
                 </tr>

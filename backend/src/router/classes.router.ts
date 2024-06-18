@@ -39,5 +39,10 @@ router.delete("/delete/:courseId/:classId", asyncHandler(async (req: Request, re
     const deletedClassroom = await ClassModel.findOneAndDelete({ courseId: req.params.courseId, classId: req.params.classId });
     res.json(deletedClassroom);
 }));
+// Delete class by courseID
+router.delete("/delete/:courseId", asyncHandler(async (req: Request, res: Response) => {
+    const deletedClassroom = await ClassModel.deleteMany({ courseId: req.params.courseId });
+    res.json(deletedClassroom);
+}));
 
 export default router;
