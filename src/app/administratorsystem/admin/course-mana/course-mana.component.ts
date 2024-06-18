@@ -83,21 +83,31 @@ export class CourseManaComponent {
       this.courses.push(course);
       this.showAddCourseForm = false;
     });
+    this.newCourse = {
+      courseId: '',
+      name: '',
+      imgUrl: '',
+      description: '',
+      time: '',
+      numofLessons: 0
+    }
   }
   //delete 
   deleteCourse(course: Course) {
     this.courseService.deleteCourse(course.courseId).subscribe(() => {
       this.courses = this.courses.filter((c) => c.courseId !== course.courseId);
     });
+    this.deleteClassByCourse(course);
+    
   }
   //update
-  updateCourse(course: Course) {
-    this.courseService.updateCourse(course.courseId, course).subscribe((course) => {
-      const index = this.courses.findIndex((c) => c.courseId === course.courseId);
-      this.courses[index] = course;
-      this.showEditCourseForm = false;
-    });
-  }
+  // updateCourse(course: Course) {
+  //   this.courseService.updateCourse(course.courseId, course).subscribe((course) => {
+  //     const index = this.courses.findIndex((c) => c.courseId === course.courseId);
+  //     this.courses[index] = course;
+  //     this.showEditCourseForm = false;
+  //   });
+  // }
 //////////////////Classes/////////////////////
   //load class
   async loadClasses() {    
@@ -134,6 +144,12 @@ export class CourseManaComponent {
   deleteClass(classroom: Class) {
     this.classService.deleteClass(classroom.courseId, classroom.classId).subscribe(() => {
       this.Classes = this.Classes.filter((c) => c.classId !== classroom.classId && c.courseId !== classroom.courseId);
+    });
+  }
+  //delete class by courseId
+  deleteClassByCourse(course: Course) {
+    this.classService.deleteClassByCourse(course.courseId).subscribe(() => {
+      this.Classes = this.Classes.filter((c) => c.courseId !== course.courseId);
     });
   }
 
