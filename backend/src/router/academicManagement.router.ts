@@ -175,27 +175,19 @@ router.post("/students/:studentId/enroll/:classId", async (req: Request, res: Re
         res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 });
-// router.get('/students/:studentId/classes', asyncHandler(async (req: Request, res: Response) => {
-//     const { studentId } = req.params;
-//     try {
-//         const student = await StudentModel.findOne({ studentId }).populate('classes');
-//         if (!student) {
-//             return res.status(404).json({ message: 'Student not found' });
-//         }
+router.get('/students/:studentId/classes', async (req: Request, res: Response) => {
+    const { studentId } = req.params;
+    try {
+        const student = await StudentModel.findOne({ studentId }).populate('classes');
+        if (!student) {
+            return res.status(404).json({ message: 'Student not found' });
+        }
+        res.status(200).json(student.classes);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
 
-//         // Lấy thông tin chi tiết về khóa học
-//         const classesWithCourseDetails = await Promise.all(
-//           student.classes.map(async (class) => {
-//             const course = await CourseModel.findOne({ courseId: class.courseId });
-//             return { ...class.toObject(), course };
-//           })
-//         );
-
-//         res.status(200).json(classesWithCourseDetails);
-//     } catch (error) {
-//         res.status(500).json({ message: 'Internal server error', error: error.message });
-//     }
-// }));
 
 
 

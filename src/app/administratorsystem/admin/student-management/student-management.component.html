@@ -52,7 +52,7 @@
   <h3>Đăng Ký Lớp</h3>
   <p>Chọn lớp cho sinh viên {{ selectedStudent?.studentName }}</p>
   <select [(ngModel)]="enrollClassId">
-    <option *ngFor="let class of classes" [value]="class.classId">{{ class.classId }}</option>
+    <option *ngFor="let class of classes" [value]="class.classId">{{ class.courseId }}{{ class.classId }}</option>
   </select><br />
   <button (click)="enrollStudentInClass(selectedStudent?.studentId!, enrollClassId)">Đăng ký</button>
   <button (click)="closeEnrollForm()">Hủy</button>
@@ -69,7 +69,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let class of studentClasses">
-        <td>{{ class.classId }}</td>
+        <td>{{ class.courseId }}{{ class.classId }}</td>
       </tr>
     </tbody>
   </table>

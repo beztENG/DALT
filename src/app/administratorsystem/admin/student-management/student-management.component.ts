@@ -179,7 +179,7 @@ courses: any;
       (response) => {
         console.log('Sinh viên đã đăng ký vào lớp:', response);
         this.closeEnrollForm();
-        this.loadStudentClasses(studentId);
+        // this.loadStudentClasses(studentId);
       },
       (error) => {
         console.error('Lỗi khi đăng ký sinh viên vào lớp:', error);

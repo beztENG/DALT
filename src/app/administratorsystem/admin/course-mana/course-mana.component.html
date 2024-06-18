@@ -6,6 +6,7 @@
         <div *ngIf="showAddCourseForm" class="add-course-form">
             <h3>Thêm Khóa Học</h3>
             <form #addCourseForm="ngForm" (ngSubmit)="addCourse(addCourseForm.value); closeAddCourseForm()">
+                
                 <label>Mã khóa học:</label>
                 <input type="text" name="courseId" [(ngModel)]="newCourse.courseId" required>
                 <label>Tên khóa học:</label>
@@ -26,7 +27,7 @@
         <table class="course-table">
             <thead>
                 <tr>
-
+                    <th></th>
                     <th>Mã khóa học</th>
                     <th>Tên khóa</th>
                     <th>Mô tả</th>
@@ -37,6 +38,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let course of courses">
+                    <img [src]="course.imgUrl">
                     <td>{{course.courseId}}</td>
                     <td>{{course.name}}</td>
                     <td>{{course.description}}</td>
