@@ -152,6 +152,10 @@ export class CourseManaComponent {
       this.Classes = this.Classes.filter((c) => c.courseId !== course.courseId);
     });
   }
+  //Send Data class
+  sendData(classSelected: Class) {
+    this.classService.changeData(classSelected);
+  }
 
 }
 

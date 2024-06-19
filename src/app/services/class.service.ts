@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Class } from '../administratorsystem/shared/interface/class/class';
 import { CLASS_URL } from '../administratorsystem/shared/constants/url';
 
@@ -16,6 +17,10 @@ export class ClassService {
   //getOne
   getClassByCourse(courseId: string): Observable<Class[]> {
     return this.http.get<Class[]>(`${CLASS_URL}/get/${courseId}`);
+  }
+  //getOneClass
+  getOneClass(courseId: string, classId: string): Observable<Class> {
+    return this.http.get<Class>(`${CLASS_URL}/get/${courseId}/${classId}`);
   }
   //addClass
   addClass(classroom: Class): Observable<Class> {
@@ -40,5 +45,16 @@ export class ClassService {
 
   getStudentClasses(studentId: string): Observable<Class[]> {
     return this.http.get<Class[]>(`${CLASS_URL}/students/${studentId}/classes`);
+  }
+  //Transfer data
+  private dataSource = new BehaviorSubject<Class>({
+    courseId: '',
+    classId: '',
+    listStudent: []
+  });
+  currentData = this.dataSource.asObservable();
+
+  changeData(data: Class) {
+    this.dataSource.next(data);
   }  
 }

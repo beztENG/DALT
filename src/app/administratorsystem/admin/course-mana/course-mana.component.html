@@ -67,7 +67,9 @@
                     <td>{{classroom.classId}}</td>
                     <td>
                         <div class="button-container">
-                            <button (click)="deleteClass(classroom)" class="action-button delete-button">Xóa</button>
+                            <button (click)="deleteClass(classroom)" class="action-button delete-button">Xóa</button>                            
+                            <button (click)="sendData(classroom)" class="action-button add-class-button">
+                                <a href="class-attendance/{{classroom.courseId}}/{{classroom.classId}}">Điểm danh</a></button>                            
                         </div>
                     </td>
                 </tr>

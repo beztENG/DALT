@@ -49,6 +49,13 @@ router.get('/students/search', async (req: Request, res: Response) => {
     }
 });
 
+//get one by id
+router.get('/students/:id', async (req: Request, res: Response) => {
+    const student = await StudentModel.findById(req.params.id);
+    res.json(student);
+});
+
+
 // Route to add a new student and a corresponding user
 router.post('/students/add', async (req: Request, res: Response) => {
     try {

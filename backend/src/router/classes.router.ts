@@ -16,6 +16,12 @@ router.get("/get/:courseId", asyncHandler(async (req: Request, res: Response) =>
     res.json(classroom);
 }));
 
+//get one class
+router.get("/get/:courseId/:classId", asyncHandler(async (req: Request, res: Response) => {
+    const classroom = await ClassModel.findOne({ courseId: req.params.courseId, classId: req.params.classId }).exec();
+    res.json(classroom);
+}));
+
 // Create a new class
 router.post("/add", asyncHandler(async (req: Request, res: Response) => {
     const classroom = req.body;

@@ -1,0 +1,25 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+<h3>Điểm danh cho lớp {{data.courseId}}-{{data.classId}} </h3>
+<table class="course-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Mã học sinh</th>
+            <th>Tên học sinh</th>
+            <th>Hiện diện</th>
+        </tr>
+    </thead>
+    <div *ngFor="let student of this.listAttendance">
+        <tbody>
+            <tr>            
+                <td>{{student.studentId}}</td>
+                <td>{{student.studentName}}</td>
+                <td>
+                    <input type="checkbox" name="attendance"[(ngModel)]="student.studentAttendance" required>
+                </td>
+            </tr>
+        </tbody>
+    </div>     
+</table>
+<button type="button" (click)="saveAttendance(this.listAttendance)">Lưu file điểm danh</button>   
+        

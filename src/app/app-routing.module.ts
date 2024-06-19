@@ -19,6 +19,7 @@ import { TeacherAdminComponent } from './administratorsystem/admin/teacher-admin
 import { CourseManaComponent } from './administratorsystem/admin/course-mana/course-mana.component';
 import { AdultStudyComponent } from './adult-study/adult-study.component';
 import { RegisterformComponent } from './registerform/registerform.component';
+import { ClassAttendanceComponent } from './class-attendance/class-attendance.component';
 
 
 const routes: Routes = [
@@ -39,8 +40,7 @@ const routes: Routes = [
       { path: 'studentManagement', component: StudentManagementComponent },
       { path: 'registrationList', component: RegistrationListComponent },
       { path: 'TeacherAdmin', component: TeacherAdminComponent },
-      { path: 'courseManagement', component: CourseManaComponent },
-
+      { path: 'courseManagement', component: CourseManaComponent },   
     ]
   },
 
@@ -53,7 +53,8 @@ const routes: Routes = [
   { path: 'student/:studentId', component: StudentComponent },
 
   { path: 'courseslist', component: CourselistComponent },
-  { path: 'registration', component: RegistrationComponent }
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'class-attendance/:courseId/:classId', component: ClassAttendanceComponent}
 ];
 
 @NgModule({
