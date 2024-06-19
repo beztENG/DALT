@@ -163,15 +163,18 @@ courses: any;
     this.selectedStudent = null;
     this.closeEditStudentForm();
   }
+
   openEnrollForm(student: Student) {
     this.selectedStudent = student;
     this.showEnrollForm = true;
+    this.momodal();
   }
   
   closeEnrollForm() {
     this.showEnrollForm = false;
     this.selectedStudent = null;
     this.enrollClassId = '';
+    this.momodal();
   }
   
   enrollStudentInClass(studentId: string, classId: string) {
@@ -179,7 +182,6 @@ courses: any;
       (response) => {
         console.log('Sinh viên đã đăng ký vào lớp:', response);
         this.closeEnrollForm();
-        // this.loadStudentClasses(studentId);
       },
       (error) => {
         console.error('Lỗi khi đăng ký sinh viên vào lớp:', error);
@@ -192,13 +194,20 @@ courses: any;
       (data) => {
         this.studentClasses = data;
         this.showStudentClasses = true;
+        this.momodal();
       },
       (error) => {
         console.error('Lỗi khi tải các lớp của sinh viên:', error);
       }
     );
   }
+
+  momodal(): void {
+    const modalElement = document.getElementById("nenmodal-1");
+    if (modalElement) {
+        modalElement.classList.toggle("active");
+    } else {
+        console.error("Không tìm thấy phần tử với id 'nenmodal-1'.");
+    }
+  }
 }
-
-
-

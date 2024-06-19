@@ -33,6 +33,8 @@ import { TeacherAdminComponent } from './administratorsystem/admin/teacher-admin
 import { CourseManaComponent } from './administratorsystem/admin/course-mana/course-mana.component';
 import { AdultStudyComponent } from './adult-study/adult-study.component';
 import { RegisterformComponent } from './registerform/registerform.component';
+import { ClassAttendanceComponent } from './class-attendance/class-attendance.component';
+import { IeltsStudyComponent } from './ielts-study/ielts-study.component';
 
 
 
@@ -70,7 +72,9 @@ import { RegisterformComponent } from './registerform/registerform.component';
     StudentManagementComponent,
     CourseManaComponent,
     AdultStudyComponent,
-    RegisterformComponent
+    RegisterformComponent,
+    ClassAttendanceComponent,
+    IeltsStudyComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +83,7 @@ import { RegisterformComponent } from './registerform/registerform.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

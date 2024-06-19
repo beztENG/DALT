@@ -168,4 +168,13 @@ export class TeacherAdminComponent implements OnInit {
     }
     this.generateCalendarDays(this.currentYear, this.currentMonth);
   }
+  momodal(): void {
+    const modalElement = document.getElementById("nenmodal-1");
+    if (modalElement) {
+        modalElement.classList.toggle("active");
+    } else {
+        console.error("Không tìm thấy phần tử với id 'nenmodal-1'.");
+    }
+  }
 }
+

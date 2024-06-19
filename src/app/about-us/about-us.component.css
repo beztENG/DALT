@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
- 
+
 .aboutus {
     font-family: "M PLUS Rounded 1c", sans-serif;
 }
@@ -13,21 +13,37 @@
     background: linear-gradient(360deg, rgb(245, 255, 245) 0%, #50DD6F 100%);
     padding: 100px 0 20px 0;
     text-align: center;
+    opacity: 0;
+    /* Initially hide the cards */
+    animation: slideIn 0.5s ease-out forwards;
 }
- 
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+        /* Optional: Slide up effect */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .about h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: #262261;
 }
- 
+
 .about p {
     font-size: 1rem;
     color: #262261;
     max-width: 800px;
     margin: 0 auto;
 }
- 
+
 .about-info {
     margin: 2rem 2rem;
     display: flex;
@@ -35,37 +51,37 @@
     justify-content: center;
     text-align: left;
 }
- 
+
 .about-img {
     width: 20rem;
     height: 20rem;
- 
+
 }
- 
+
 .about-img img {
     width: 100%;
     height: 100%;
     border-radius: 5px;
     object-fit: contain;
 }
- 
+
 .about-info p {
     font-size: 1.3rem;
     margin: 0 2rem;
     text-align: justify;
 }
- 
+
 .team {
     padding: 30px 0;
     text-align: center;
 }
- 
+
 .team h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: #262261;
 }
- 
+
 .team-cards {
     display: flex;
     flex-wrap: wrap;
@@ -73,7 +89,7 @@
     gap: 15px;
     margin-top: 20px;
 }
- 
+
 .card {
     background-color: white;
     color: #262261;
@@ -85,23 +101,23 @@
     height: 30rem;
     margin-top: 10px;
 }
- 
+
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
 }
- 
+
 .card-img {
     width: 18rem;
     height: 18rem;
 }
- 
+
 .card-img img {
     width: 100%;
     height: 100%;
     object-fit: fill;
 }
- 
+
 button {
     border: none;
     outline: 0;
@@ -115,57 +131,57 @@ button {
     width: 15rem;
     border-radius: 4px;
 }
- 
+
 button:hover {
     background-color: #50DD6F;
     color: white;
 }
- 
+
 .card-name {
     font-size: 2rem;
     margin: 10px 0;
 }
- 
+
 .card-role {
     font-size: 1rem;
     color: #888;
     margin: 5px 0;
 }
- 
+
 .card-email {
     font-size: 1rem;
     color: #555;
 }
- 
+
 @media (max-width: 768px) {
     .about h1 {
         font-size: 2rem;
     }
- 
+
     .about p {
         font-size: 0.9rem;
     }
- 
+
     .about-info {
         flex-direction: column;
         text-align: center;
     }
- 
+
     .about-img {
         width: 60%;
         height: 60%;
         margin-bottom: 1rem;
     }
- 
+
     .about-info p {
         margin: 1rem 2rem;
     }
- 
+
     .about-info button {
         margin: 1rem 2rem;
         width: 10rem;
     }
- 
+
     .team {
         margin: 0 1rem;
     }

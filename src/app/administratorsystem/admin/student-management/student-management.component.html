@@ -48,7 +48,26 @@
   </form>
 </div>
 
-<div *ngIf="showEnrollForm">
+<div class="nenmodal" id="nenmodal-1">
+  <div class="nenmodal2"></div>
+  <div class="ndmodal">
+    <div class="closemodal">
+      <button (click)="momodal()">×</button>
+    </div>
+      <div *ngIf="showEnrollForm">
+        <div class="titlemodal">Đăng Ký Lớp</div>
+        <p>Chọn lớp cho sinh viên {{ selectedStudent?.studentName }}</p>
+        <select [(ngModel)]="enrollClassId">
+          <option *ngFor="let class of classes" [value]="class.classId">{{ class.courseId }}{{ class.classId }}</option>
+        </select><br />
+        <button (click)="enrollStudentInClass(selectedStudent?.studentId!, enrollClassId)">Đăng ký</button>
+        <button (click)="closeEnrollForm()">Hủy</button>
+      </div>
+  </div>
+</div>
+
+
+<!-- <div *ngIf="showEnrollForm">
   <h3>Đăng Ký Lớp</h3>
   <p>Chọn lớp cho sinh viên {{ selectedStudent?.studentName }}</p>
   <select [(ngModel)]="enrollClassId">
@@ -56,25 +75,31 @@
   </select><br />
   <button (click)="enrollStudentInClass(selectedStudent?.studentId!, enrollClassId)">Đăng ký</button>
   <button (click)="closeEnrollForm()">Hủy</button>
+</div> -->
+
+<div class="nenmodal" id="nenmodal-2">
+  <div class="nenmodal2"></div>
+  <div class="ndmodal">
+    <div class="closemodal">
+      <button (click)="momodal()">×</button>
+    </div>
+    <div *ngIf="loadStudentClasses">
+      <div class="titlemodal">Các Lớp Đã Đăng Ký</div>
+      <table class="student-class-table">
+        <thead>
+          <tr>
+            <th>Mã lớp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let class of studentClasses">
+            <td>{{ class.courseId }}{{ class.classId }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-
-<div *ngIf="loadStudentClasses">
-  <h3>Các Lớp Đã Đăng Ký</h3>
-  <table class="student-table">
-    <thead>
-      <tr>
-        <th>Mã lớp</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let class of studentClasses">
-        <td>{{ class.courseId }}{{ class.classId }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
 
 
 <table class="student-table">
@@ -100,8 +125,8 @@
       <td>
         <button (click)="deleteStudent(student.studentId)" class="btn-delete">Xóa</button>
         <button (click)="openEditStudentForm(student)" class="btn-edit">Sửa</button>
-        <button (click)="openEnrollForm(student)" class="btn-enroll">Đăng ký lớp</button>
-        <button (click)="loadStudentClasses(student.studentId)" class="btn-view-classes">Xem lớp</button>
+        <button onclick="momodal()" (click)="openEnrollForm(student)" class="btn-enroll">Đăng ký lớp</button>
+        <button onclick="momodal()" (click)="loadStudentClasses(student.studentId)" class="btn-view-classes">Xem lớp</button>
       </td>
     </tr>
   </tbody>

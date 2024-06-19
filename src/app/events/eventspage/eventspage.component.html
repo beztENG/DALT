@@ -1,20 +1,11 @@
 <app-navidas></app-navidas>
-<div class="container">
-    <span class="information">
-
-        <img [src]="events.imageUrl" [alt]="events.title">
-
-        <div class="detail">
-            <div class="header">
-                <div class="title">
-                    {{events.title}}
-                </div>
-                <div class="content">
-                    {{events.content}}
-                </div>
-            </div>
-        </div>
-    </span>
+<div class="event-container">
+  <div class="event-image">
+    <img [src]="events.imageUrl" [alt]="events.title">
+  </div>
+  <div class="event-info">
+    <h1 class="event-title">{{events.title}}</h1>
+    <p class="event-content">{{events.content}}</p>
+  </div>
 </div>
 <app-bottom></app-bottom>
-
