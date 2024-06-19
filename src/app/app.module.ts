@@ -33,8 +33,8 @@ import { TeacherAdminComponent } from './administratorsystem/admin/teacher-admin
 import { CourseManaComponent } from './administratorsystem/admin/course-mana/course-mana.component';
 import { AdultStudyComponent } from './adult-study/adult-study.component';
 import { RegisterformComponent } from './registerform/registerform.component';
-import { ClassAttendanceComponent } from './class-attendance/class-attendance.component';
 import { IeltsStudyComponent } from './ielts-study/ielts-study.component';
+import { ClassAttendanceComponent } from './class-attendance/class-attendance.component';
 
 
 
@@ -72,9 +72,7 @@ import { IeltsStudyComponent } from './ielts-study/ielts-study.component';
     StudentManagementComponent,
     CourseManaComponent,
     AdultStudyComponent,
-    RegisterformComponent,
-    ClassAttendanceComponent,
-    IeltsStudyComponent
+    RegisterformComponent
   ],
   imports: [
     BrowserModule,

@@ -23,7 +23,6 @@ import { ClassAttendanceComponent } from './class-attendance/class-attendance.co
 import { IeltsStudyComponent } from './ielts-study/ielts-study.component';
 
 
-
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'childrenstudy', component: ChildrenStudyComponent },
