@@ -22,6 +22,7 @@ import { RegisterformComponent } from './registerform/registerform.component';
 import { ClassAttendanceComponent } from './class-attendance/class-attendance.component';
 
 
+
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'childrenstudy', component: ChildrenStudyComponent },
@@ -40,7 +41,7 @@ const routes: Routes = [
       { path: 'studentManagement', component: StudentManagementComponent },
       { path: 'registrationList', component: RegistrationListComponent },
       { path: 'TeacherAdmin', component: TeacherAdminComponent },
-      { path: 'courseManagement', component: CourseManaComponent },   
+      { path: 'courseManagement', component: CourseManaComponent },
     ]
   },
 
@@ -54,7 +55,7 @@ const routes: Routes = [
 
   { path: 'courseslist', component: CourselistComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'class-attendance/:courseId/:classId', component: ClassAttendanceComponent}
+  { path: 'class-attendance/:courseId/:classId', component: ClassAttendanceComponent }
 ];
 
 @NgModule({

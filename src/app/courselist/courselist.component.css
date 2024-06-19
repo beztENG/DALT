@@ -1,74 +1,114 @@
-#title{
+h2#title {
     text-align: center;
     font-weight: 800;
-    font-size: 40px;
+    font-size: 2.5rem;
+    /* Điều chỉnh kích thước phù hợp */
+    margin-top: 2rem;
+    /* Thêm khoảng cách từ top */
 }
 
-#container{
-    width: 80%;
-    margin: auto;
+#courseslist-page {
+    padding: 2rem 0;
+    /* Tạo khoảng cách padding phía trên và dưới */
+}
 
+#container {
+    width: 90%;
+    /* Điều chỉnh chiều rộng container */
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.course{
-    width: fit-content; 
-    height: fit-content;
-    margin-bottom: 50px;
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+.course {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 300px;
+    /* Điều chỉnh kích thước course */
+    margin: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.imgcourse{
-    width: 20%;
+.course:hover {
+    transform: translateY(-5px);
+    /* Hiệu ứng nhấp nhô khi hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.course img {
+    width: 100%;
+    /* Hình ảnh course full width */
     height: auto;
-}
-.icon-course{
-    display: flex;
-    justify-content: space-around;
-    height: 30px;
+    border-radius: 8px;
+    /* Bo góc hình ảnh */
 }
 
-.icontext{
+.icon-course {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.icon-course .icontext {
     display: flex;
     align-items: center;
 }
-.icontext img{
-    width: 25px;
-    height: 25px;
+
+.icon-course img {
+    width: 20px;
+    /* Kích thước icon */
+    height: 20px;
+    margin-right: 5px;
 }
 
-.namecourse{
-    font-size:large;
+.namecourse {
+    font-size: 1.2rem;
+    /* Kích thước tên khóa học */
     font-weight: 500;
-    padding-left: 10px;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 10px 0;
 }
 
-.rate{
+.rate {
     display: flex;
     align-items: center;
-    margin-top: 0;
-    padding-left: 10px;
-    height: 30px;
+    color: #f39c12;
+    /* Màu sao đánh giá */
+    font-size: 1.2rem;
 }
-.btdangky{
-    width: 25%;
-    height: 35px;
+
+.rate i {
+    color: #f39c12;
+    /* Màu sao đánh giá */
+}
+
+.btdangky {
+    width: 100%;
+    /* Button full width */
+    height: 40px;
+    /* Điều chỉnh chiều cao button */
+    border: none;
     border-radius: 5px;
     background-color: #262261;
-
-    color: #FFFFFF;
+    color: #fff;
     font-weight: 600;
-    size: 32px;
-
-    margin-left: 10px;
-    margin-bottom: 20px;
-    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.btdangky:hover{
-    background-color: #50DD6F;
+.btdangky:hover {
+    background-color: #50dd6f;
+}
+
+@media (max-width: 768px) {
+    .course {
+        width: 100%;
+        /* Thay đổi kích thước course khi trên thiết bị nhỏ hơn */
+    }
 }

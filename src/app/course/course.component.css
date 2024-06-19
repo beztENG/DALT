@@ -1,37 +1,45 @@
-h2{
+h2 {
   color: #262261;
 }
-span{
+
+span {
   color: #50DD6F;
 }
-.courselist{
+
+.courselist {
+  position: relative;
+  top: 20px;
   width: 90%;
   height: 100%;
   font-family: "M PLUS Rounded 1c", sans-serif;
   padding: 20px 16px;
   margin: auto;
 }
-.flex{
+
+.flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.imgCourse{
+
+.imgCourse {
   width: 428px;
   height: 285px;
   overflow: hidden;
 }
-.title{
+
+.title {
   background: #262261;
   color: white;
   text-transform: uppercase;
   padding: 20px 10px;
-  width:329px;
+  width: 329px;
   height: auto;
   margin-top: 0px;
   font-size: 16px;
   text-align: center;
 }
+
 .btn {
   background-color: #50DD6F;
   border: none;
@@ -42,11 +50,33 @@ span{
   cursor: pointer;
   margin-top: -16px;
 }
+
 .btn:hover {
   background-color: #262261;
 }
 
-.course1, .course2, .course3{
+.course1,
+.course2,
+.course3 {
   width: 428px;
   height: 405px;
+  opacity: 0;
+  /* Initially hide the cards */
+  animation: fadeInAnimation 0.5s ease-out forwards;
+  /* Apply animation */
+  animation-delay: 0.3s;
+  /* Delay each card's animation */
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+    /* Optional: Slide up effect */
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

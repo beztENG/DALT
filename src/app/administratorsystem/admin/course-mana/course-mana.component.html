@@ -46,7 +46,8 @@
                     <td>
                         <div class="button-container">
                             <button (click)="deleteCourse(course)" class="action-button delete-button">Xóa</button>
-                            <button (click)="openAddClassForm(course)" class="action-button add-class-button">Tạo Lớp Học</button>
+                            <button (click)="openAddClassForm(course)" class="action-button add-class-button">Tạo Lớp
+                                Học</button>
                         </div>
                     </td>
                 </tr>
@@ -59,6 +60,7 @@
                 <tr>
                     <th>Mã khóa học</th>
                     <th>Mã Lớp học</th>
+                    <th>Tùy chỉnh lớp học</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,9 +69,10 @@
                     <td>{{classroom.classId}}</td>
                     <td>
                         <div class="button-container">
-                            <button (click)="deleteClass(classroom)" class="action-button delete-button">Xóa</button>                            
+                            <button (click)="deleteClass(classroom)" class="action-button delete-button">Xóa</button>
                             <button (click)="sendData(classroom)" class="action-button add-class-button">
-                                <a href="class-attendance/{{classroom.courseId}}/{{classroom.classId}}">Điểm danh</a></button>                            
+                                <a href="class-attendance/{{classroom.courseId}}/{{classroom.classId}}">Điểm
+                                    danh</a></button>
                         </div>
                     </td>
                 </tr>

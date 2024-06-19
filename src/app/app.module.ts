@@ -81,6 +81,7 @@ import { ClassAttendanceComponent } from './class-attendance/class-attendance.co
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,23 +3,19 @@
 <table class="course-table">
     <thead>
         <tr>
-            <th></th>
             <th>Mã học sinh</th>
             <th>Tên học sinh</th>
             <th>Hiện diện</th>
         </tr>
     </thead>
-    <div *ngFor="let student of this.listAttendance">
-        <tbody>
-            <tr>            
-                <td>{{student.studentId}}</td>
-                <td>{{student.studentName}}</td>
-                <td>
-                    <input type="checkbox" name="attendance"[(ngModel)]="student.studentAttendance" required>
-                </td>
-            </tr>
-        </tbody>
-    </div>     
+    <tbody>
+        <tr *ngFor="let student of this.listAttendance">
+            <td>{{student.studentId}}</td>
+            <td>{{student.studentName}}</td>
+            <td>
+                <input type="checkbox" name="attendance" [(ngModel)]="student.studentAttendance" required>
+            </td>
+        </tr>
+    </tbody>
 </table>
-<button type="button" (click)="saveAttendance(this.listAttendance)">Lưu file điểm danh</button>   
-        
+<button type="button" (click)="saveAttendance(this.listAttendance)">Lưu file điểm danh</button>
