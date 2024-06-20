@@ -1,26 +1,35 @@
 <body>
     <div class="container">
         <h2>Danh sách Các Khóa Học</h2>
-        <button *ngIf="!showAddCourseForm" class="add-course-button" (click)="openAddCourseForm()">Thêm Khóa
-            Học</button>
-        <div *ngIf="showAddCourseForm" class="add-course-form">
-            <h3>Thêm Khóa Học</h3>
-            <form #addCourseForm="ngForm" (ngSubmit)="addCourse(newCourse); closeAddCourseForm()">
-                <label>Mã khóa học:</label>
-                <input type="text" name="courseId" [(ngModel)]="newCourse.courseId" required>
-                <label>Tên khóa học:</label>
-                <input type="text" name="courseName" [(ngModel)]="newCourse.name" required>
-                <label>Mô tả:</label>
-                <textarea name="description" [(ngModel)]="newCourse.description" required></textarea>
-                <label>Link hình ảnh khóa học:</label>
-                <input type="text" name="imgUrl" [(ngModel)]="newCourse.imgUrl" required>
-                <label>Thời gian khóa học:</label>
-                <input type="text" name="courseTime" [(ngModel)]="newCourse.time" required>
-                <label>Số buổi học:</label>
-                <input type="number" name="numOfLessons" [(ngModel)]="newCourse.numofLessons" required>
-                <button type="button" (click)="addCourse(newCourse)">Lưu</button>
-                <button type="button" (click)="closeAddCourseForm()">Huỷ</button>
-            </form>
+        <button class="add-course-button" (click)="toggleAddCourseModal()">Thêm Khóa Học</button>
+
+        <!-- Add Course Modal -->
+        <div [class.active]="showAddCourseModal" class="nenmodal">
+            <div class="nenmodal2" (click)="toggleAddCourseModal()"></div>
+            <div class="ndmodal">
+                <div class="closemodal">
+                    <button (click)="toggleAddCourseModal()">&times;</button>
+                </div>
+                <div class="titlemodal">Thêm Khóa Học</div>
+                <form class="add-course-form" #addCourseForm="ngForm" (ngSubmit)="addCourse(newCourse)">
+                    <label>Mã khóa học:</label>
+                    <input type="text" name="courseId" [(ngModel)]="newCourse.courseId" required>
+                    <label>Tên khóa học:</label>
+                    <input type="text" name="courseName" [(ngModel)]="newCourse.name" required>
+                    <label>Mô tả:</label>
+                    <textarea name="description" [(ngModel)]="newCourse.description" required></textarea>
+                    <label>Link hình ảnh khóa học:</label>
+                    <input type="text" name="imgUrl" [(ngModel)]="newCourse.imgUrl" required>
+                    <label>Thời gian khóa học:</label>
+                    <input type="text" name="courseTime" [(ngModel)]="newCourse.time" required>
+                    <label>Số buổi học:</label>
+                    <input type="number" name="numOfLessons" [(ngModel)]="newCourse.numofLessons" required>
+                    <div class="form-buttons">
+                        <button type="submit">Lưu</button>
+                        <button type="button" (click)="toggleAddCourseModal()">Huỷ</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <table class="course-table">
@@ -37,7 +46,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let course of courses">
-                    <img [src]="course.imgUrl">
+                    <td><img [src]="course.imgUrl" alt="Course Image"></td>
                     <td>{{course.courseId}}</td>
                     <td>{{course.name}}</td>
                     <td>{{course.description}}</td>
@@ -71,8 +80,9 @@
                         <div class="button-container">
                             <button (click)="deleteClass(classroom)" class="action-button delete-button">Xóa</button>
                             <button (click)="sendData(classroom)" class="action-button add-class-button">
-                                <a href="class-attendance/{{classroom.courseId}}/{{classroom.classId}}">Điểm
-                                    danh</a></button>
+                                <a [href]="'class-attendance/' + classroom.courseId + '/' + classroom.classId">Điểm
+                                    danh</a>
+                            </button>
                         </div>
                     </td>
                 </tr>

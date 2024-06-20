@@ -48,6 +48,7 @@ export class TeacherAdminComponent implements OnInit {
         data => {
           this.teachers.push(data);
           this.newTeacher = { name: '', phoneNum: '', teachingClass: '', duration: '', periods: [], timeline: '' };
+          this.toggleAddTeacherModal(); // Close the modal after adding a teacher
         },
         error => {
           alert(error.error);
@@ -56,12 +57,9 @@ export class TeacherAdminComponent implements OnInit {
     }
   }
 
-  cancelAdd(): void {
-    this.selectedDate = null;
-  }
-
   editTeacher(teacher: Teacher): void {
     this.selectedTeacher = { ...teacher };
+    this.toggleEditTeacherModal(); // Open the modal for editing
   }
 
   updateTeacher(): void {
@@ -69,8 +67,11 @@ export class TeacherAdminComponent implements OnInit {
       this.teacherService.updateTeacher(this.selectedTeacher._id!, this.selectedTeacher).subscribe(
         data => {
           const index = this.teachers.findIndex(t => t._id === data._id);
-          this.teachers[index] = data;
+          if (index !== -1) {
+            this.teachers[index] = data;
+          }
           this.selectedTeacher = null;
+          this.toggleEditTeacherModal(); // Close the modal after updating
         },
         error => {
           alert(error.error);
@@ -87,6 +88,7 @@ export class TeacherAdminComponent implements OnInit {
 
   cancelEdit(): void {
     this.selectedTeacher = null;
+    this.toggleEditTeacherModal(); // Close the modal when cancelling
   }
 
   generateCalendarDays(year: number, month: number): void {
@@ -108,22 +110,24 @@ export class TeacherAdminComponent implements OnInit {
 
   selectDay(day: number): void {
     this.selectedDate = `${this.currentYear}-${this.currentMonth + 1}-${day}`;
+    this.toggleAddTeacherModal(); // Open the modal when selecting a day
   }
 
   getClassById(courseId: string): Class | undefined {
-    return this.classes.find(cls => cls.courseId === courseId);
+    return this.classes.find(cls => cls.classId === courseId);
   }
+
   getClassInfo(courseId: string): string {
     const classInfo = this.getClassById(courseId);
     if (classInfo) {
       return classInfo.courseId + classInfo.classId;
     }
-    return ''; // Or any default value you prefer
+    return ''; // Or return some default value or handle the case appropriately
   }
 
   getTeachersForDay(day: number): Teacher[] {
     const date = `${this.currentYear}-${this.currentMonth + 1}-${day}`;
-    return this.teachers.filter(teacher => teacher.periods.includes(date));
+    return this.teachers.filter(t => t.periods.includes(date));
   }
 
   getCalendarWeeks(): (number | null)[][] {
@@ -168,13 +172,18 @@ export class TeacherAdminComponent implements OnInit {
     }
     this.generateCalendarDays(this.currentYear, this.currentMonth);
   }
-  momodal(): void {
-    const modalElement = document.getElementById("nenmodal-1");
-    if (modalElement) {
-        modalElement.classList.toggle("active");
-    } else {
-        console.error("Không tìm thấy phần tử với id 'nenmodal-1'.");
+
+  toggleAddTeacherModal(): void {
+    const modal = document.getElementById('addTeacherModal');
+    if (modal) {
+      modal.classList.toggle('active');
+    }
+  }
+
+  toggleEditTeacherModal(): void {
+    const modal = document.getElementById('editTeacherModal');
+    if (modal) {
+      modal.classList.toggle('active');
     }
   }
 }
-
