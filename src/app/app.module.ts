@@ -74,7 +74,7 @@ import { ClassAttendanceComponent } from './class-attendance/class-attendance.co
     AdultStudyComponent,
     RegisterformComponent,
     IeltsStudyComponent,
-    ClassAttendanceComponent,
+    ClassAttendanceComponent
   ],
   imports: [
     BrowserModule,
