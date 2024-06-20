@@ -16,8 +16,8 @@ h2#title {
     width: 90%;
     /* Điều chỉnh chiều rộng container */
     margin: auto;
-    display: flex;
     flex-wrap: wrap;
+    display: flex;
     justify-content: space-around;
 }
 
@@ -69,6 +69,7 @@ h2#title {
 }
 
 .namecourse {
+    width: 100%;
     font-size: 1.2rem;
     /* Kích thước tên khóa học */
     font-weight: 500;
@@ -76,11 +77,13 @@ h2#title {
 }
 
 .rate {
+    width: 100%;
     display: flex;
     align-items: center;
     color: #f39c12;
     /* Màu sao đánh giá */
     font-size: 1.2rem;
+    
 }
 
 .rate i {
