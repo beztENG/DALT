@@ -1,8 +1,24 @@
-<div *ngIf="studentInfo">
-  <h2>{{ studentInfo.studentName }}</h2>
-  <p>Số điện thoại: {{ studentInfo.phoneNumber }}</p>
-  <p>Ngày đăng ký: {{ studentInfo.registrationDate | date }}</p>
-  <p>Điểm giữa kỳ: {{ studentInfo.midtermGrade }}</p>
-  <p>Điểm cuối kỳ: {{ studentInfo.finalGrade }}</p>
-  <button (click)="logout()">Logout</button>
+<div class="container" *ngIf="studentInfo">
+  <div class="student-info">
+    <h2>{{ studentInfo.studentName }}</h2>
+    <p>Số điện thoại: {{ studentInfo.phoneNumber }}</p>
+    <p>Ngày đăng ký: {{ studentInfo.registrationDate | date }}</p>
+  </div>
+
+  <h3>Danh sách lớp học đã đăng ký</h3>
+  <table class="class-table">
+    <thead>
+      <tr>
+        <th>Mã khóa học</th>
+        <th>Tên lớp học</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let classcourse of newlist">
+        <td>{{ classcourse.courseId }}</td>
+        <td>{{ classcourse.classId }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+<button (click)="logout()">Logout</button>

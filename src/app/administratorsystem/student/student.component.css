@@ -1,0 +1,79 @@
+/* Overall container styling */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+h2 {
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Paragraph styling */
+p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Student info section */
+.student-info {
+    margin-bottom: 20px;
+}
+
+/* Table styling */
+.class-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.class-table th,
+.class-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.class-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.class-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.class-table tr:hover {
+    background-color: #ddd;
+}
+
+/* Button styling */
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

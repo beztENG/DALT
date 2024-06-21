@@ -25,7 +25,7 @@ app.use("/api/events", eventsRouter)
 app.use("/api/user", userRouter);
 app.use("/api/academic", academicManagementRouter);
 app.use("/api/contactBook", contactBookRouter);
-app.use("/api/teachers", teacherRouter); 
+app.use("/api/teachers", teacherRouter);
 app.use("/api/course", courseRouter);
 app.use("/api/class", classRouter);
 
