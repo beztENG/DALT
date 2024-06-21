@@ -18,10 +18,14 @@ export class ClassService {
   getClassByCourse(courseId: string): Observable<Class[]> {
     return this.http.get<Class[]>(`${CLASS_URL}/get/${courseId}`);
   }
+  getClassById(id: string): Observable<Class> {
+    return this.http.get<Class>(`${CLASS_URL}/getid/${id}`);
+  } 
   //getOneClass
   getOneClass(courseId: string, classId: string): Observable<Class> {
     return this.http.get<Class>(`${CLASS_URL}/get/${courseId}/${classId}`);
-  }
+  } 
+
   //addClass
   addClass(classroom: Class): Observable<Class> {
     return this.http.post<Class>(`${CLASS_URL}/add`, classroom);

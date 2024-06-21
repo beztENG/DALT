@@ -54,6 +54,11 @@ router.get('/students/:id', async (req: Request, res: Response) => {
     const student = await StudentModel.findById(req.params.id);
     res.json(student);
 });
+//get one by mssv
+router.get('/students/studentId/:studentId', async (req: Request, res: Response) => {
+    const student = await StudentModel.findOne({ studentId: req.params.studentId });
+    res.json(student);
+});
 
 
 // Route to add a new student and a corresponding user

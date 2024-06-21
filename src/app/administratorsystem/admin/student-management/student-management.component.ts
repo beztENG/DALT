@@ -30,7 +30,8 @@ export class StudentManagementComponent implements OnInit {
     phoneNumber: '',
     registrationDate: new Date(),
     midtermGrade: '',
-    finalGrade: ''
+    finalGrade: '',
+    classes: []
   };
 
   @ViewChild('addStudentForm') addStudentForm: any; // Biến tham chiếu mẫu cho form thêm

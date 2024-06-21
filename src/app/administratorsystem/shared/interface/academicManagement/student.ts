@@ -7,4 +7,5 @@ export interface Student {
     registrationDate: Date;
     midtermGrade: string;
     finalGrade: string;
+    classes: string[];
 }

@@ -21,6 +21,7 @@ import { AdultStudyComponent } from './adult-study/adult-study.component';
 import { RegisterformComponent } from './registerform/registerform.component';
 import { ClassAttendanceComponent } from './class-attendance/class-attendance.component';
 import { IeltsStudyComponent } from './ielts-study/ielts-study.component';
+import { StudentBookComponent } from './student-book/student-book.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'ieltsstudy', component: IeltsStudyComponent },
   { path: 'register', component: RegisterformComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'loginStudent', redirectTo: 'login', pathMatch: 'full' }, // Redirect to single login component
+  { path: 'loginStudent', redirectTo: 'login', pathMatch: 'full' },
+  { path:'studentbook/:studentId', component: StudentBookComponent},
 
   {
     path: 'admin', component: AdminComponent, children: [

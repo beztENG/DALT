@@ -23,7 +23,10 @@ export class AcademicManagementService {
   getStudentById(studentId: string): Observable<Student> {
     return this.http.get<Student>(`${STUDENT_URL}/students/${studentId}`);
   }
-  
+//get by studentID
+  getStudentByStudentId(studentId: string): Observable<Student> {
+    return this.http.get<Student>(`${STUDENT_URL}/students/studentId/${studentId}`);
+  }  
   searchStudents(keyword: string): Observable<Student[]> {
     const searchUrl = `${STUDENT_URL}/students/search?keyword=${keyword}`;
     return this.http.get<Student[]>(searchUrl);
