@@ -74,6 +74,7 @@ import { StudentBookComponent } from './student-book/student-book.component';
     CourseManaComponent,
     AdultStudyComponent,
     RegisterformComponent,
+    AdultStudyComponent,
     IeltsStudyComponent,
     ClassAttendanceComponent,
     StudentBookComponent

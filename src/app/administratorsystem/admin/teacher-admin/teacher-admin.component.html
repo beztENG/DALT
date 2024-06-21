@@ -1,11 +1,12 @@
 <div>
   <h2>Teacher Calendar</h2>
 
-  <div class="nenmodal" id="nenmodal-1">
-    <div class="nenmodal2"></div>
+  <!-- Add Teacher Modal -->
+  <div class="nenmodal" id="addTeacherModal">
+    <div class="nenmodal2" (click)="toggleAddTeacherModal()"></div>
     <div class="ndmodal">
       <div class="closemodal">
-        <button (click)="momodal()">×</button>
+        <button (click)="toggleAddTeacherModal()">×</button>
       </div>
       <div *ngIf="selectedDate" class="form-container">
         <h3>Add Teacher for {{ selectedDate }}</h3>
@@ -16,47 +17,27 @@
           <input [(ngModel)]="newTeacher.phoneNum" name="phoneNum" required>
           <label>Teaching Class:</label>
           <select [(ngModel)]="newTeacher.teachingClass" name="teachingClass" required>
-            <option *ngFor="let class of classes" [value]="class.classId ">{{ class.courseId + class.classId }}</option>
+            <option *ngFor="let class of classes" [value]="class.classId">{{ class.courseId + class.classId }}</option>
           </select>
           <label>Duration:</label>
           <input [(ngModel)]="newTeacher.duration" name="duration" required>
           <label>Timeline:</label>
           <input [(ngModel)]="newTeacher.timeline" name="timeline" placeholder="e.g., 3:00pm - 5:00pm" required>
           <div class="form-buttons">
-            <button type="submit">Thêm</button>
-            <button type="button" (click)="cancelAdd()">Hủy</button>
+            <button type="submit">Add</button>
+            <button type="button" (click)="toggleAddTeacherModal()">Cancel</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 
-  <div *ngIf="selectedTeacher" class="form-container">
-    <h3>Edit Teacher</h3>
-    <form (ngSubmit)="updateTeacher()">
-      <label>Name:</label>
-      <input [(ngModel)]="selectedTeacher.name" name="name" required>
-      <label>Phone Number:</label>
-      <input [(ngModel)]="selectedTeacher.phoneNum" name="phoneNum" required>
-      <label>Teaching Class:</label>
-      <select [(ngModel)]="selectedTeacher.teachingClass" name="teachingClass" required>
-        <option *ngFor="let class of classes" [value]="class.classId">{{ class.courseId + class.classId }}</option>
-      </select>
-      <label>Duration:</label>
-      <input [(ngModel)]="selectedTeacher.duration" name="duration" required>
-      <label>Timeline:</label>
-      <input [(ngModel)]="selectedTeacher.timeline" name="timeline" placeholder="e.g., 3:00pm - 5:00pm" required>
-      <div class="form-buttons">
-        <button type="submit">Update</button>
-        <button type="button" (click)="cancelEdit()">Cancel</button>
-      </div>
-    </form>
-  </div>
-  <div class="nenmodal" id="nenmodal-1">
-    <div class="nenmodal2"></div>
+  <!-- Edit Teacher Modal -->
+  <div class="nenmodal" id="editTeacherModal">
+    <div class="nenmodal2" (click)="toggleEditTeacherModal()"></div>
     <div class="ndmodal">
       <div class="closemodal">
-        <button (click)="momodal()">×</button>
+        <button (click)="toggleEditTeacherModal()">×</button>
       </div>
       <div *ngIf="selectedTeacher" class="form-container">
         <h3>Edit Teacher</h3>
@@ -92,7 +73,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let week of getCalendarWeeks()">
-          <td *ngFor="let day of week" (click)="day !== null && selectDay(day)" [class.selected]="day === selectedDate" >
+          <td *ngFor="let day of week" (click)="day !== null && selectDay(day)" [class.selected]="day === selectedDate">
             <div>
               <span *ngIf="day !== null">{{ day }}</span>
               <div *ngIf="day !== null">
@@ -101,7 +82,7 @@
                   <div>{{ teacher.teachingClass }}</div>
                   <div class="teacher-timeline">{{ teacher.timeline }}</div>
                   <div class="teacher-buttons">
-                    <button onclick="momodal()" (click)="editTeacher(teacher)">Edit</button>
+                    <button (click)="editTeacher(teacher)">Edit</button>
                     <button (click)="deleteTeacher(teacher._id!)">Delete</button>
                   </div>
                 </div>
