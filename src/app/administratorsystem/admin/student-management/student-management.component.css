@@ -1,5 +1,5 @@
-* {
-    margin: 0;
+body {
+    margin-left: 4rem;
     padding: 0;
     box-sizing: border-box;
 }
@@ -9,7 +9,7 @@
 .student-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px auto;
+    margin: 10px auto;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }

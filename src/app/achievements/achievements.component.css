@@ -1,81 +1,72 @@
-#achievements-page{
-    font-family: "M PLUS Rounded 1c", sans-serif;
-    position: relative;    
-    width: 100%;
-    height: 684px;
-    top:100px;
-    float: left;
-    background: #FFFFFF;
+#achievements-page {
+    padding: 20px;
+    background-color: #f9fff9;
+    /* Light green background */
 }
 
-#achievements-title{
-/* HEADER */
-    font-family: "M PLUS Rounded 1c", sans-serif;
-    font-weight: 800;
-    font-style: normal;
-    color: #FFFFFF;
-    font-weight: bold;
-    font-size: 32px;
-
-    position: absolute;
-    width: 100%;
-    height: 120px;
-    left: -27px;
-    top: 0px;
-
-    margin: auto;
+#achievements-title h3 {
     text-align: center;
-    background: #262261;
-
+    background-color: #262261;
+    color: white;
+    /* Dark green for title */
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
-#achievements{
-   /* Khung Thành tích */
-    position: absolute;
-    width: 90%;
-    height: 338px;
-    left: 78px;
-    top: 200px;
-
-    background: #FFFFFF;    
+#achievements {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
-.achievement-container{
-    /* Thành Tích */
-
-    width: 32%;
-    height: 248px;
-    left: 0px;
-    top: 44px;
-
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));   
-    background-color: #87DD9A;
-    border: left 20px ;
-    box-sizing: border-box;
-
+.achievement-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    /* White background */
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.img-content{
-    width: 150px;
-    height: 248px;
-    float: left;
+.achievement-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.content{
-    width: 250px;
-    height: 248px;
-    float:right;
-    font-family: "M PLUS Rounded 1c", sans-serif;
-    font-weight:lighter;
-    font-style: normal;
+.achievement-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
-        
 
-.content p{
-    padding-left: 5px;
-    font-weight:lighter;
-    font-style: normal;
+#content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#content #title-content {
+    color: #262261;
+    /* Dark blue for content title */
+    font-size: 1.3em;
+    margin-bottom: 8px;
+}
+
+.text-content p {
+    color: #333;
+    /* Dark gray for text */
+    margin: 3px 0;
+    font-size: 1.1em;
+}
+
+.text-content p:last-child {
+    font-weight: bold;
+    font-size: 1.2em;
 }

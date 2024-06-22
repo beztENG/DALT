@@ -1,17 +1,21 @@
 <!-- registration-list.component.html -->
 
-<h2>Danh sách Sinh viên</h2>
+<body>
 
-<input type="text" [(ngModel)]="searchKeyword" (input)="search()" placeholder="Tìm kiếm...">
 
-<button (click)="loadStudents()">Sắp xếp theo thời gian đăng ký</button>
-<button (click)="search()">Tìm kiếm</button>
+    <h2>Danh sách Sinh viên</h2>
 
-<ul class="student-list">
-    <li *ngFor="let student of students" class="student-item">
-        <strong>Mã SV:</strong> {{ student.studentId }} <br>
-        <strong>Tên sinh viên:</strong> {{ student.studentName }} <br>
-        <strong>Số điện thoại:</strong> {{ student.phoneNumber }} <br>
-        <strong>Thời gian đăng ký:</strong> {{ student.registrationDate | date: 'dd/MM/yyyy' }} <br>
-    </li>
-</ul>
+    <input type="text" [(ngModel)]="searchKeyword" (input)="search()" placeholder="Tìm kiếm...">
+
+    <button (click)="loadStudents()">Sắp xếp theo thời gian đăng ký</button>
+    <button (click)="search()">Tìm kiếm</button>
+
+    <ul class="student-list">
+        <li *ngFor="let student of students" class="student-item">
+            <strong>Mã SV:</strong> {{ student.studentId }} <br>
+            <strong>Tên sinh viên:</strong> {{ student.studentName }} <br>
+            <strong>Số điện thoại:</strong> {{ student.phoneNumber }} <br>
+            <strong>Thời gian đăng ký:</strong> {{ student.registrationDate | date: 'dd/MM/yyyy' }} <br>
+        </li>
+    </ul>
+</body>
