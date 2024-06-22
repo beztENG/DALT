@@ -6,7 +6,7 @@ export interface Student {
     email: string;
     password: string;
     phoneNumber: string;
-    registrationDate: Date; 
+    registrationDate: Date;
     midtermGrade: string;
     finalGrade: string;
     classes: Types.ObjectId[];
@@ -24,14 +24,14 @@ export const StudentSchema = new Schema<Student>(
         finalGrade: { type: String, required: false },
         classes: [{ type: Types.ObjectId, ref: 'class' }]
     }, {
-        timestamps: true,
-        toJSON: {
-            virtuals: true
-        },
-        toObject: {
-            virtuals: true
-        }
+    timestamps: true,
+    toJSON: {
+        virtuals: true
+    },
+    toObject: {
+        virtuals: true
     }
+}
 );
 
 export const StudentModel = model<Student>('student', StudentSchema);

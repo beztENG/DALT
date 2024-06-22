@@ -1,6 +1,7 @@
 <div class="container" *ngIf="studentInfo">
   <div class="student-info">
     <h2>{{ studentInfo.studentName }}</h2>
+    <p>Gmail: {{studentInfo.email}}</p>
     <p>Số điện thoại: {{ studentInfo.phoneNumber }}</p>
     <p>Ngày đăng ký: {{ studentInfo.registrationDate | date }}</p>
   </div>
@@ -20,5 +21,11 @@
       </tr>
     </tbody>
   </table>
+  <div class="button-group">
+    <button class="send-email-button" (click)="sendEmail()">Send Email</button>
+    <button class="logout-button" (click)="logout()">Logout</button>
+  </div>
+  <div class="notification-popup" [class.show]="showNotification">
+    {{ notificationMessage }}
+  </div>
 </div>
-<button (click)="logout()">Logout</button>

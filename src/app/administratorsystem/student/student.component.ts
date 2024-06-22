@@ -5,7 +5,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClassService } from 'src/app/services/class.service';
 import { AcademicManagementService } from 'src/app/services/academic-management.service';
-// import { Class } from '../administratorsystem/shared/interface/class/class';
+import emailjs from '@emailjs/browser'
 
 @Component({
   selector: 'app-student',
@@ -25,6 +25,8 @@ export class StudentComponent implements OnInit {
     classId: ''
   };
   newlist: ClassCourse[] = [];
+  showNotification: boolean = false;
+  notificationMessage: string = '';
 
   constructor(
     private contactBookService: ContactBookService,
@@ -74,6 +76,36 @@ export class StudentComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  sendEmail(): void {
+    if (this.studentInfo) {
+      const templateParams = {
+        to_name: this.studentInfo.studentName,
+        to_email: this.studentInfo.email,
+        student_name: this.studentInfo.studentName,
+        phone_number: this.studentInfo.phoneNumber,
+        registration_date: this.studentInfo.registrationDate,
+        class_list: this.newlist.map(c => `Course ID: ${c.courseId}, Class ID: ${c.classId}`).join('\n')
+      };
+
+      emailjs.send('service_j4ici98', 'template_pqhbpdx', templateParams, 'J0OaKjwbSr61aY8yd')
+        .then((response) => {
+          console.log('Email sent successfully!', response.status, response.text);
+          this.showNotificationMessage(`Email sent successfully to ${this.studentInfo?.email}`);
+        }, (error) => {
+          console.error('Failed to send email:', error);
+          this.showNotificationMessage('Failed to send email. Please try again.');
+        });
+    }
+  }
+  showNotificationMessage(message: string): void {
+    this.notificationMessage = message;
+    this.showNotification = true;
+    setTimeout(() => {
+      this.showNotification = false;
+    }, 3000);
+  }
+
 }
 
 export interface Data {

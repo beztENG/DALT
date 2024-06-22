@@ -8,32 +8,33 @@
                 <p>nhân viên tư vấn. Đơn đăng ký sẽ được phản hồi trong vòng 24 tiếng.</p>
             </div>
         </div>
-        <form>
+        <form (submit)="sendRegistrationEmail($event)">
             <div class="form-container">
                 <div>
-                    <input type="text" placeholder="Họ Tên" required />
+                    <input type="text" placeholder="Họ Tên" required [(ngModel)]="fullName" name="fullName" />
                 </div>
                 <div>
-                    <input type="email" placeholder="Email" required />
+                    <input type="email" placeholder="Email" required [(ngModel)]="email" name="email" />
                 </div>
                 <div>
-                    <input type="tel" placeholder="Số điện thoại" required />
+                    <input type="tel" placeholder="Số điện thoại" required [(ngModel)]="phoneNumber"
+                        name="phoneNumber" />
                 </div>
             </div>
             <div class="form-container">
                 <div>
-                    <input type="text" placeholder="Thành Phố/ Tỉnh" required />
+                    <input type="text" placeholder="Thành Phố/ Tỉnh" required [(ngModel)]="city" name="city" />
                 </div>
                 <div>
-                    <input type="text" placeholder="Quận/ Huyện" required />
+                    <input type="text" placeholder="Quận/ Huyện" required [(ngModel)]="district" name="district" />
                 </div>
                 <div>
-                    <input type="text" placeholder="Phường" required />
+                    <input type="text" placeholder="Phường" required [(ngModel)]="ward" name="ward" />
                 </div>
-
             </div>
-            <button class="button-send" type="submit"></button>
+            <button type="submit" class="button-send"></button>
         </form>
+
     </div>
 
     <div class="image-container-right">
