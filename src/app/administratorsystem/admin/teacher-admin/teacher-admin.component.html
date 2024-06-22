@@ -1,5 +1,5 @@
 <div>
-  <h2>Teacher Calendar</h2>
+  <h2>Lịch Giáo Viên</h2>
 
   <!-- Add Teacher Modal -->
   <div class="nenmodal" id="addTeacherModal">
@@ -9,23 +9,23 @@
         <button (click)="toggleAddTeacherModal()">×</button>
       </div>
       <div *ngIf="selectedDate" class="form-container">
-        <h3>Add Teacher for {{ selectedDate }}</h3>
+        <h3>Thêm Giáo Viên cho {{ selectedDate }}</h3>
         <form (ngSubmit)="addTeacher()">
-          <label>Name:</label>
+          <label>Tên:</label>
           <input [(ngModel)]="newTeacher.name" name="name" required>
-          <label>Phone Number:</label>
+          <label>Số Điện Thoại:</label>
           <input [(ngModel)]="newTeacher.phoneNum" name="phoneNum" required>
-          <label>Teaching Class:</label>
+          <label>Lớp Dạy:</label>
           <select [(ngModel)]="newTeacher.teachingClass" name="teachingClass" required>
             <option *ngFor="let class of classes" [value]="class.classId">{{ class.courseId + class.classId }}</option>
           </select>
-          <label>Duration:</label>
+          <label>Thời Lượng:</label>
           <input [(ngModel)]="newTeacher.duration" name="duration" required>
-          <label>Timeline:</label>
-          <input [(ngModel)]="newTeacher.timeline" name="timeline" placeholder="e.g., 3:00pm - 5:00pm" required>
+          <label>Thời Gian:</label>
+          <input [(ngModel)]="newTeacher.timeline" name="timeline" placeholder="ví dụ: 3:00pm - 5:00pm" required>
           <div class="form-buttons">
-            <button type="submit">Add</button>
-            <button type="button" (click)="toggleAddTeacherModal()">Cancel</button>
+            <button type="submit">Thêm</button>
+            <button type="button" (click)="toggleAddTeacherModal()">Hủy</button>
           </div>
         </form>
       </div>
@@ -40,23 +40,23 @@
         <button (click)="toggleEditTeacherModal()">×</button>
       </div>
       <div *ngIf="selectedTeacher" class="form-container">
-        <h3>Edit Teacher</h3>
+        <h3>Chỉnh Sửa Giáo Viên</h3>
         <form (ngSubmit)="updateTeacher()">
-          <label>Name:</label>
+          <label>Tên:</label>
           <input [(ngModel)]="selectedTeacher.name" name="name" required>
-          <label>Phone Number:</label>
+          <label>Số Điện Thoại:</label>
           <input [(ngModel)]="selectedTeacher.phoneNum" name="phoneNum" required>
-          <label>Teaching Class:</label>
+          <label>Lớp Dạy:</label>
           <select [(ngModel)]="selectedTeacher.teachingClass" name="teachingClass" required>
             <option *ngFor="let class of classes" [value]="class.classId">{{ class.courseId + class.classId }}</option>
           </select>
-          <label>Duration:</label>
+          <label>Thời Lượng:</label>
           <input [(ngModel)]="selectedTeacher.duration" name="duration" required>
-          <label>Timeline:</label>
-          <input [(ngModel)]="selectedTeacher.timeline" name="timeline" placeholder="e.g., 3:00pm - 5:00pm" required>
+          <label>Thời Gian:</label>
+          <input [(ngModel)]="selectedTeacher.timeline" name="timeline" placeholder="ví dụ: 3:00pm - 5:00pm" required>
           <div class="form-buttons">
-            <button type="submit">Update</button>
-            <button type="button" (click)="cancelEdit()">Cancel</button>
+            <button type="submit">Cập Nhật</button>
+            <button type="button" (click)="cancelEdit()">Hủy</button>
           </div>
         </form>
       </div>
@@ -82,8 +82,8 @@
                   <div>{{ teacher.teachingClass }}</div>
                   <div class="teacher-timeline">{{ teacher.timeline }}</div>
                   <div class="teacher-buttons">
-                    <button (click)="editTeacher(teacher)">Edit</button>
-                    <button (click)="deleteTeacher(teacher._id!)">Delete</button>
+                    <button (click)="editTeacher(teacher)">Chỉnh Sửa</button>
+                    <button (click)="deleteTeacher(teacher._id!)">Xóa</button>
                   </div>
                 </div>
               </div>
@@ -93,8 +93,8 @@
       </tbody>
     </table>
     <div class="nav-buttons">
-      <button class="nav-button" (click)="previousMonth()">Previous Month</button>
-      <button class="nav-button" (click)="nextMonth()">Next Month</button>
+      <button class="nav-button" (click)="previousMonth()">Tháng Trước</button>
+      <button class="nav-button" (click)="nextMonth()">Tháng Sau</button>
     </div>
   </div>
 </div>

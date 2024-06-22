@@ -1,7 +1,36 @@
 <h1>Trang chính</h1>
-<div class="card">
-    <div class="card-head">TRANG CHÍNH</div>
-    <div class="card-body">
-        Đây là trang chính của phần mềm quản lý giáo viên
-    </div>
+
+<div class="dashboard-container">
+  <div class="welcome-card">
+    <h2>Xin chào, {{ userName }}!</h2>
+    <p>Chào mừng bạn đến với phần mềm quản lý giáo viên.</p>
+  </div>
+
+  <div class="summary-cards">
+    <a class="summary-card" routerLink="/admin/studentManagement">
+      <i class="fas fa-users"></i>
+      <h3>Tổng quan học sinh</h3>
+      <p>Xem thông tin chi tiết về học sinh.</p>
+    </a>
+    <a class="summary-card" routerLink="/admin/TeacherAdmin">
+      <i class="fas fa-chalkboard-teacher"></i>
+      <h3>Quản lý giáo viên</h3>
+      <p>Tạo và quản lý giáo viên.</p>
+    </a>
+    <a class="summary-card" routerLink="/admin/courseManagement">
+      <i class="fas fa-calendar-alt"></i>
+      <h3>Quản lý khóa học</h3>
+      <p>Tạo và quản lý khóa học.</p>
+    </a>
+  </div>
+  <div class="announcements" *ngIf="announcements.length > 0">
+    <h2>Thông báo</h2>
+    <ul>
+      <li *ngFor="let announcement of announcements">
+        <span class="announcement-date">{{ announcement.date }}</span> - {{ announcement.message }}
+      </li>
+    </ul>
+  </div>
 </div>
+
+
