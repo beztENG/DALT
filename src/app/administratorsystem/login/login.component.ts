@@ -28,8 +28,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const token = this.authenticationService.getToken();
     if (token) {
-      this.authenticationService.loggedIn = true;
-      this.router.navigate(['/home']);
+      const role = this.authenticationService.getUserRole();
+      if (role === 'admin') {
+        this.router.navigate(['/admin/dashboard']);
+      } else if (role === 'student') { 
+        this.router.navigate(['/student/dashboard']);
+      }
     }
   }
 
@@ -56,11 +60,11 @@ export class LoginComponent implements OnInit {
           this.authenticationService.loggedIn = true;
           if (data && data.token) {
             localStorage.setItem('email', userLogin.email);
-            const userRole = data.user.role;
-            if (userRole === 'admin') {
+            const userRole = data.user.role.toString(); 
+            if (userRole === 'admin') { 
               this.router.navigate(['/admin/dashboard']);
             } else if (userRole === 'student') {
-              this.router.navigate(['/student']);
+              this.router.navigate(['/student/dashboard']);
             }
           }
         },

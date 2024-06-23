@@ -34,6 +34,7 @@ import { AdultStudyComponent } from './adult-study/adult-study.component';
 import { RegisterformComponent } from './registerform/registerform.component';
 import { IeltsStudyComponent } from './ielts-study/ielts-study.component';
 import { ClassAttendanceComponent } from './class-attendance/class-attendance.component';
+import { WarningComponent } from './warning/warning.component';
 
 
 
@@ -75,7 +76,8 @@ import { ClassAttendanceComponent } from './class-attendance/class-attendance.co
     RegisterformComponent,
     AdultStudyComponent,
     IeltsStudyComponent,
-    ClassAttendanceComponent
+    ClassAttendanceComponent,
+    WarningComponent
   ],
   imports: [
     BrowserModule,

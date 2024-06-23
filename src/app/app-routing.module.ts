@@ -21,8 +21,8 @@ import { AdultStudyComponent } from './adult-study/adult-study.component';
 import { RegisterformComponent } from './registerform/registerform.component';
 import { ClassAttendanceComponent } from './class-attendance/class-attendance.component';
 import { IeltsStudyComponent } from './ielts-study/ielts-study.component';
-
-
+import { AuthGuard } from './guard/auth.guard';
+import { WarningComponent } from './warning/warning.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -35,30 +35,26 @@ const routes: Routes = [
   { path: 'register', component: RegisterformComponent },
   { path: 'login', component: LoginComponent },
   { path: 'loginStudent', redirectTo: 'login', pathMatch: 'full' },
-  
-
-  {
-    path: 'admin', component: AdminComponent, children: [
+  { 
+    path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { role: 'admin' }, children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'setting', component: SettingsComponent },
       { path: 'studentManagement', component: StudentManagementComponent },
       { path: 'registrationList', component: RegistrationListComponent },
       { path: 'TeacherAdmin', component: TeacherAdminComponent },
       { path: 'courseManagement', component: CourseManaComponent },
-    ]
+    ] 
   },
-
-  {
-    path: 'student', component: StudentComponent, children: [
+  { 
+    path: 'student', component: StudentComponent, canActivate: [AuthGuard], data: { role: 'student' }, children: [
       { path: 'dashboard', component: StudentDashboardComponent }
-    ]
+    ] 
   },
-
-  { path: 'student/:studentId', component: StudentComponent },
-
   { path: 'courseslist', component: CourselistComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'class-attendance/:courseId/:classId', component: ClassAttendanceComponent }
+  { path: 'class-attendance/:courseId/:classId', component: ClassAttendanceComponent },
+  { path: 'warning', component: WarningComponent },
+  { path: '**', redirectTo: 'login' } 
 ];
 
 @NgModule({

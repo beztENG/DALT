@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IUser } from '../administratorsystem/shared/interface/user/user';
 import { USER_LOGIN_URL } from '../administratorsystem/shared/constants/url';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,16 @@ import { USER_LOGIN_URL } from '../administratorsystem/shared/constants/url';
 export class AuthenticationService {
   loggedIn = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) {
+    this.checkLoginStatus();
+  }
+
+  checkLoginStatus(): void {
+    const token = this.getToken();
+    if (token) {
+      this.loggedIn = true;
+    }
+  }
 
   login(userLogin: IUser): Observable<any> {
     return this.http.post<any>(USER_LOGIN_URL, userLogin)
@@ -27,8 +37,12 @@ export class AuthenticationService {
       );
   }
 
-  getToken(): string | null {
+  getToken(): string | null { 
     return localStorage.getItem('token');
+  }
+
+  getUserRole(): string | null {
+    return localStorage.getItem('role');
   }
 
   getUserName(): string | null {

@@ -16,7 +16,7 @@ export const navbarData = [
     },
     {
         routeLink: 'studentManagement',
-        icon: '	far fa-address-book',
+        icon: '	far fa-user',
         label: 'Quản lý sinh viên'
     },
     {
