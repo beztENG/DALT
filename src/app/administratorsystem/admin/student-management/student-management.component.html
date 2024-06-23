@@ -41,11 +41,11 @@
       <label>ID sinh viên:</label>
       <input type="text" name="studentId" [ngModel]="newStudent.studentId" readonly>
       <label>Tên sinh viên:</label>
-      <input type="text" name="studentName" [ngModel]="newStudent.studentName" required>
-      <label>Email:</label>
-      <input type="text" name="Email" [ngModel]="newStudent.email" required>
+      <input type="text" name="studentName" [ngModel]="selectedStudent?.studentName" required>
+      <!-- <label>Email:</label>
+      <input type="text" name="Email" [ngModel]="selectedStudent?.email" required>
       <label>Password:</label>
-      <input type="text" name="Password" [ngModel]="newStudent.password" required>
+      <input type="text" name="Password" [ngModel]="selectedStudent?.password" required> -->
       <label>Số điện thoại:</label>
       <input type="text" name="phoneNumber" [ngModel]="newStudent.phoneNumber" required>
       <button type="submit" (click)="updateStudent(newStudent)">Lưu</button>
@@ -113,7 +113,7 @@
         <th>Mã SV</th>
         <th>Tên sinh viên</th>
         <th>Email</th>
-        <th>Password</th>
+        <!-- <th>Password</th> -->
         <th>Số điện thoại</th>
         <th>Thời gian đăng ký</th>
         <th>Chức năng</th>
@@ -124,7 +124,7 @@
         <td>{{ student.studentId }}</td>
         <td>{{ student.studentName }}</td>
         <td>{{ student.email }}</td>
-        <td>{{ student.password }}</td>
+        <!-- <td>{{ student.password }}</td> -->
         <td>{{ student.phoneNumber }}</td>
         <td>{{ student.registrationDate | date: 'dd/MM/yyyy' }}</td>
         <td>
