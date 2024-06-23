@@ -37,18 +37,18 @@
   <div *ngIf="showEditStudentForm">
     <h3>Cập Nhật Thông Tin Sinh Viên</h3>
     <form #editStudentForm="ngForm"
-      (ngSubmit)="updateStudent(editStudentForm.value); closeEditStudentForm(); editStudentForm.resetForm()">
+      (ngSubmit)="updateStudent(newStudent); closeEditStudentForm(); editStudentForm.resetForm()">
       <label>ID sinh viên:</label>
-      <input type="text" name="studentId" [ngModel]="selectedStudent?.studentId" readonly>
+      <input type="text" name="studentId" [ngModel]="newStudent.studentId" readonly>
       <label>Tên sinh viên:</label>
-      <input type="text" name="studentName" [ngModel]="selectedStudent?.studentName" required>
+      <input type="text" name="studentName" [ngModel]="newStudent.studentName" required>
       <label>Email:</label>
-      <input type="text" name="Email" [ngModel]="selectedStudent?.email" required>
+      <input type="text" name="Email" [ngModel]="newStudent.email" required>
       <label>Password:</label>
-      <input type="text" name="Password" [ngModel]="selectedStudent?.password" required>
+      <input type="text" name="Password" [ngModel]="newStudent.password" required>
       <label>Số điện thoại:</label>
-      <input type="text" name="phoneNumber" [ngModel]="selectedStudent?.phoneNumber" required>
-      <button type="submit">Lưu</button>
+      <input type="text" name="phoneNumber" [ngModel]="newStudent.phoneNumber" required>
+      <button type="submit" (click)="updateStudent(newStudent)">Lưu</button>
       <button type="button" (click)="closeEditStudentForm()">Huỷ</button>
     </form>
   </div>

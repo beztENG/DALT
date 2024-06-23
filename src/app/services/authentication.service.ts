@@ -55,4 +55,9 @@ export class AuthenticationService {
     localStorage.removeItem('name');
     this.loggedIn = false;
   }
+
+  //change password user
+  changePassword(email: string, password: string): Observable<any> {    
+    return this.http.put<any>(`${USER_LOGIN_URL}/account/${email}/change-password`, password);
+  }
 }

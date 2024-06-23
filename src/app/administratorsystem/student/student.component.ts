@@ -105,9 +105,49 @@ export class StudentComponent implements OnInit {
       this.showNotification = false;
     }, 3000);
   }
+  
+  oldPassword: string = '';
+  newPassword: string = '';
+  confirmPassword: string = '';
+  showChangePasswordForm = false;
+
+  changePassword(): void {
+    if(this.newPassword !== this.confirmPassword) {
+      this.showNotificationMessage('Mật khẩu mới không khớp nhau. Vui lòng thử lại.');
+      return;
+    }
+
+    if(this.oldPassword !== this.studentInfo?.password) {
+      this.showNotificationMessage('Mật khẩu cũ không đúng. Vui lòng thử lại.');
+      return;
+    }
+
+    this.authService.changePassword(this.studentInfo?.email || '', this.newPassword).subscribe(
+      (res) => {
+        console.log('Password changed successfully:', res);
+        this.showNotificationMessage('Đổi mật khẩu thành công');
+      },
+      (error) => {
+        console.error('Failed to change password:', error);
+        this.showNotificationMessage('Đổi mật khẩu thất bại. Vui lòng thử lại.');
+      }
+    );
+  }
+
+  openChangePasswordForm(): void {
+    this.showChangePasswordForm = true;
+  }
+
+  cancelChangePassword(): void {
+    this.showChangePasswordForm = false;
+    this.oldPassword = '';
+    this.newPassword = '';
+    this.confirmPassword = '';
+  }
+
+
 
 }
-
 export interface Data {
   studentId: string;
   studentName: string;

@@ -24,8 +24,28 @@
   <div class="button-group">
     <button class="send-email-button" (click)="sendEmail()">Gửi Email</button>
     <button class="logout-button" (click)="logout()">Đăng xuất</button>
+    <button class="change-password-button" (click)="showChangePasswordForm = true">Đổi mật khẩu</button>
   </div>
   <div class="notification-popup" [class.show]="showNotification">
     {{ notificationMessage }}
   </div>
+
+  <div class="change-password-form" *ngIf="showChangePasswordForm">
+    <h3>Đổi mật khẩu</h3>
+    <form (ngSubmit)="changePassword()" #changePasswordForm="ngForm">
+      <div class="form-group">
+        <label for="oldPassword">Mật khẩu cũ</label>
+        <input type="password" id="oldPassword" name="oldPassword" [(ngModel)]="oldPassword" required>
+      </div>
+      <div class="form-group">
+        <label for="newPassword">Mật khẩu mới</label>
+        <input type="password" id="newPassword" name="newPassword" [(ngModel)]="newPassword" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Nhập lại mật khẩu mới</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required>
+      </div>
+      <button type="submit" [disabled]="!changePasswordForm.valid">Đổi mật khẩu</button>
+      <button type="button" (click)="cancelChangePassword()">Hủy</button>
+    </form>
 </div>

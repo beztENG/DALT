@@ -61,6 +61,7 @@ courses: any;
   openEditStudentForm(student: Student) {
     this.editMode = true;
     this.selectedStudent = student; // Đặt để chỉnh sửa
+    this.newStudent = student;
     this.showEditStudentForm = true;
   }
 
@@ -149,6 +150,17 @@ courses: any;
           this.students[index] = updatedStudent;
         }
         this.selectedStudent = null; // Xóa sinh viên được chọn sau khi cập nhật
+        this.newStudent = {
+          studentId: '',
+          studentName: '',
+          email: '',
+          password: '',
+          phoneNumber: '',
+          registrationDate: new Date(),
+          midtermGrade: '',
+          finalGrade: '',
+          classes: []
+        };
         console.log('Student updated:', updatedStudent);
         this.closeEditStudentForm(); // Đóng form sau khi cập nhật
         this.loadStudents(); // Làm mới danh sách

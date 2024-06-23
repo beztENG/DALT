@@ -91,5 +91,25 @@ router.delete('/users/:id/delete', async (req: Request, res: Response) => {
     } catch (error) {
         res.status(500).json({ message: 'Internal server error', error: error.message });
     }
+
+//change password user
+router.put('/login/account/:email/change-password', async (req: Request, res: Response) => {
+    try {
+        const  email  = req.params.email;
+        const { password } = req.body;
+        const user = await UserModel.findOneAndUpdate(
+            { email: email},
+            { $set: { password } },
+            { new: true }
+        );
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
+
 });
 export default router;
