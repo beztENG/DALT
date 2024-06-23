@@ -23,11 +23,11 @@ export const navbarData = [
         routeLink: 'TeacherAdmin',
         icon: '	far fa-calendar-alt',
         label: 'Quản lý thời gian'
-    
+
     },
     {
         routeLink: 'courseManagement',
-        icon: '	far fa-address-book',
+        icon: '	fa-solid fa-lines-leaning',
         label: 'Quản lý khóa học'
     },
 
