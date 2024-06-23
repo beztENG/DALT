@@ -7,6 +7,7 @@ export const STUDENTMANAGE_URL = BASE_URL + '/api/studentmanage'
 export const STUDENTMANAGE_BY_ID = STUDENTMANAGE_URL + '/'
 
 export const USER_LOGIN_URL = BASE_URL + '/api/user/login'
+export const USER_URL = BASE_URL + '/api/user'
 
 export const STUDENT_URL = BASE_URL + '/api/academic'
 

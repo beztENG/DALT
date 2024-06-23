@@ -17,6 +17,11 @@ router.get("/seed", asyncHandler(async (req, res) => {
     res.send("Seed is done!");
 }));
 
+router.get('/account/:email', asyncHandler(async(req,res) => {
+    const user = await UserModel.findOne({email: req.params.email})
+    res.json(user);
+}))
+
 router.post("/login", async (req: Request, res: Response) => {
     const { email, password } = req.body;
     const user = await UserModel.findOne({ email, password });
@@ -92,13 +97,14 @@ router.delete('/users/:id/delete', async (req: Request, res: Response) => {
         res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 
+});
 //change password user
-router.put('/login/account/:email/change-password', async (req: Request, res: Response) => {
+router.put('/account/:email/change-password', async (req: Request, res: Response) => {
     try {
-        const  email  = req.params.email;
+        const email = req.params.email;
         const { password } = req.body;
         const user = await UserModel.findOneAndUpdate(
-            { email: email},
+            { email: email },
             { $set: { password } },
             { new: true }
         );
@@ -109,7 +115,5 @@ router.put('/login/account/:email/change-password', async (req: Request, res: Re
     } catch (error) {
         res.status(500).json({ message: 'Internal server error', error: error.message });
     }
-});
-
 });
 export default router;

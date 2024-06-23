@@ -80,6 +80,11 @@ button {
     color: white;
 }
 
+.change-password-button {
+    background-color: #007bff;
+    color: white;
+}
+
 .logout-button {
     background-color: #dc3545;
     color: white;
@@ -91,6 +96,10 @@ button:hover {
 
 .send-email-button:hover {
     background-color: #218838;
+}
+
+.change-password-button:hover {
+    background-color: #0056b3;
 }
 
 .logout-button:hover {
@@ -112,4 +121,65 @@ button:hover {
 
 .notification-popup.show {
     opacity: 1;
+}
+
+.change-password-form {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    margin-top: 20px;
+}
+
+.change-password-form h3 {
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-buttons button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.form-buttons button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+}
+
+.form-buttons button[type="button"] {
+    background-color: #dc3545;
+    color: white;
+}
+
+.form-buttons button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.form-buttons button[type="button"]:hover {
+    background-color: #c82333;
 }

@@ -23,8 +23,8 @@
   </table>
   <div class="button-group">
     <button class="send-email-button" (click)="sendEmail()">Gửi Email</button>
-    <button class="logout-button" (click)="logout()">Đăng xuất</button>
     <button class="change-password-button" (click)="showChangePasswordForm = true">Đổi mật khẩu</button>
+    <button class="logout-button" (click)="logout()">Đăng xuất</button>
   </div>
   <div class="notification-popup" [class.show]="showNotification">
     {{ notificationMessage }}
@@ -32,7 +32,7 @@
 
   <div class="change-password-form" *ngIf="showChangePasswordForm">
     <h3>Đổi mật khẩu</h3>
-    <form (ngSubmit)="changePassword()" #changePasswordForm="ngForm">
+    <form (ngSubmit)="changePassword(); changePasswordForm.resetForm()" #changePasswordForm="ngForm">
       <div class="form-group">
         <label for="oldPassword">Mật khẩu cũ</label>
         <input type="password" id="oldPassword" name="oldPassword" [(ngModel)]="oldPassword" required>
@@ -45,7 +45,10 @@
         <label for="confirmPassword">Nhập lại mật khẩu mới</label>
         <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required>
       </div>
-      <button type="submit" [disabled]="!changePasswordForm.valid">Đổi mật khẩu</button>
-      <button type="button" (click)="cancelChangePassword()">Hủy</button>
+      <div class="form-buttons">
+        <button type="submit" [disabled]="!changePasswordForm.valid">Đổi mật khẩu</button>
+        <button type="button" (click)="cancelChangePassword()">Hủy</button>
+      </div>
     </form>
+  </div>
 </div>

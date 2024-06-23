@@ -114,50 +114,27 @@ router.post('/students/add', async (req: Request, res: Response) => {
 router.put('/students/:studentId/update', async (req: Request, res: Response) => {
     try {
         const { studentId } = req.params;
-        const { studentName, email, password, phoneNumber, registrationDate } = req.body;
+        const { studentName, phoneNumber, registrationDate } = req.body;
 
-        // Input validation (pseudo-code, implement according to your validation library)
-        if (!studentId || !studentName || !email || !phoneNumber) {
-            return res.status(400).json({ message: 'Missing required fields' });
-        }
         // Update student details
         const updatedStudent = await StudentModel.findOneAndUpdate(
-            {studentId: studentId},
-            { $set: { studentName, email, password, phoneNumber, registrationDate } },
+            { studentId: studentId },
+            { $set: { studentName, phoneNumber, registrationDate } },
             { new: true }
         );
-
         if (!updatedStudent) {
             return res.status(404).json({ message: 'Student not found' });
         }
 
-        res.json(updatedStudent);
-    } catch (error) {
-        if (error.name === 'ValidationError') {
-            return res.status(400).json({ message: 'Validation error', error: error.message });
-        }
-        res.status(500).json({ message: 'Internal server error', error: error.message });
-    }
-});
-//change password
-router.put('/students/:studentId/change-password', async (req: Request, res: Response) => {
-    try {
-        const { studentId } = req.params;
-        const { password } = req.body;
-
-        // Input validation (pseudo-code, implement according to your validation library)
-        if (!password) {
-            return res.status(400).json({ message: 'Missing required fields' });
-        }
-        // Update student password
-        const updatedStudent = await StudentModel.findOneAndUpdate(
-            {studentId: studentId},
-            { $set: { password } },
+        // Update corresponding user details
+        const updatedUser = await UserModel.findOneAndUpdate(
+            { id: studentId },
+            { $set: { name: studentName, address: phoneNumber } },
             { new: true }
         );
 
-        if (!updatedStudent) {
-            return res.status(404).json({ message: 'Student not found' });
+        if (!updatedUser) {
+            return res.status(404).json({ message: 'User not found' });
         }
 
         res.json(updatedStudent);

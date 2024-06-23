@@ -37,18 +37,14 @@
   <div *ngIf="showEditStudentForm">
     <h3>Cập Nhật Thông Tin Sinh Viên</h3>
     <form #editStudentForm="ngForm"
-      (ngSubmit)="updateStudent(newStudent); closeEditStudentForm(); editStudentForm.resetForm()">
+      (ngSubmit)="updateStudent(editStudentForm?.value); closeEditStudentForm(); editStudentForm.resetForm()">
       <label>ID sinh viên:</label>
-      <input type="text" name="studentId" [ngModel]="newStudent.studentId" readonly>
+      <input type="text" name="studentId" [ngModel]="selectedStudent?.studentId" readonly>
       <label>Tên sinh viên:</label>
       <input type="text" name="studentName" [ngModel]="selectedStudent?.studentName" required>
-      <!-- <label>Email:</label>
-      <input type="text" name="Email" [ngModel]="selectedStudent?.email" required>
-      <label>Password:</label>
-      <input type="text" name="Password" [ngModel]="selectedStudent?.password" required> -->
       <label>Số điện thoại:</label>
-      <input type="text" name="phoneNumber" [ngModel]="newStudent.phoneNumber" required>
-      <button type="submit" (click)="updateStudent(newStudent)">Lưu</button>
+      <input type="text" name="phoneNumber" [ngModel]="selectedStudent?.phoneNumber" required>
+      <button type="submit">Lưu</button>
       <button type="button" (click)="closeEditStudentForm()">Huỷ</button>
     </form>
   </div>
@@ -132,9 +128,6 @@
           <button (click)="openEditStudentForm(student)" class="fas fa-edit btn-edit"></button>
           <button onclick="momodal()" (click)="openEnrollForm(student)"
             class="fa-solid fa-user-plus btn-enroll"></button>
-          <button onclick="momodal()" (click)="loadStudentClasses(student.studentId)"
-            class="fas fa-eye btn-view-classes"></button>
-
         </td>
       </tr>
     </tbody>

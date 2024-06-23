@@ -37,7 +37,7 @@ export class StudentManagementComponent implements OnInit {
   @ViewChild('addStudentForm') addStudentForm: any; // Biến tham chiếu mẫu cho form thêm
   @ViewChild('editStudentForm') editStudentForm: any; // Biến tham chiếu mẫu cho form chỉnh sửa
   @ViewChild('enrollForm') enrollForm: any; // Biến tham chiếu mẫu cho form đăng ký
-courses: any;
+  courses: any;
 
   constructor(private academicService: AcademicManagementService, private classService: ClassService) { }
 
@@ -61,7 +61,6 @@ courses: any;
   openEditStudentForm(student: Student) {
     this.editMode = true;
     this.selectedStudent = student; // Đặt để chỉnh sửa
-    this.newStudent = student;
     this.showEditStudentForm = true;
   }
 
@@ -141,7 +140,7 @@ courses: any;
   // Cập nhật sinh viên
   updateStudent(updatedStudent: Student) {
     if (!this.selectedStudent) {
-      return; // Không có sinh viên được chọn để cập nhật
+      return; // No selected student to update
     }
     this.academicService.updateStudent(this.selectedStudent.studentId, updatedStudent).subscribe(
       (updatedStudent) => {
@@ -149,21 +148,10 @@ courses: any;
         if (index !== -1) {
           this.students[index] = updatedStudent;
         }
-        this.selectedStudent = null; // Xóa sinh viên được chọn sau khi cập nhật
-        this.newStudent = {
-          studentId: '',
-          studentName: '',
-          email: '',
-          password: '',
-          phoneNumber: '',
-          registrationDate: new Date(),
-          midtermGrade: '',
-          finalGrade: '',
-          classes: []
-        };
+        this.selectedStudent = null; // Clear selected student after update
         console.log('Student updated:', updatedStudent);
-        this.closeEditStudentForm(); // Đóng form sau khi cập nhật
-        this.loadStudents(); // Làm mới danh sách
+        this.closeEditStudentForm(); // Close the form after updating
+        this.loadStudents(); // Refresh the list
       },
       (error) => {
         console.error('Error updating student:', error);
@@ -182,14 +170,14 @@ courses: any;
     this.showEnrollForm = true;
     this.momodal();
   }
-  
+
   closeEnrollForm() {
     this.showEnrollForm = false;
     this.selectedStudent = null;
     this.enrollClassId = '';
     this.momodal();
   }
-  
+
   enrollStudentInClass(studentId: string, classId: string) {
     this.academicService.enrollStudentInClass(studentId, classId).subscribe(
       (response) => {
@@ -201,7 +189,7 @@ courses: any;
       }
     );
   }
-  
+
   loadStudentClasses(studentId: string) {
     this.academicService.getStudentClasses(studentId).subscribe(
       (data) => {
@@ -218,9 +206,9 @@ courses: any;
   momodal(): void {
     const modalElement = document.getElementById("nenmodal-1");
     if (modalElement) {
-        modalElement.classList.toggle("active");
+      modalElement.classList.toggle("active");
     } else {
-        console.error("Không tìm thấy phần tử với id 'nenmodal-1'.");
+      console.error("Không tìm thấy phần tử với id 'nenmodal-1'.");
     }
   }
 }

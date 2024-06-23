@@ -5,7 +5,9 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClassService } from 'src/app/services/class.service';
 import { AcademicManagementService } from 'src/app/services/academic-management.service';
+
 import emailjs from '@emailjs/browser'
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'app-student',
@@ -19,6 +21,14 @@ export class StudentComponent implements OnInit {
     studentName: '',
     classes: []
   };
+  user: User = {
+    id: '',
+    name: '',
+    email: '',
+    password: '',
+    address: '',
+    role: '',
+  }
   listId: string[] = [];
   classData: ClassCourse = {
     courseId: '',
@@ -40,16 +50,24 @@ export class StudentComponent implements OnInit {
   ngOnInit(): void {
     const studentEmail = localStorage.getItem('email');
     if (studentEmail) {
-      this.contactBookService.getContactById(studentEmail).subscribe(
-        (data: Student) => {
-          this.studentInfo = data;
-          this.loadStudentClasses(data.studentId);
-        },
-        (error) => {
-          console.error('Failed to retrieve student info:', error);
-        }
-      );
+      this.loadData(studentEmail)
     }
+  }
+
+  loadData(studentEmail: string): void {
+    if (!studentEmail) return
+    this.contactBookService.getContactById(studentEmail).subscribe(
+      (data: Student) => {
+        this.studentInfo = data;
+        this.loadStudentClasses(data.studentId);
+      },
+      (error) => {
+        console.error('Failed to retrieve student info:', error);
+      }
+    );
+    this.authService.getUser(studentEmail).subscribe(
+      (data: User) => { this.user = data }
+    )
   }
 
   loadStudentClasses(studentId: string): void {
@@ -105,19 +123,19 @@ export class StudentComponent implements OnInit {
       this.showNotification = false;
     }, 3000);
   }
-  
+
   oldPassword: string = '';
   newPassword: string = '';
   confirmPassword: string = '';
   showChangePasswordForm = false;
 
   changePassword(): void {
-    if(this.newPassword !== this.confirmPassword) {
+    if (this.newPassword !== this.confirmPassword) {
       this.showNotificationMessage('Mật khẩu mới không khớp nhau. Vui lòng thử lại.');
       return;
     }
 
-    if(this.oldPassword !== this.studentInfo?.password) {
+    if (this.oldPassword !== this.user.password) {
       this.showNotificationMessage('Mật khẩu cũ không đúng. Vui lòng thử lại.');
       return;
     }
@@ -132,6 +150,12 @@ export class StudentComponent implements OnInit {
         this.showNotificationMessage('Đổi mật khẩu thất bại. Vui lòng thử lại.');
       }
     );
+    this.showChangePasswordForm = false
+    this.loadData(this.studentInfo?.email || '')
+    setTimeout(() => {
+      this.logout();
+    }, 3000);
+
   }
 
   openChangePasswordForm(): void {

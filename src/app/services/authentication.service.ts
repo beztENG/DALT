@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IUser } from '../administratorsystem/shared/interface/user/user';
 import { USER_LOGIN_URL } from '../administratorsystem/shared/constants/url';
+import { USER_URL } from '../administratorsystem/shared/constants/url';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -37,7 +38,7 @@ export class AuthenticationService {
       );
   }
 
-  getToken(): string | null { 
+  getToken(): string | null {
     return localStorage.getItem('token');
   }
 
@@ -57,7 +58,11 @@ export class AuthenticationService {
   }
 
   //change password user
-  changePassword(email: string, password: string): Observable<any> {    
-    return this.http.put<any>(`${USER_LOGIN_URL}/account/${email}/change-password`, password);
+  changePassword(email: string, password: string): Observable<any> {
+    return this.http.put<any>(`${USER_URL}/account/${email}/change-password`, { password });
+  }
+
+  getUser(email: string): Observable<any> {
+    return this.http.get<any>(`${USER_URL}/account/${email}`);
   }
 }
