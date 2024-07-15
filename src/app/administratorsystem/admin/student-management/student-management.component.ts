@@ -178,17 +178,34 @@ export class StudentManagementComponent implements OnInit {
     this.momodal();
   }
 
+  // enrollStudentInClass(studentId: string, classId: string) {
+  //   this.academicService.enrollStudentInClass(studentId, classId).subscribe(
+  //     (response) => {
+  //       console.log('Sinh viên đã đăng ký vào lớp:', response);
+  //       this.closeEnrollForm();
+  //     },
+  //     (error) => {
+  //       console.error('Lỗi khi đăng ký sinh viên vào lớp:', error);
+  //     }
+  //   );
+  // }
   enrollStudentInClass(studentId: string, classId: string) {
     this.academicService.enrollStudentInClass(studentId, classId).subscribe(
-      (response) => {
-        console.log('Sinh viên đã đăng ký vào lớp:', response);
-        this.closeEnrollForm();
-      },
-      (error) => {
-        console.error('Lỗi khi đăng ký sinh viên vào lớp:', error);
-      }
+        (response) => {
+            console.log('Sinh viên đã đăng ký vào lớp:', response);
+            alert('Sinh viên đã được ghi danh vào lớp học thành công');
+            this.closeEnrollForm();
+        },
+        (error) => {
+            if (error.status === 409) {
+                alert('Sinh viên đã được đăng ký vào lớp này');
+            } else {
+                console.error('Lỗi khi đăng ký sinh viên vào lớp:', error);
+            }
+        }
     );
-  }
+}
+
 
   loadStudentClasses(studentId: string) {
     this.academicService.getStudentClasses(studentId).subscribe(

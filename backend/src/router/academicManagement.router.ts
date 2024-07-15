@@ -169,6 +169,31 @@ router.delete('/students/:studentId/delete', async (req: Request, res: Response)
         res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 });
+// router.post("/students/:studentId/enroll/:classId", async (req: Request, res: Response) => {
+//     try {
+//         const { studentId, classId } = req.params;
+
+//         const student = await StudentModel.findOne({ studentId });
+//         if (!student) {
+//             return res.status(404).json({ message: 'Student not found' });
+//         }
+
+//         const classObj = await ClassModel.findOne({ classId });
+//         if (!classObj) {
+//             return res.status(404).json({ message: 'Class not found' });
+//         }
+
+//         student.classes.push(classObj._id);
+//         await student.save();
+
+//         classObj.listStudent.push(student._id);
+//         await classObj.save();
+
+//         res.status(200).json({ message: 'Student enrolled in class successfully' });
+//     } catch (error) {
+//         res.status(500).json({ message: 'Internal server error', error: error.message });
+//     }
+// });
 router.post("/students/:studentId/enroll/:classId", async (req: Request, res: Response) => {
     try {
         const { studentId, classId } = req.params;
@@ -183,6 +208,11 @@ router.post("/students/:studentId/enroll/:classId", async (req: Request, res: Re
             return res.status(404).json({ message: 'Class not found' });
         }
 
+        // Check if the student is already enrolled in the class
+        if (student.classes.includes(classObj._id)) {
+            return res.status(409).json({ message: 'Student is already enrolled in this class' });
+        }
+
         student.classes.push(classObj._id);
         await student.save();
 
@@ -194,6 +224,7 @@ router.post("/students/:studentId/enroll/:classId", async (req: Request, res: Re
         res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 });
+
 router.get('/students/:studentId/classes', async (req: Request, res: Response) => {
     const { studentId } = req.params;
     try {
