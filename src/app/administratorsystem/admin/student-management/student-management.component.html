@@ -5,7 +5,6 @@
 
   <input type="text" [(ngModel)]="searchKeyword" (input)="search()" placeholder="Tìm kiếm...">
 
-  <button (click)="loadStudents()">Sắp xếp theo thời gian đăng ký</button>
   <button (click)="search()">Tìm kiếm</button><button *ngIf="!showAddStudentForm" (click)="openAddStudentForm()">Thêm
     Sinh
     Viên</button>

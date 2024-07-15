@@ -7,13 +7,16 @@
     width: 5rem;
     height: 100vh;
     box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Space between to separate content */
 
     .logo-container {
         display: flex;
         align-items: center;
         padding: 0.938rem 0.938rem 0 0.938rem;
         width: 100%;
-
 
         .logo {
             background: #fff;
@@ -32,7 +35,7 @@
             margin-left: 1.5rem;
             font-size: 24px;
             font-weight: 700;
-            color: #fff;
+            color: #000000;
         }
 
         .btn-close {
@@ -63,9 +66,8 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: calc(100% - 3.65rem);
-    cursor: pointer;
+    height: 100%;
+    /* Ensure the nav takes full height */
 
     .sidenav-nav-item {
         width: 100%;
@@ -82,6 +84,7 @@
 
             .sidenav-link-icon {
                 font-size: 22px;
+                color: black;
                 width: 2rem;
                 min-width: 2rem;
                 margin: 0 0.5rem;
@@ -89,21 +92,22 @@
             }
 
             .sidenav-link-text {
+                color: black;
                 margin-left: 1.5rem;
             }
         }
     }
 
+    .sidenav-nav-item:hover .sidenav-nav-link {
+        background-color: #fff;
+        color: #000;
+    }
 
-
-    .sidenav-nav-item:hover {
-        .sidenav-nav-link {
-            background-color: #fff;
-            color: #000;
-        }
+    .spacer {
+        flex: 1;
+        /* Takes up remaining space */
     }
 }
-
 
 .active {
     background-color: #fff;
@@ -112,4 +116,17 @@
     .sidenav-link-text {
         color: #000;
     }
+}
+
+.logout-button {
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #e35f6c;
 }

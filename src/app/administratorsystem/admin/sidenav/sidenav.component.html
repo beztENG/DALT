@@ -6,7 +6,6 @@
                 <i class="fa fa-times close-icon"></i>
             </button>
         </div>
-
     </div>
     <ul class="sidenav-nav">
         <li class="sidenav-nav-item" *ngFor="let data of navData">
@@ -17,6 +16,12 @@
                     {{data.label}}
                 </span>
             </a>
+        </li>
+        <div class="spacer"></div> <!-- This spacer will push the logout button to the bottom -->
+        <li class="logout-button">
+            <button class="logout-button" (click)="logout()">
+                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+            </button>
         </li>
     </ul>
 </div>

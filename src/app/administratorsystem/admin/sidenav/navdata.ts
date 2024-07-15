@@ -10,11 +10,6 @@ export const navbarData = [
         label: 'Quản lý học vụ'
     },
     {
-        routeLink: 'setting',
-        icon: 'fa fa-cogs',
-        label: 'Cài đặt'
-    },
-    {
         routeLink: 'studentManagement',
         icon: '	far fa-user',
         label: 'Quản lý sinh viên'

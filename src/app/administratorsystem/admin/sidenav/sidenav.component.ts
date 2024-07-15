@@ -1,5 +1,7 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData } from './navdata';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 
 
@@ -45,7 +47,10 @@ export class SidenavComponent implements OnInit {
   collapsed = false;
   screenWidth = 0;
   navData = navbarData;
-
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router
+  ) { }
   @HostListener('window:resize', ['$event'])
 
   onResize(event: any) {
@@ -68,5 +73,9 @@ export class SidenavComponent implements OnInit {
   closeSidenav(): void {
     this.collapsed = false;
     this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+  }
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

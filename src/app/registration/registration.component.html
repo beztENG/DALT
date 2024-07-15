@@ -12,13 +12,16 @@
             <div class="form-container">
                 <div>
                     <input type="text" placeholder="Họ Tên" required [(ngModel)]="fullName" name="fullName" />
+
                 </div>
                 <div>
                     <input type="email" placeholder="Email" required [(ngModel)]="email" name="email" />
+                    <div *ngIf="emailError" class="error-message">{{ emailError }}</div>
                 </div>
                 <div>
                     <input type="tel" placeholder="Số điện thoại" required [(ngModel)]="phoneNumber"
                         name="phoneNumber" />
+                    <div *ngIf="phoneError" class="error-message">{{ phoneError }}</div>
                 </div>
             </div>
             <div class="form-container">
@@ -34,6 +37,9 @@
             </div>
             <button type="submit" class="button-send"></button>
         </form>
+        <div class="notification-popup" [class.show]="showNotification">
+            {{ notificationMessage }}
+          </div>
 
     </div>
 
