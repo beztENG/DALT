@@ -17,6 +17,25 @@ export class TeacherAdminComponent implements OnInit {
   selectedTeacher: Teacher | null = null;
   selectedDate: string | null = null;
 
+  timeOptions2Hours: string[] = [
+    '9:00am - 11:00am',
+    '10:00am - 12:00pm',
+    '11:00am - 1:00pm',
+    '12:00pm - 2:00pm',
+    '1:00pm - 3:00pm',
+    '2:00pm - 4:00pm',
+    '3:00pm - 5:00pm'
+  ];
+
+  timeOptions3Hours: string[] = [
+    '9:00am - 12:00pm',
+    '10:00am - 1:00pm',
+    '11:00am - 2:00pm',
+    '12:00pm - 3:00pm',
+    '1:00pm - 4:00pm',
+    '2:00pm - 5:00pm'
+  ];
+
   currentYear: number = new Date().getFullYear();
   currentMonth: number = new Date().getMonth();
   daysInMonth: (number | null)[] = [];
@@ -185,5 +204,20 @@ export class TeacherAdminComponent implements OnInit {
     if (modal) {
       modal.classList.toggle('active');
     }
+  }
+
+  updateTimelineOptions(): void {
+    if (this.newTeacher.duration === '2h') {
+      this.newTeacher.timeline = '';
+    }
+    if (this.newTeacher.duration === '2h') {
+      this.newTeacher.timeline = '';
+    } else if (this.newTeacher.duration === '3h') {
+      this.newTeacher.timeline = '';
+    }
+  }
+
+  getTimeOptions(): string[] {
+    return this.newTeacher.duration === '2h' ? this.timeOptions2Hours : this.timeOptions3Hours;
   }
 }

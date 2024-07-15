@@ -20,9 +20,15 @@
             <option *ngFor="let class of classes" [value]="class.classId">{{ class.courseId + class.classId }}</option>
           </select>
           <label>Thời Lượng:</label>
-          <input [(ngModel)]="newTeacher.duration" name="duration" required>
+          <select [(ngModel)]="newTeacher.duration" name="duration" (change)="updateTimelineOptions()" required>
+            <option value="2h">2 tiếng</option>
+            <option value="3h">3 tiếng</option>
+          </select>
+          
           <label>Thời Gian:</label>
-          <input [(ngModel)]="newTeacher.timeline" name="timeline" placeholder="ví dụ: 3:00pm - 5:00pm" required>
+          <select [(ngModel)]="newTeacher.timeline" name="timeline" required>
+            <option *ngFor="let time of getTimeOptions()" [value]="time">{{ time }}</option>
+          </select>
           <div class="form-buttons">
             <button type="submit">Thêm</button>
             <button type="button" (click)="toggleAddTeacherModal()">Hủy</button>
@@ -51,9 +57,16 @@
             <option *ngFor="let class of classes" [value]="class.classId">{{ class.courseId + class.classId }}</option>
           </select>
           <label>Thời Lượng:</label>
-          <input [(ngModel)]="selectedTeacher.duration" name="duration" required>
+          <select [(ngModel)]="selectedTeacher.duration" name="duration" (change)="updateTimelineOptions()" required>
+            <option value="2h">2 tiếng</option>
+            <option value="3h">3 tiếng</option>
+          </select>
+          
           <label>Thời Gian:</label>
-          <input [(ngModel)]="selectedTeacher.timeline" name="timeline" placeholder="ví dụ: 3:00pm - 5:00pm" required>
+          <select [(ngModel)]="selectedTeacher.timeline" name="timeline" required>
+            <option *ngFor="let time of getTimeOptions()" [value]="time">{{ time }}</option>
+          </select>
+          
           <div class="form-buttons">
             <button type="submit">Cập Nhật</button>
             <button type="button" (click)="cancelEdit()">Hủy</button>
