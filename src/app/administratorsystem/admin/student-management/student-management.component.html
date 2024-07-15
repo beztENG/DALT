@@ -23,11 +23,7 @@
       <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="newStudent.phoneNumber" required>
       <label for="registrationDate">Ngày đăng ký:</label>
       <input type="date" id="registrationDate" name="registrationDate" [(ngModel)]="newStudent.registrationDate"
-        required>
-      <label for="midtermGrade">Điểm giữa kỳ:</label>
-      <input type="text" id="midtermGrade" name="midtermGrade" [(ngModel)]="newStudent.midtermGrade">
-      <label for="finalGrade">Điểm cuối kỳ:</label>
-      <input type="text" id="finalGrade" name="finalGrade" [(ngModel)]="newStudent.finalGrade">
+        required>      
       <button type="submit">Thêm</button>
       <button type="button" (click)="closeAddStudentForm()">Huỷ</button>
     </form>
@@ -58,7 +54,7 @@
         <div class="titlemodal">Đăng Ký Lớp</div>
         <p>Chọn lớp cho sinh viên {{ selectedStudent?.studentName }}</p>
         <select [(ngModel)]="enrollClassId">
-          <option *ngFor="let class of classes" [value]="class.classId">{{ class.courseId }}{{ class.classId }}</option>
+          <option *ngFor="let class of classStudentSelected" [value]="class.classId">{{ class.courseId }}-{{ class.classId }}</option>
         </select><br />
         <button (click)="enrollStudentInClass(selectedStudent?.studentId!, enrollClassId)">Đăng ký</button>
         <button (click)="closeEnrollForm()">Hủy</button>

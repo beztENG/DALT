@@ -4,6 +4,7 @@ import { AcademicManagementService } from 'src/app/services/academic-management.
 import { Class } from '../../shared/interface/class/class';
 import { ClassService } from 'src/app/services/class.service';
 
+
 @Component({
   selector: 'app-student-management',
   templateUrl: './student-management.component.html',
@@ -13,6 +14,7 @@ export class StudentManagementComponent implements OnInit {
   students: Student[] = [];
   classes: Class[] = [];
   studentClasses: Class[] = [];
+  classStudentSelected: Class[]=[];
   searchKeyword: string = '';
   showAddStudentForm = false;
   showEditStudentForm = false;
@@ -82,9 +84,20 @@ export class StudentManagementComponent implements OnInit {
   }
 
   loadClasses(): void {
-    this.classService.getAllClasses().subscribe(data => {
-      this.classes = data;
+    this.classService.getAllClasses().subscribe(data => {      
+      this.classes = this.clearDataClass(data);
     });
+    
+  }
+
+  clearDataClass(dataclass: Class[]):Class[] {
+    for (let i = 0; i < dataclass.length; i++) {
+      if(dataclass[i].isAvailable == false){
+        dataclass.splice(i, 1);
+      }
+    }
+    console.log(dataclass);
+    return dataclass;
   }
 
   search(): void {
@@ -168,13 +181,33 @@ export class StudentManagementComponent implements OnInit {
   openEnrollForm(student: Student) {
     this.selectedStudent = student;
     this.showEnrollForm = true;
+    this.classStudentSelected = this.clearClassDataSelected(this.classes, student.studentId);
     this.momodal();
   }
+
+  clearClassDataSelected(dataclass: Class[], idStu: string):Class[] {
+    let listStudent = [];
+    for (let i = 0; i < dataclass.length; i++) {
+      listStudent = dataclass[i].listStudent;
+      console.log(idStu);
+      console.log(listStudent);
+      for(let j = 0; j < listStudent.length; j++){
+        this.academicService.getStudentById(listStudent[j]).subscribe(data => {
+          if( data.studentId == idStu){
+            dataclass.splice(i, 1);
+            console.log("Xóa thành công")}
+        });
+      }
+    }
+    return dataclass;
+  }
+
 
   closeEnrollForm() {
     this.showEnrollForm = false;
     this.selectedStudent = null;
     this.enrollClassId = '';
+    this.classStudentSelected = [];
     this.momodal();
   }
 

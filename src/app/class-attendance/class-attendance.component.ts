@@ -31,14 +31,14 @@ export class ClassAttendanceComponent {
     this.classService.getOneClass(this.courseId, this.classId).subscribe((data) => {
       this.data = data;
       this.listId = data.listStudent;
-      this.getStudent(this.listId);
-      // this.newlist = this.listStudent.filter((item, index) => this.listStudent.indexOf(item) === index);
-      this.listAttendance.sort((a, b) => {
-        if (a.studentName < b.studentName) return -1;
-        if (a.studentName > b.studentName) return 1;
-        return 0;
-      });      
+      this.getStudent(this.listId);       
     })
+  }
+  clearData(data: string[]){
+    for (let i = 0; i < data.length; i++) {
+      data = data.filter(item => item !== data[i])
+    }
+    return data;
   }
 
   getStudent(listId: string[]) {
