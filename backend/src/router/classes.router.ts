@@ -57,4 +57,15 @@ router.delete("/delete/:courseId", asyncHandler(async (req: Request, res: Respon
     res.json(deletedClassroom);
 }));
 
+//update class by classid courseid 
+router.put("/update/:courseId/:classId", asyncHandler(async (req: Request, res: Response) => {
+    const classroom = req.body;
+    const updatedClassroom = await ClassModel.findOneAndUpdate(
+        { courseId: req.params.courseId, classId: req.params.classId },
+        classroom,
+        { new: true }
+    );
+    res.json(updatedClassroom);
+}));
+
 export default router;

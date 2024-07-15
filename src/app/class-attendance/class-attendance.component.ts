@@ -12,7 +12,7 @@ import { AcademicManagementService } from '../services/academic-management.servi
   styleUrls: ['./class-attendance.component.css']
 })
 export class ClassAttendanceComponent {
-  data: Class = { courseId: '', classId: '', listStudent: [] };
+  data: Class = { courseId: '', classId: '', startDate: new Date(), isAvailable: true  ,listStudent: [] };
   listId: string[] = [];
   listStudent : Student[] = [];  
   newlist : Student[] = [];
@@ -26,17 +26,6 @@ export class ClassAttendanceComponent {
   constructor(private classService: ClassService, private route: ActivatedRoute, private studentServie: AcademicManagementService) {}
   courseId = this.route.snapshot.params.courseId;
   classId = this.route.snapshot.params.classId;
-
-  // student: Student = {
-  //   studentId: '',
-  //   studentName: '',
-  //   email: '',
-  //   password: '',
-  //   phoneNumber: '',
-  //   registrationDate: new Date(),
-  //   midtermGrade: '',
-  //   finalGrade: ''
-  // };
   
   ngOnInit() {
     this.classService.getOneClass(this.courseId, this.classId).subscribe((data) => {

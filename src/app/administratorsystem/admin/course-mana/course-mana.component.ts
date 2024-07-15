@@ -13,6 +13,7 @@ export class CourseManaComponent {
   courses: Course[] = [];
   Classes: Class[] = [];
   showAddCourseModal = false;
+  showAddClassModal = false;
   newCourse: Course = {
     courseId: '',
     name: '',
@@ -25,6 +26,8 @@ export class CourseManaComponent {
   newClass: Class = {
     courseId: '',
     classId: '',
+    startDate: new Date(),
+    isAvailable: true,
     listStudent: []
   };
 
@@ -39,6 +42,10 @@ export class CourseManaComponent {
 
   toggleAddCourseModal() {
     this.showAddCourseModal = !this.showAddCourseModal;
+  }
+
+  toggleAddClassModal() {
+    this.showAddClassModal = !this.showAddClassModal;
   }
 
   loadCourses() {
@@ -89,31 +96,50 @@ export class CourseManaComponent {
         classId++;
       }
     }
-    this.addClass(classId);
+    this.newClass.classId = "L0" + classId.toString();
+    this.showAddClassModal = true;
   }
 
-  addClass(classId: number) {
-    this.newClass.classId = "L0" + classId.toString();
+  addClass(newclass: Class) {
+    this.newClass.startDate = newclass.startDate;
     this.classService.addClass(this.newClass).subscribe(() => {
       this.Classes.push(this.newClass);
       this.newClass = {
         courseId: '',
         classId: '',
+        startDate: new Date(),
+        isAvailable: true,
         listStudent: []
       };
     });
+    this.toggleAddClassModal();
+  }
+
+  activeClass(classroom: Class) {
+    classroom.isAvailable = !classroom.isAvailable;
+    this.classService.updateClass(classroom.courseId, classroom.classId, classroom).subscribe(() => {
+      this.Classes = this.Classes.map((c) => {
+        if (c.classId === classroom.classId && c.courseId === classroom.courseId) {
+          c.isAvailable = !c.isAvailable;
+        }
+        return c;
+      });
+    });
+    window.location.reload();
   }
 
   deleteClass(classroom: Class) {
     this.classService.deleteClass(classroom.courseId, classroom.classId).subscribe(() => {
       this.Classes = this.Classes.filter((c) => c.classId !== classroom.classId && c.courseId !== classroom.courseId);
     });
+    window.location.reload();
   }
 
   deleteClassByCourse(course: Course) {
     this.classService.deleteClassByCourse(course.courseId).subscribe(() => {
       this.Classes = this.Classes.filter((c) => c.courseId !== course.courseId);
     });
+    window.location.reload();
   }
 
   sendData(classSelected: Class) {

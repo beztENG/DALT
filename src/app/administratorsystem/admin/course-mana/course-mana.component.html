@@ -31,7 +31,29 @@
                 </form>
             </div>
         </div>
-
+        <!-- Add Class Modal -->
+        <div [class.active]="showAddClassModal" class="nenmodal">
+            <div class="nenmodal2" (click)="toggleAddClassModal()"></div>
+            <div class="ndmodal">
+                <div class="closemodal">
+                    <button (click)="toggleAddClassModal()">&times;</button>
+                </div>
+                <div class="titlemodal">Thêm Lớp Học</div>
+                <form class="add-course-form" #addClassForm="ngForm" (ngSubmit)="addClass(newClass)">
+                    <label>Mã khóa học:</label>
+                    <input type="text" name="courseId" [(ngModel)]="newClass.courseId" disabled="true">
+                    <label>Mã lớp học:</label>
+                    <input type="text" name="classId" [(ngModel)]="newClass.classId" disabled="true">
+                    <label>Ngày bắt đầu:</label>
+                    <input type="date" name="startDate" [(ngModel)]="newClass.startDate" required class="startDate">
+                    <div class="form-buttons">
+                        <button type="submit">Lưu</button>
+                        <button type="button" (click)="toggleAddClassModal()">Huỷ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
         <table class="course-table">
             <thead>
                 <tr>
@@ -55,8 +77,7 @@
                     <td>
                         <div class="button-container">
                             <button (click)="deleteCourse(course)" class="action-button delete-button">Xóa</button>
-                            <button (click)="openAddClassForm(course)" class="action-button add-class-button">Tạo Lớp
-                                Học</button>
+                            <button (click)="openAddClassForm(course)" class="action-button add-class-button">Tạo Lớp Học</button>
                         </div>
                     </td>
                 </tr>
@@ -69,6 +90,7 @@
                 <tr>
                     <th>Mã khóa học</th>
                     <th>Mã Lớp học</th>
+                    <th>Ngày bắt đầu</th>
                     <th>Tùy chỉnh lớp học</th>
                 </tr>
             </thead>
@@ -76,12 +98,18 @@
                 <tr *ngFor="let classroom of Classes">
                     <td>{{classroom.courseId}}</td>
                     <td>{{classroom.classId}}</td>
+                    <td>{{classroom.startDate}}</td>
                     <td>
                         <div class="button-container">
                             <button (click)="deleteClass(classroom)" class="action-button delete-button">Xóa</button>
                             <button (click)="sendData(classroom)" class="action-button add-class-button">
                                 <a [href]="'class-attendance/' + classroom.courseId + '/' + classroom.classId">Điểm
                                     danh</a>
+                            </button>
+                            <button id='btactiveclass'
+                            [ngClass]="{ 'on': classroom.isAvailable, 'off': !classroom.isAvailable }" 
+                            (click)="activeClass(classroom)">
+                            {{ classroom.isAvailable ? 'Mở Lớp' : 'Đóng lớp' }}
                             </button>
                         </div>
                     </td>

@@ -43,6 +43,10 @@ export class ClassService {
     return this.http.delete<Class>(`${CLASS_URL}/delete/${courseId}`);
   }
 
+  updateClass(courseId: string, classId: string, classroom: Class): Observable<Class> {
+    return this.http.put<Class>(`${CLASS_URL}/update/${courseId}/${classId}`, classroom);
+  }
+
   enrollStudentInClass(studentId: string, classId: string): Observable<any> {
     return this.http.post<any>(`${CLASS_URL}/students/${studentId}/enroll`, { classId });
   }
@@ -54,6 +58,8 @@ export class ClassService {
   private dataSource = new BehaviorSubject<Class>({
     courseId: '',
     classId: '',
+    startDate: new Date(),
+    isAvailable: true,
     listStudent: []
   });
   currentData = this.dataSource.asObservable();
