@@ -14,11 +14,13 @@ export class StudentManagementComponent implements OnInit {
   students: Student[] = [];
   classes: Class[] = [];
   studentClasses: Class[] = [];
-  classStudentSelected: Class[]=[];
+  classStudentSelected: Class[] = [];
   searchKeyword: string = '';
   showAddStudentForm = false;
   showEditStudentForm = false;
   showEnrollForm = false;
+  showAddStudentModal = false;
+  showEditStudentModal = false;
   showStudentClasses = false;
   selectedStudent: Student | null = null;
   editMode: boolean = false;
@@ -47,27 +49,33 @@ export class StudentManagementComponent implements OnInit {
     this.loadStudents();
     this.loadClasses();
   }
+  toggleAddStudentModal() {
+    this.showAddStudentModal = !this.showAddStudentModal;
+  }
 
+  toggleEditStudentModal() {
+    this.showEditStudentModal = !this.showEditStudentModal;
+  }
   // Mở và đóng form thêm/chỉnh sửa sinh viên
   openAddStudentForm() {
     this.editMode = true;
     this.selectedStudent = null; // Xóa để thêm sinh viên mới
-    this.showAddStudentForm = true;
+    this.toggleAddStudentModal();
   }
 
   closeAddStudentForm() {
-    this.showAddStudentForm = false;
+    this.showAddStudentModal = false;
     this.editMode = false;
   }
 
   openEditStudentForm(student: Student) {
     this.editMode = true;
     this.selectedStudent = student; // Đặt để chỉnh sửa
-    this.showEditStudentForm = true;
+    this.toggleEditStudentModal();
   }
 
   closeEditStudentForm() {
-    this.showEditStudentForm = false;
+    this.showEditStudentModal = false;
     this.editMode = false;
     this.selectedStudent = null;
   }
@@ -84,15 +92,15 @@ export class StudentManagementComponent implements OnInit {
   }
 
   loadClasses(): void {
-    this.classService.getAllClasses().subscribe(data => {      
+    this.classService.getAllClasses().subscribe(data => {
       this.classes = this.clearDataClass(data);
     });
-    
+
   }
 
-  clearDataClass(dataclass: Class[]):Class[] {
+  clearDataClass(dataclass: Class[]): Class[] {
     for (let i = 0; i < dataclass.length; i++) {
-      if(dataclass[i].isAvailable == false){
+      if (dataclass[i].isAvailable == false) {
         dataclass.splice(i, 1);
       }
     }
@@ -185,17 +193,18 @@ export class StudentManagementComponent implements OnInit {
     this.momodal();
   }
 
-  clearClassDataSelected(dataclass: Class[], idStu: string):Class[] {
+  clearClassDataSelected(dataclass: Class[], idStu: string): Class[] {
     let listStudent = [];
     for (let i = 0; i < dataclass.length; i++) {
       listStudent = dataclass[i].listStudent;
       console.log(idStu);
       console.log(listStudent);
-      for(let j = 0; j < listStudent.length; j++){
+      for (let j = 0; j < listStudent.length; j++) {
         this.academicService.getStudentById(listStudent[j]).subscribe(data => {
-          if( data.studentId == idStu){
+          if (data.studentId == idStu) {
             dataclass.splice(i, 1);
-            console.log("Xóa thành công")}
+            console.log("Xóa thành công")
+          }
         });
       }
     }
@@ -224,20 +233,20 @@ export class StudentManagementComponent implements OnInit {
   // }
   enrollStudentInClass(studentId: string, classId: string) {
     this.academicService.enrollStudentInClass(studentId, classId).subscribe(
-        (response) => {
-            console.log('Sinh viên đã đăng ký vào lớp:', response);
-            alert('Sinh viên đã được ghi danh vào lớp học thành công');
-            this.closeEnrollForm();
-        },
-        (error) => {
-            if (error.status === 409) {
-                alert('Sinh viên đã được đăng ký vào lớp này');
-            } else {
-                console.error('Lỗi khi đăng ký sinh viên vào lớp:', error);
-            }
+      (response) => {
+        console.log('Sinh viên đã đăng ký vào lớp:', response);
+        alert('Sinh viên đã được ghi danh vào lớp học thành công');
+        this.closeEnrollForm();
+      },
+      (error) => {
+        if (error.status === 409) {
+          alert('Sinh viên đã được đăng ký vào lớp này');
+        } else {
+          console.error('Lỗi khi đăng ký sinh viên vào lớp:', error);
         }
+      }
     );
-}
+  }
 
 
   loadStudentClasses(studentId: string) {

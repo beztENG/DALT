@@ -5,43 +5,58 @@
 
   <input type="text" [(ngModel)]="searchKeyword" (input)="search()" placeholder="Tìm kiếm...">
 
-  <button (click)="search()">Tìm kiếm</button><button *ngIf="!showAddStudentForm" (click)="openAddStudentForm()">Thêm
-    Sinh
-    Viên</button>
-  <div *ngIf="showAddStudentForm">
-    <h3>Thêm Thông Tin Sinh Viên</h3>
-    <form #addStudentForm="ngForm" (ngSubmit)="addStudent(); closeAddStudentForm()">
-      <label for="studentId">ID sinh viên:</label>
-      <input type="text" id="studentId" name="studentId" [(ngModel)]="newStudent.studentId" required>
-      <label for="studentName">Tên sinh viên:</label>
-      <input type="text" id="studentName" name="studentName" [(ngModel)]="newStudent.studentName" required>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="Email" [(ngModel)]="newStudent.email" required>
-      <label for="password">Mật khẩu:</label>
-      <input type="password" id="password" name="Password" [(ngModel)]="newStudent.password" required>
-      <label for="phoneNumber">Số điện thoại:</label>
-      <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="newStudent.phoneNumber" required>
-      <label for="registrationDate">Ngày đăng ký:</label>
-      <input type="date" id="registrationDate" name="registrationDate" [(ngModel)]="newStudent.registrationDate"
-        required>      
-      <button type="submit">Thêm</button>
-      <button type="button" (click)="closeAddStudentForm()">Huỷ</button>
-    </form>
+  <button (click)="search()">Tìm kiếm</button>
+  <button *ngIf="!showAddStudentModal" (click)="openAddStudentForm()">Thêm Sinh Viên</button>
+  <div [class.active]="showAddStudentModal" class="nenmodal">
+    <div class="nenmodal2" (click)="toggleAddStudentModal()"></div>
+    <div class="ndmodal">
+      <div class="closemodal">
+        <button (click)="toggleAddStudentModal()">&times;</button>
+      </div>
+      <div class="titlemodal">Thêm Thông Tin Sinh Viên</div>
+      <form class="student-form" #addStudentForm="ngForm" (ngSubmit)="addStudent(); closeAddStudentForm()">
+        <label for="studentId">ID sinh viên:</label>
+        <input type="text" id="studentId" name="studentId" [(ngModel)]="newStudent.studentId" required>
+        <label for="studentName">Tên sinh viên:</label>
+        <input type="text" id="studentName" name="studentName" [(ngModel)]="newStudent.studentName" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="Email" [(ngModel)]="newStudent.email" required>
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="Password" [(ngModel)]="newStudent.password" required>
+        <label for="phoneNumber">Số điện thoại:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="newStudent.phoneNumber" required>
+        <label for="registrationDate">Ngày đăng ký:</label>
+        <input type="date" id="registrationDate" name="registrationDate" [(ngModel)]="newStudent.registrationDate"
+          required>
+        <div class="form-buttons">
+          <button type="submit">Thêm</button>
+          <button type="button" (click)="closeAddStudentForm()">Huỷ</button>
+        </div>
+      </form>
+    </div>
   </div>
 
-  <div *ngIf="showEditStudentForm">
-    <h3>Cập Nhật Thông Tin Sinh Viên</h3>
-    <form #editStudentForm="ngForm"
-      (ngSubmit)="updateStudent(editStudentForm?.value); closeEditStudentForm(); editStudentForm.resetForm()">
-      <label>ID sinh viên:</label>
-      <input type="text" name="studentId" [ngModel]="selectedStudent?.studentId" readonly>
-      <label>Tên sinh viên:</label>
-      <input type="text" name="studentName" [ngModel]="selectedStudent?.studentName" required>
-      <label>Số điện thoại:</label>
-      <input type="text" name="phoneNumber" [ngModel]="selectedStudent?.phoneNumber" required>
-      <button type="submit">Lưu</button>
-      <button type="button" (click)="closeEditStudentForm()">Huỷ</button>
-    </form>
+  <div *ngIf="showEditStudentModal" class="nenmodal active">
+    <div class="nenmodal2" (click)="toggleEditStudentModal()"></div>
+    <div class="ndmodal">
+      <div class="closemodal">
+        <button (click)="toggleEditStudentModal()">&times;</button>
+      </div>
+      <div class="titlemodal">Cập Nhật Thông Tin Sinh Viên</div>
+      <form class="student-form" #editStudentForm="ngForm"
+        (ngSubmit)="updateStudent(editStudentForm?.value); closeEditStudentForm(); editStudentForm.resetForm()">
+        <label>ID sinh viên:</label>
+        <input type="text" name="studentId" [ngModel]="selectedStudent?.studentId" readonly>
+        <label>Tên sinh viên:</label>
+        <input type="text" name="studentName" [ngModel]="selectedStudent?.studentName" required>
+        <label>Số điện thoại:</label>
+        <input type="text" name="phoneNumber" [ngModel]="selectedStudent?.phoneNumber" required>
+        <div class="form-buttons">
+          <button type="submit">Lưu</button>
+          <button type="button" (click)="closeEditStudentForm()">Huỷ</button>
+        </div>
+      </form>
+    </div>
   </div>
 
   <div class="nenmodal" id="nenmodal-1">
@@ -54,7 +69,8 @@
         <div class="titlemodal">Đăng Ký Lớp</div>
         <p>Chọn lớp cho sinh viên {{ selectedStudent?.studentName }}</p>
         <select [(ngModel)]="enrollClassId">
-          <option *ngFor="let class of classStudentSelected" [value]="class.classId">{{ class.courseId }}-{{ class.classId }}</option>
+          <option *ngFor="let class of classStudentSelected" [value]="class.classId">{{ class.courseId }}-{{
+            class.classId }}</option>
         </select><br />
         <button (click)="enrollStudentInClass(selectedStudent?.studentId!, enrollClassId)">Đăng ký</button>
         <button (click)="closeEnrollForm()">Hủy</button>
@@ -63,15 +79,6 @@
   </div>
 
 
-  <!-- <div *ngIf="showEnrollForm">
-  <h3>Đăng Ký Lớp</h3>
-  <p>Chọn lớp cho sinh viên {{ selectedStudent?.studentName }}</p>
-  <select [(ngModel)]="enrollClassId">
-    <option *ngFor="let class of classes" [value]="class.classId">{{ class.courseId }}{{ class.classId }}</option>
-  </select><br />
-  <button (click)="enrollStudentInClass(selectedStudent?.studentId!, enrollClassId)">Đăng ký</button>
-  <button (click)="closeEnrollForm()">Hủy</button>
-</div> -->
 
   <div class="nenmodal" id="nenmodal-2">
     <div class="nenmodal2"></div>
